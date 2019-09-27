@@ -47,8 +47,6 @@ public class Volunteer {
 
     private String photoLink;
 
-    private String sourceUs;
-
     private String sourceVolunteerProgram;
 
     private String whyInteresting;
@@ -203,14 +201,6 @@ public class Volunteer {
 
     public void setPhotoLink(String photoLink) {
         this.photoLink = photoLink;
-    }
-
-    public String getSourceUs() {
-        return sourceUs;
-    }
-
-    public void setSourceUs(String sourceUs) {
-        this.sourceUs = sourceUs;
     }
 
     public String getSourceVolunteerProgram() {
