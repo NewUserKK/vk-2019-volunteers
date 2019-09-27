@@ -6,19 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import org.kodein.di.generic.instance
 import ru.newuserkk.volunteers.R
+import ru.newuserkk.volunteers.domain.event.EventRepository
+import ru.newuserkk.volunteers.presentation.VolunteersApp.Companion.kodein
+import ru.newuserkk.volunteers.presentation.common.AbstractFragment
 
-class EventListFragment : Fragment() {
+class EventListFragment : AbstractFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.fragment_event_list, container, false)
-        with(rootView) {
+    override val layoutResId = R.layout.fragment_event_list
 
-        }
-        return rootView
+    val eventRepository: EventRepository by kodein.instance()
+
+    override fun View.setupFragment() {
+        TODO("not implemented")
     }
 }

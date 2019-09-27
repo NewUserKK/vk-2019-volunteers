@@ -6,15 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ru.newuserkk.volunteers.R
+import ru.newuserkk.volunteers.presentation.common.AbstractFragment
 
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : AbstractFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
+    override val layoutResId: Int = R.layout.fragment_profile
+
 }
