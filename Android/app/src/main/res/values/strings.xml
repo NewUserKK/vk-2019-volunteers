@@ -21,7 +21,16 @@
     <string name="request_phone">Номер телефона</string>
     <string name="edit_phone">Введите номер телефона</string>
     <string name="request_vk">Ссылка на аккаунт ВКонтакте</string>
-    <string name="edit_vk">Ссылка на аккаунт ВКонтакте</string>
+    <string name="edit_vk">Укажите ссылку</string>
     <string name="request_working_place">Место учебы/работы</string>
-    <string name="edit_working_place">Введите место работы/учебы</string>
+    <string name="edit_working_place">Укажите место работы/учебы</string>
+    <string name="request_diploma">Специальность по диплому</string>
+    <string name="edit_diploma">Укажите специальность</string>
+    <string name="request_languages">Владение иностранными языками</string>
+    <string name="request_experience">Есть ли у вас опыт волонтерства?</string>
+    <string name="answer_experience">Да</string>
+    <string name="request_extra_skills">Опишите свои навыки и умения</string>
+    <string name="edit_extra_skills">Укажите свои навыки</string>
+    <string name="request_clothes_size">Укажите размер одежды</string>
+    <string name="edit_clothes_size">Размер одежды</string>
 </resources>
