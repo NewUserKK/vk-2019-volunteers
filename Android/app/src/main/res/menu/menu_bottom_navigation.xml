@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/bottom_navigation_events"
+        android:icon="@drawable/ic_event_24px"
+        android:title="@string/menu_events"/>
+    <item android:id="@+id/bottom_navigation_museums"
+        android:icon="@drawable/ic_museum_24px"
+        android:title="@string/menu_museums"/>
+    <item android:id="@+id/bottom_navigation_profile"
+        android:icon="@drawable/ic_person_24px"
+        android:title="@string/menu_profile"/>
+    <item android:id="@+id/bottom_navigation_events_current"
+        android:icon="@drawable/ic_hot_24px"
+        android:title="@string/menu_events_current"/>
+</menu>
