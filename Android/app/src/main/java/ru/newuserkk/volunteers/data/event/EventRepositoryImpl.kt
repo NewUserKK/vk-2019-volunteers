@@ -6,14 +6,14 @@ import ru.newuserkk.volunteers.domain.museum.model.Museum
 
 class EventRepositoryImpl : EventRepository {
     override fun getAll(): List<Event> {
-        TODO("not implemented")
+        return listOf()
     }
 
     override fun getAllByMuseum(museum: Museum): List<Event> {
-        TODO("not implemented")
+        return listOf()
     }
 
     override fun addEvent(event: Event): Event {
-        TODO("not implemented")
+        return event
     }
 }

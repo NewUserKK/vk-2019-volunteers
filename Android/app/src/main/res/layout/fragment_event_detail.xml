@@ -18,7 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@android:color/holo_green_light"
+        android:background="@color/colorAccent"
+        android:textColor="@color/white"
         android:gravity="center"
         android:textSize="20sp"
         tools:text="Sign up" />

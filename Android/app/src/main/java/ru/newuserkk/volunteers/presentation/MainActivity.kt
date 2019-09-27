@@ -8,7 +8,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHost
 import androidx.navigation.Navigation
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.newuserkk.volunteers.R
 import ru.newuserkk.volunteers.presentation.common.NavigationResultListener
