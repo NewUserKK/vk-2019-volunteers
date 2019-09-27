@@ -42,7 +42,7 @@ public class EventController {
   }
 
   @ApiOperation(
-      value = "Изменяет поля события и возвращает измененного событие",
+      value = "Изменяет поля события и возвращает измененного события",
       produces = "application/json",
       response = Event.class)
   @PutMapping
