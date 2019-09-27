@@ -53,7 +53,6 @@
             android:textSize="14sp"
             tools:text="Test date" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
