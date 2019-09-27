@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/bottomNavigationHostFragment">
+
+    <fragment
+        android:id="@+id/eventListFragment"
+        android:name="ru.newuserkk.volunteers.presentation.event.EventListFragment"
+        android:label="fragment_event_list"
+        tools:layout="@layout/fragment_event_list" >
+        <action
+            android:id="@+id/action_eventListFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="ru.newuserkk.volunteers.presentation.event.EventDetailFragment"
+        android:label="fragment_event_detail"
+        tools:layout="@layout/fragment_event_detail" >
+        <action
+            android:id="@+id/action_eventDetailFragment_to_eventParticipantFragment"
+            app:destination="@id/eventParticipantFragment" />
+        <action
+            android:id="@+id/action_eventDetailFragment_to_personRegistrationFragment"
+            app:destination="@id/personRegistrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ru.newuserkk.volunteers.presentation.person.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/eventParticipantFragment"
+        android:name="ru.newuserkk.volunteers.presentation.event.EventParticipantFragment"
+        android:label="fragment_event_participant"
+        tools:layout="@layout/fragment_event_participant" />
+    <fragment
+        android:id="@+id/personRegistrationFragment"
+        android:name="ru.newuserkk.volunteers.presentation.person.PersonRegistrationFragment"
+        android:label="fragment_person_registration"
+        tools:layout="@layout/fragment_person_registration" />
+    <fragment
+        android:id="@+id/museumListFragment"
+        android:name="ru.newuserkk.volunteers.presentation.museum.MuseumListFragment"
+        android:label="fragment_museum_list"
+        tools:layout="@layout/fragment_museum_list" >
+        <action
+            android:id="@+id/action_museumListFragment_to_museumDetailFragment"
+            app:destination="@id/museumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/museumDetailFragment"
+        android:name="ru.newuserkk.volunteers.presentation.museum.MuseumDetailFragment"
+        android:label="fragment_museum_detail"
+        tools:layout="@layout/fragment_museum_detail" />
+    <fragment
+        android:id="@+id/bottomNavigationHostFragment"
+        android:name="ru.newuserkk.volunteers.presentation.BottomNavigationHostFragment"
+        android:label="fragment_bottom_navigation_host"
+        tools:layout="@layout/fragment_bottom_navigation_host" >
+        <action
+            android:id="@+id/action_bottomNavigationHostFragment_to_eventListFragment"
+            app:destination="@id/eventListFragment" />
+        <action
+            android:id="@+id/action_bottomNavigationHostFragment_to_museumListFragment"
+            app:destination="@id/museumListFragment" />
+        <action
+            android:id="@+id/action_bottomNavigationHostFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+</navigation>
