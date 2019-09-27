@@ -2,9 +2,9 @@ package ru.ifmo.volunteer.controller;
 
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,8 +29,7 @@ public class VolunteerController {
       response = Volunteer.class)
   @PostMapping
   public Volunteer create(@RequestBody final Volunteer volunteer) {
-    volunteerService.addOrUpdate(volunteer);
-    return volunteer;
+    return volunteerService.addOrUpdate(volunteer);
   }
 
   @ApiOperation(
@@ -44,15 +43,21 @@ public class VolunteerController {
   }
 
   @ApiOperation(
+      value = "Возвращает волонтёра по id",
+      produces = "application/json",
+      response = Volunteer.class)
+  @GetMapping("{id}")
+  public Volunteer findById(@PathVariable final Long id) {
+    return volunteerService.findById(id);
+  }
+
+  @ApiOperation(
       value = "Изменяет поля волонтёра и возвращает измененного волонтёра",
       produces = "application/json",
       response = Volunteer.class)
   @PutMapping
   public Volunteer update(@RequestBody final Volunteer volunteerData) {
-    final var volunteer = volunteerService.findById(volunteerData.getId());
-    BeanUtils.copyProperties(volunteerData, volunteer, Volunteer.class);
-    volunteerService.addOrUpdate(volunteer);
-    return volunteer;
+    return volunteerService.update(volunteerData);
   }
 
   @ApiOperation(value = "Удаляет волонтёра по id")

@@ -2,9 +2,9 @@ package ru.ifmo.volunteer.controller;
 
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
-import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,8 +29,7 @@ public class RoleController {
       response = Role.class)
   @PostMapping
   public Role create(@RequestBody final Role role) {
-    roleService.addOrUpdate(role);
-    return role;
+    return roleService.addOrUpdate(role);
   }
 
   @ApiOperation(
@@ -44,15 +43,21 @@ public class RoleController {
   }
 
   @ApiOperation(
+      value = "Возвращает роль по id",
+      produces = "application/json",
+      response = Role.class)
+  @GetMapping("{id}")
+  public Role findById(@PathVariable final Long id) {
+    return roleService.findById(id);
+  }
+
+  @ApiOperation(
       value = "Изменяет роль и возвращает её",
       produces = "application/json",
       response = Role.class)
   @PutMapping
   public Role update(@RequestBody final Role roleData) {
-    final var role = roleService.findById(roleData.getId());
-    BeanUtils.copyProperties(roleData, role, Role.class);
-    roleService.addOrUpdate(role);
-    return role;
+    return roleService.update(roleData);
   }
 
   @ApiOperation(value = "Удаляет роль по id")

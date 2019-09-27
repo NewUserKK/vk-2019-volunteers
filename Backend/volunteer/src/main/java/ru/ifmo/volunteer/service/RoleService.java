@@ -1,6 +1,7 @@
 package ru.ifmo.volunteer.service;
 
 import java.util.List;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Role;
@@ -15,8 +16,9 @@ public class RoleService {
     this.roleRepository = roleRepository;
   }
 
-  public void addOrUpdate(final Role role) {
+  public Role addOrUpdate(final Role role) {
     roleRepository.save(role);
+    return role;
   }
 
   public List<Role> findAll() {
@@ -32,5 +34,10 @@ public class RoleService {
 
   public void deleteById(final Long id) {
     roleRepository.deleteById(id);
+  }
+
+  public Role update(final Role role) {
+    findById(role.getId());
+    return addOrUpdate(role);
   }
 }
