@@ -10,74 +10,74 @@ import java.time.LocalDate;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long event_id;
+    private Long eventId;
 
-    private Long museum_id;
+    private Long museumId;
 
-    private LocalDate start_date;
+    private LocalDate startDate;
 
-    private LocalDate end_date;
+    private LocalDate endDate;
 
-    private Long volunteers_required;
+    private Long volunteersRequired;
 
-    private Long volunteers_present;
+    private Long volunteersPresent;
 
     private String type;
 
-    private String photo_link;
+    private String photoLink;
 
     private String title;
 
     private String description;
 
-    private String link_to_event;
+    private String linkToEvent;
 
-    public Long getEvent_id() {
-        return event_id;
+    public Long getEventId() {
+        return eventId;
     }
 
-    public void setEvent_id(Long event_id) {
-        this.event_id = event_id;
+    public void setEventId(Long eventId) {
+        this.eventId = eventId;
     }
 
-    public Long getMuseum_id() {
-        return museum_id;
+    public Long getMuseumId() {
+        return museumId;
     }
 
-    public void setMuseum_id(Long museum_id) {
-        this.museum_id = museum_id;
+    public void setMuseumId(Long museumId) {
+        this.museumId = museumId;
     }
 
-    public LocalDate getStart_date() {
-        return start_date;
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(LocalDate start_date) {
-        this.start_date = start_date;
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
-    public LocalDate getEnd_date() {
-        return end_date;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
-    public void setEnd_date(LocalDate end_date) {
-        this.end_date = end_date;
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
-    public Long getVolunteers_required() {
-        return volunteers_required;
+    public Long getVolunteersRequired() {
+        return volunteersRequired;
     }
 
-    public void setVolunteers_required(Long volunteers_required) {
-        this.volunteers_required = volunteers_required;
+    public void setVolunteersRequired(Long volunteersRequired) {
+        this.volunteersRequired = volunteersRequired;
     }
 
-    public Long getVolunteers_present() {
-        return volunteers_present;
+    public Long getVolunteersPresent() {
+        return volunteersPresent;
     }
 
-    public void setVolunteers_present(Long volunteers_present) {
-        this.volunteers_present = volunteers_present;
+    public void setVolunteersPresent(Long volunteersPresent) {
+        this.volunteersPresent = volunteersPresent;
     }
 
     public String getType() {
@@ -88,12 +88,12 @@ public class Event {
         this.type = type;
     }
 
-    public String getPhoto_link() {
-        return photo_link;
+    public String getPhotoLink() {
+        return photoLink;
     }
 
-    public void setPhoto_link(String photo_link) {
-        this.photo_link = photo_link;
+    public void setPhotoLink(String photoLink) {
+        this.photoLink = photoLink;
     }
 
     public String getTitle() {
@@ -112,11 +112,11 @@ public class Event {
         this.description = description;
     }
 
-    public String getLink_to_event() {
-        return link_to_event;
+    public String getLinkToEvent() {
+        return linkToEvent;
     }
 
-    public void setLink_to_event(String link_to_event) {
-        this.link_to_event = link_to_event;
+    public void setLinkToEvent(String linkToEvent) {
+        this.linkToEvent = linkToEvent;
     }
 }
