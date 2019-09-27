@@ -1,7 +1,6 @@
 package ru.ifmo.volunteer.service;
 
 import java.util.List;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Volunteer;
@@ -36,9 +35,8 @@ public class VolunteerService {
     volunteerRepository.deleteById(id);
   }
 
-  public Volunteer update(final Volunteer volunteerData) {
-    final var volunteer = findById(volunteerData.getId());
-    BeanUtils.copyProperties(volunteerData, volunteer, Volunteer.class);
+  public Volunteer update(final Volunteer volunteer) {
+    findById(volunteer.getId());
     return addOrUpdate(volunteer);
   }
 }

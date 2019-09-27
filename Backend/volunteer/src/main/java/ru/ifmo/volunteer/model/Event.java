@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class Event {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long eventId;
+  private Long id;
 
   private Long museumId;
 
