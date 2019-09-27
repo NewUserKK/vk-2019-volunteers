@@ -1,7 +1,6 @@
 package ru.ifmo.volunteer.service;
 
 import java.util.List;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Role;
