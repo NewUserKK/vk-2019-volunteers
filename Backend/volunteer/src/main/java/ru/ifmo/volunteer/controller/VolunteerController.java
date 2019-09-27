@@ -3,7 +3,9 @@ package ru.ifmo.volunteer.controller;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.springframework.beans.BeanUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +14,23 @@ import ru.ifmo.volunteer.model.Volunteer;
 import ru.ifmo.volunteer.service.VolunteerService;
 
 @RestController
-@RequestMapping("/api/volunteer")
+@RequestMapping("/api/v1/volunteer")
 public class VolunteerController {
 
   private final VolunteerService volunteerService;
 
   public VolunteerController(VolunteerService volunteerService) {
     this.volunteerService = volunteerService;
+  }
+
+  @ApiOperation(
+      value = "Добавляет волонтёра и возвращает его",
+      produces = "application/json",
+      response = Volunteer.class)
+  @PostMapping
+  public Volunteer add(@RequestBody final Volunteer volunteer) {
+    volunteerService.addOrUpdate(volunteer);
+    return volunteer;
   }
 
   @ApiOperation(
@@ -41,5 +53,14 @@ public class VolunteerController {
     BeanUtils.copyProperties(volunteerData, volunteer, Volunteer.class);
     volunteerService.addOrUpdate(volunteer);
     return volunteer;
+  }
+
+  @ApiOperation(
+      value = "Удаляет волонтёра по id",
+      produces = "application/json",
+      response = Volunteer.class)
+  @DeleteMapping
+  public void delete(final Long id) {
+    volunteerService.deleteById(id);
   }
 }

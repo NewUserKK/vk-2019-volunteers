@@ -29,4 +29,8 @@ public class VolunteerService {
   public void addOrUpdate(final Volunteer volunteer) {
     volunteerRepository.save(volunteer);
   }
+
+  public void deleteById(final Long id) {
+    volunteerRepository.deleteById(id);
+  }
 }
