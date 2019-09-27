@@ -7,12 +7,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/item_list_event_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_marginBottom="10dp"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@id/item_list_event_name"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,9 +25,10 @@
 
         <TextView
             android:id="@+id/item_list_event_name"
+            style="@style/PrimaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="35sp"
             app:layout_constraintBottom_toTopOf="@id/item_list_event_place"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,26 +37,30 @@
 
         <TextView
             android:id="@+id/item_list_event_place"
+            style="@style/SecondaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/item_list_event_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_list_event_name"
-            tools:text="Test place" />
+            tools:text="Saint Petersburg" />
 
         <TextView
             android:id="@+id/item_list_event_date"
+            style="@style/SecondaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_list_event_place"
-            tools:text="Test date" />
+            tools:text="27.09.2019" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>
 
 
