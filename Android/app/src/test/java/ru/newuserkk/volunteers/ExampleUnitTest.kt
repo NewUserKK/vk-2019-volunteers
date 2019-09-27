@@ -1,4 +1,4 @@
-package ru.newuserkk.vk_volunteers
+package ru.newuserkk.volunteers
 
 import org.junit.Test
 

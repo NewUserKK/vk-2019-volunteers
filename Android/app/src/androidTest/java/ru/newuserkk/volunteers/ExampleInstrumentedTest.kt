@@ -1,4 +1,4 @@
-package ru.newuserkk.vk_volunteers
+package ru.newuserkk.volunteers
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

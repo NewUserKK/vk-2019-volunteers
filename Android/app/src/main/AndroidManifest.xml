@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.newuserkk.vk_volunteers">
+    package="ru.newuserkk.volunteers">
 
     <application
         android:allowBackup="true"
