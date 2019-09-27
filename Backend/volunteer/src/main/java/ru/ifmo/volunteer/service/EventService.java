@@ -31,10 +31,13 @@ public class EventService {
   }
 
   public Event add(Event event) {
-    if (eventRepository.findById(event.getId()).isPresent()) {
-      throw new AlreadyExistsException(
-          String.format("Event with %d id already exists", event.getId()));
-    }
+    eventRepository
+        .findById(event.getId())
+        .ifPresent(
+            e -> {
+              throw new AlreadyExistsException(
+                  String.format("Event with %d id already exists", event.getId()));
+            });
     eventRepository.save(event);
     return event;
   }

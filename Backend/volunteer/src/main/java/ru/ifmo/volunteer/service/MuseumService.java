@@ -32,10 +32,13 @@ public class MuseumService {
   }
 
   public Museum add(Museum museum) {
-    if (museumRepository.findById(museum.getId()).isPresent()) {
-      throw new AlreadyExistsException(
-          String.format("Museum with %d id already exists", museum.getId()));
-    }
+    museumRepository
+        .findById(museum.getId())
+        .ifPresent(
+            e -> {
+              throw new AlreadyExistsException(
+                  String.format("Museum with %d id already exists", museum.getId()));
+            });
     museumRepository.save(museum);
     return museum;
   }
