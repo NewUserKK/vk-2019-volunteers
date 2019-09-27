@@ -7,13 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_list_participant.view.*
 import ru.newuserkk.volunteers.R
+import ru.newuserkk.volunteers.domain.person.model.Person
 import ru.newuserkk.volunteers.presentation.common.view.AvatarView
 
-typealias EventParticipantItem = Pair<AvatarView, String>
+class EventParticipantRecyclerViewAdapter(private val values: List<Person>) : RecyclerView.Adapter<EventParticipantRecyclerViewAdapter.ViewHolder>() {
 
-class EventParticipantRecyclerViewAdapter(private val values: List<EventParticipantItem>) : RecyclerView.Adapter<EventParticipantRecyclerViewAdapter.ViewHolder>() {
-
-    var onClickListener: ((EventParticipantItem) -> Unit)? = null
+    var onClickListener: ((Person) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_participant, parent, false)
@@ -27,8 +26,8 @@ class EventParticipantRecyclerViewAdapter(private val values: List<EventParticip
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.apply {
-            avatarView.person = item.first.person
-            nameView.text = item.second
+            avatarView.person = item
+            nameView.text = item.name
 //            itemView.setOnClickListener {
 //                onClickListener?.invoke(item)
 //            }

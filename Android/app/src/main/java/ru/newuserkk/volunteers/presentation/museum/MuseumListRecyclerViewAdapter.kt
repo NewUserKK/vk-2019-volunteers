@@ -1,4 +1,4 @@
-package ru.newuserkk.volunteers.presentation.event
+package ru.newuserkk.volunteers.presentation.museum
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_list_event.view.*
+import kotlinx.android.synthetic.main.item_list_event.view.item_list_event
+import kotlinx.android.synthetic.main.item_list_museum.view.*
 import ru.newuserkk.volunteers.R
-import ru.newuserkk.volunteers.domain.event.model.Event
+import ru.newuserkk.volunteers.domain.museum.model.Museum
 
-class EventListRecyclerViewAdapter(private val values: List<Event>) : RecyclerView.Adapter<EventListRecyclerViewAdapter.ViewHolder>() {
+class MuseumListRecyclerViewAdapter(private val values: List<Museum>) : RecyclerView.Adapter<MuseumListRecyclerViewAdapter.ViewHolder>() {
 
-    var onClickListener: ((Event) -> Unit)? = null
+    var onClickListener: ((Museum) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_event, parent, false)
@@ -28,8 +29,7 @@ class EventListRecyclerViewAdapter(private val values: List<Event>) : RecyclerVi
         val item = values[position]
         holder.apply {
             nameView.text = item.name
-            placeView.text = item.museum.address
-            dateView.text = "${item.dateStart} — ${item.dateEnd}"
+            placeView.text = item.address
 //            itemView.setOnClickListener {
 //                onClickListener?.invoke(item)
 //            }
@@ -37,8 +37,7 @@ class EventListRecyclerViewAdapter(private val values: List<Event>) : RecyclerVi
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        val nameView: TextView = view.item_list_event_name
-        val placeView: TextView = view.item_list_event_place
-        val dateView: TextView = view.item_list_event_date
+        val nameView: TextView = view.item_list_museum_name
+        val placeView: TextView = view.item_list_museum_place
     }
 }

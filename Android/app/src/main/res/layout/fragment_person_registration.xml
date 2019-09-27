@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PersonRegistrationFragment">
+    android:layout_margin="10dp"
+    android:scrollbars="none">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/person_registration_request_languages"
+            style="@style/RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_working_place"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/name_request" />
+
+        <EditText
+            android:id="@+id/person_registration_edit_languages"
+            style="@style/RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_languages"
+            android:layout_marginBottom="15dp"
+            tools:text="Введите имя" />
+
+        <TextView
+            android:id="@+id/person_registration_request_experience"
+            style="@style/RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_languages"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/name_request" />
+
+        <CheckBox
+            android:id="@+id/person_registration_edit_experience"
+            style="@style/RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_experience"
+            android:layout_marginBottom="15dp"
+            tools:text="Введите имя" />
+
+        <TextView
+            android:id="@+id/person_registration_request_projects"
+            style="@style/RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_experience"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/name_request" />
+
+        <CheckBox
+            android:id="@+id/person_registration_edit_projects"
+            style="@style/RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_projects"
+            android:layout_marginBottom="15dp"
+            tools:text="Введите имя" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
