@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Event {
@@ -12,7 +14,9 @@ public class Event {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private Long museumId;
+  @ManyToOne
+  @JoinColumn(name = "museum_id")
+  private Museum museum;
 
   private LocalDate startDate;
 
@@ -50,12 +54,12 @@ public class Event {
     this.id = id;
   }
 
-  public Long getMuseumId() {
-    return museumId;
+  public Museum getMuseum() {
+    return museum;
   }
 
-  public void setMuseumId(Long museumId) {
-    this.museumId = museumId;
+  public void setMuseum(Museum museum) {
+    this.museum = museum;
   }
 
   public LocalDate getStartDate() {
