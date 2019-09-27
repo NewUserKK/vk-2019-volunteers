@@ -5,10 +5,10 @@ import ru.newuserkk.volunteers.domain.museum.model.Museum
 
 interface EventRepository {
 
-    fun getAll(): List<Event>
+    suspend fun getAll(): List<Event>
 
-    fun getAllByMuseum(museum: Museum): List<Event>
+    suspend fun getAllByMuseum(museum: Museum): List<Event>
 
-    fun addEvent(event: Event): Event
+    suspend fun addEvent(event: Event): Event
 
 }

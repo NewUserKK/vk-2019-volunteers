@@ -1,15 +1,19 @@
 package ru.newuserkk.volunteers.domain.event.model
 
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonProperty
 import ru.newuserkk.volunteers.domain.museum.model.Museum
 import java.io.Serializable
 import java.util.*
 
-data class Event(
-    val name: String,
-    val description: String,
-    val museum: Museum,
-    val avatarUri: String? = null,
-    val dateStart: Date,
-    val dateEnd: Date,
-    val id: Long = 0
-    ): Serializable
+
+data class Event @JsonCreator constructor(
+    @JsonProperty("title") val name: String,
+    @JsonProperty("description") val description: String,
+    @JsonProperty("museum") val museum: Museum,
+    @JsonProperty("photoLink") val avatarUri: String? = null,
+    @JsonProperty("startDate") val dateStart: Date,
+    @JsonProperty("endDate") val dateEnd: Date,
+    @JsonProperty("type") val type: String,
+    @JsonProperty("id") val id: Long = 0
+) : Serializable

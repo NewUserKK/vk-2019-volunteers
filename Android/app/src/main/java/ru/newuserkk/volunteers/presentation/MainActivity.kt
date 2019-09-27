@@ -11,9 +11,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.newuserkk.volunteers.R
 import ru.newuserkk.volunteers.presentation.common.NavigationResultListener
+import ru.newuserkk.volunteers.presentation.common.hide
+import ru.newuserkk.volunteers.presentation.common.show
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity(), NavHost {
@@ -27,7 +30,8 @@ class MainActivity : AppCompatActivity(), NavHost {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navigationController = Navigation.findNavController(this, navHostFragmentId)
-        setupToolbar(main_toolbar)
+        main_app_bar_layout.setExpanded(false)
+        setupToolbar(main_collapsing_toolbar)
     }
 
     private fun setupToolbar(toolbar: Toolbar) {
@@ -39,6 +43,17 @@ class MainActivity : AppCompatActivity(), NavHost {
 
     override fun getNavController(): NavController {
         return navigationController
+    }
+
+    fun switchToCollapsingToolbar(imageUri: String) {
+        main_app_bar_layout.setExpanded(true)
+        Picasso.get()
+            .load(imageUri)
+            .into(main_collapsing_toolbar_image)
+    }
+
+    fun switchToRegularToolbar() {
+        main_app_bar_layout.setExpanded(false)
     }
 
     /**

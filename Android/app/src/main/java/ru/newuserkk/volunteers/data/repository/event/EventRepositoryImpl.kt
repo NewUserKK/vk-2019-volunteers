@@ -1,19 +1,19 @@
-package ru.newuserkk.volunteers.data.event
+package ru.newuserkk.volunteers.data.repository.event
 
 import ru.newuserkk.volunteers.domain.event.EventRepository
 import ru.newuserkk.volunteers.domain.event.model.Event
 import ru.newuserkk.volunteers.domain.museum.model.Museum
 
 class EventRepositoryImpl : EventRepository {
-    override fun getAll(): List<Event> {
+    override suspend fun getAll(): List<Event> {
         return listOf()
     }
 
-    override fun getAllByMuseum(museum: Museum): List<Event> {
+    override suspend fun getAllByMuseum(museum: Museum): List<Event> {
         return listOf()
     }
 
-    override fun addEvent(event: Event): Event {
+    override suspend fun addEvent(event: Event): Event {
         return event
     }
 }
