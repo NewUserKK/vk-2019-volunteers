@@ -17,7 +17,7 @@ class EventParticipantRecyclerViewAdapter(private val values: List<EventParticip
     var onClickListener: ((EventParticipantItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_event_participant, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_participant, parent, false)
         return ViewHolder(view)
     }
 
