@@ -32,6 +32,16 @@ public class Event {
 
   private String linkToEvent;
 
+  private Boolean finished;
+
+  public Boolean getFinished() {
+    return finished;
+  }
+
+  public void setFinished(Boolean finished) {
+    this.finished = finished;
+  }
+
   public Long getId() {
     return id;
   }
