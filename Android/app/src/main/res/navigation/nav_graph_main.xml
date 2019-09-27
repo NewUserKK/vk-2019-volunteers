@@ -9,11 +9,7 @@
         android:id="@+id/eventListFragment"
         android:name="ru.newuserkk.volunteers.presentation.event.EventListFragment"
         android:label="fragment_event_list"
-        tools:layout="@layout/fragment_event_list" >
-        <action
-            android:id="@+id/action_eventListFragment_to_eventDetailFragment"
-            app:destination="@id/eventDetailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_event_list" />
     <fragment
         android:id="@+id/eventDetailFragment"
         android:name="ru.newuserkk.volunteers.presentation.event.EventDetailFragment"
@@ -25,6 +21,9 @@
         <action
             android:id="@+id/action_eventDetailFragment_to_personRegistrationFragment"
             app:destination="@id/personRegistrationFragment" />
+        <argument
+            android:name="event"
+            app:argType="ru.newuserkk.volunteers.domain.event.model.Event" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -45,11 +44,7 @@
         android:id="@+id/museumListFragment"
         android:name="ru.newuserkk.volunteers.presentation.museum.MuseumListFragment"
         android:label="fragment_museum_list"
-        tools:layout="@layout/fragment_museum_list" >
-        <action
-            android:id="@+id/action_museumListFragment_to_museumDetailFragment"
-            app:destination="@id/museumDetailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_museum_list" />
     <fragment
         android:id="@+id/museumDetailFragment"
         android:name="ru.newuserkk.volunteers.presentation.museum.MuseumDetailFragment"
@@ -61,20 +56,11 @@
         android:label="fragment_bottom_navigation_host"
         tools:layout="@layout/fragment_bottom_navigation_host" >
         <action
-            android:id="@+id/action_bottomNavigationHostFragment_to_currentEventsFragment"
-            app:destination="@id/currentEventsFragment" />
+            android:id="@+id/action_bottomNavigationHostFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
         <action
-            android:id="@+id/action_bottomNavigationHostFragment_to_eventListFragment"
-            app:destination="@id/eventListFragment" />
-        <action
-            android:id="@+id/action_bottomNavigationHostFragment_to_museumListFragment"
-            app:destination="@id/museumListFragment" />
-        <action
-            android:id="@+id/action_bottomNavigationHostFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_bottomNavigationHostFragment_to_profileFragment2"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_bottomNavigationHostFragment_to_museumDetailFragment"
+            app:destination="@id/museumDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/currentEventsFragment"
