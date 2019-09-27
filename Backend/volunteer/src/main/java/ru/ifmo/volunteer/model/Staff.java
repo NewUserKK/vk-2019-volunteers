@@ -1,103 +1,103 @@
 package ru.ifmo.volunteer.model;
 
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 
 @Entity
 public class Staff {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private String name;
+  private String name;
 
-    private String surname;
+  private String surname;
 
-    private String patronymic;
+  private String patronymic;
 
-    private String email;
+  private String email;
 
-    private String phone;
+  private String phone;
 
-    private String photoLink;
+  private String photoLink;
 
-    private LocalDate birthday;
+  private LocalDate birthday;
 
-    private String login;
+  private String login;
 
-    public Long getId() {
-        return id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public String getSurname() {
-        return surname;
-    }
+  public String getSurname() {
+    return surname;
+  }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+  public void setSurname(String surname) {
+    this.surname = surname;
+  }
 
-    public String getPatronymic() {
-        return patronymic;
-    }
+  public String getPatronymic() {
+    return patronymic;
+  }
 
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
+  public void setPatronymic(String patronymic) {
+    this.patronymic = patronymic;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public String getPhone() {
-        return phone;
-    }
+  public String getPhone() {
+    return phone;
+  }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
 
-    public String getPhotoLink() {
-        return photoLink;
-    }
+  public String getPhotoLink() {
+    return photoLink;
+  }
 
-    public void setPhotoLink(String photoLink) {
-        this.photoLink = photoLink;
-    }
+  public void setPhotoLink(String photoLink) {
+    this.photoLink = photoLink;
+  }
 
-    public LocalDate getBirthday() {
-        return birthday;
-    }
+  public LocalDate getBirthday() {
+    return birthday;
+  }
 
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
+  public void setBirthday(LocalDate birthday) {
+    this.birthday = birthday;
+  }
 
-    public String getLogin() {
-        return login;
-    }
+  public String getLogin() {
+    return login;
+  }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
+  public void setLogin(String login) {
+    this.login = login;
+  }
 }

@@ -5,5 +5,4 @@ import org.springframework.stereotype.Repository;
 import ru.ifmo.volunteer.model.Volunteer;
 
 @Repository
-public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {
-}
+public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {}
