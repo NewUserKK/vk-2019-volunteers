@@ -32,12 +32,12 @@ public class Event {
 
   private String linkToEvent;
 
-  public Long getEventId() {
-    return eventId;
+  public Long getId() {
+    return id;
   }
 
-  public void setEventId(Long eventId) {
-    this.eventId = eventId;
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public Long getMuseumId() {
