@@ -11,7 +11,7 @@ import ru.newuserkk.volunteers.domain.person.model.Person
 import ru.newuserkk.volunteers.presentation.common.switchTo
 
 
-class PersonAvatarView : ViewSwitcher {
+class AvatarView : ViewSwitcher {
 
     var person: Person? = null
         set(value) {

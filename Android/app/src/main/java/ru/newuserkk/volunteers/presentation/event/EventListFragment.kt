@@ -15,6 +15,10 @@ class EventListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_list, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_event_list, container, false)
+        with(rootView) {
+
+        }
+        return rootView
     }
 }
