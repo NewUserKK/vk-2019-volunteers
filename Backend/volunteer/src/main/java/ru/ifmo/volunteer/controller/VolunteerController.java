@@ -19,7 +19,7 @@ public class VolunteerController {
 
   private final VolunteerService volunteerService;
 
-  public VolunteerController(VolunteerService volunteerService) {
+  public VolunteerController(final VolunteerService volunteerService) {
     this.volunteerService = volunteerService;
   }
 
@@ -28,7 +28,7 @@ public class VolunteerController {
       produces = "application/json",
       response = Volunteer.class)
   @PostMapping
-  public Volunteer add(@RequestBody final Volunteer volunteer) {
+  public Volunteer create(@RequestBody final Volunteer volunteer) {
     volunteerService.addOrUpdate(volunteer);
     return volunteer;
   }
@@ -55,10 +55,7 @@ public class VolunteerController {
     return volunteer;
   }
 
-  @ApiOperation(
-      value = "Удаляет волонтёра по id",
-      produces = "application/json",
-      response = Volunteer.class)
+  @ApiOperation(value = "Удаляет волонтёра по id")
   @DeleteMapping
   public void delete(final Long id) {
     volunteerService.deleteById(id);
