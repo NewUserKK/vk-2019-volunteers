@@ -33,4 +33,16 @@
     <string name="edit_extra_skills">Укажите свои навыки</string>
     <string name="request_clothes_size">Укажите размер одежды</string>
     <string name="edit_clothes_size">Размер одежды</string>
+
+    <plurals name="numberOfMembers">
+        <item quantity="one">%d участник.</item>
+        <item quantity="few">%d участника.</item>
+        <item quantity="other">%d участников.</item>
+    </plurals>
+
+    <plurals name="numberOfFriends">
+        <item quantity="one">%d друг.</item>
+        <item quantity="few">%d друга.</item>
+        <item quantity="other">%d друзей.</item>
+    </plurals>
 </resources>
