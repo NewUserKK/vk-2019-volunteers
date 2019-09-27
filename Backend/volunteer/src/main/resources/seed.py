@@ -53,7 +53,7 @@ buildings = ['5-7', '49', '21a-2', '16', '6']
 hours = ['10:00 - 18:00', '9:00 - 16:00', '8:00 - 20:00']
 photos = ['pornhub.com', 'brazzers.com', 'vk.com', 'yandex.ru']
 emails = ['example@hotmail.com', 'example@yandex.ru', 'example@gmail.com',
-          'example@mail.ru', 'example@rambler.com', 'example@yahoo.com'
+          'example@mail.ru', 'example@rambler.com', 'example@yahoo.com',
           'example@outlook.com', 'example@niuitmo.ru', 'example@rain.ifmo.ru']
 educations_or_employments = ['NEET', 'ITMO University', 'Yandex', 'NAUKA', 'Google', 'NEERC', 'Reddle', 'Amazon', 'Huawei']
 specializations = ['Программист', 'Фронтендер', 'Дизайнер', 'Инженер', 'Водонос', 'Строитель', 'Тренер']
