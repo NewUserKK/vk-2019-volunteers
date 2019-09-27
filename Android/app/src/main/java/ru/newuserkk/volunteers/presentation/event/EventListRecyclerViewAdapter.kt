@@ -11,14 +11,11 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list_event.view.*
 import ru.newuserkk.volunteers.R
 import ru.newuserkk.volunteers.domain.event.model.Event
-import ru.newuserkk.volunteers.presentation.common.view.AvatarView
-
-typealias EventItem = Pair<AvatarView, String>
 
 class EventListRecyclerViewAdapter(private val values: List<Event>) :
     RecyclerView.Adapter<EventListRecyclerViewAdapter.ViewHolder>() {
 
-    var onClickListener: ((EventParticipantItem) -> Unit)? = null
+    var onClickListener: ((Event) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
