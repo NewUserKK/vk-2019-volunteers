@@ -3,6 +3,7 @@ package ru.ifmo.volunteer.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.exception.AlreadyExistsException;
+import ru.ifmo.volunteer.exception.AuthorizationException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Volunteer;
 import ru.ifmo.volunteer.repository.VolunteerRepository;
@@ -14,6 +15,12 @@ public class VolunteerService {
 
   public VolunteerService(final VolunteerRepository volunteerRepository) {
     this.volunteerRepository = volunteerRepository;
+  }
+
+  public Volunteer authorize(String login, String password) {
+    return volunteerRepository
+        .findByLoginAndPassword(login, password)
+        .orElseThrow(() -> new AuthorizationException("Неверный логин или пароль"));
   }
 
   public List<Volunteer> findAll() {

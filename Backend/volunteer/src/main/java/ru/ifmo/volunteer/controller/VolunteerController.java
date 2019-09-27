@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.ifmo.volunteer.domain.UserCredentials;
 import ru.ifmo.volunteer.model.Volunteer;
 import ru.ifmo.volunteer.service.VolunteerService;
 
@@ -21,6 +22,16 @@ public class VolunteerController {
 
   public VolunteerController(final VolunteerService volunteerService) {
     this.volunteerService = volunteerService;
+  }
+
+  @ApiOperation(
+      value = "Авторизация через логин-пароль",
+      produces = "application/json",
+      response = Volunteer.class
+  )
+  @PostMapping("/auth")
+  public Volunteer authorize(@RequestBody UserCredentials userCredentials) {
+    return volunteerService.authorize(userCredentials.getLogin(), userCredentials.getPassword());
   }
 
   @ApiOperation(
