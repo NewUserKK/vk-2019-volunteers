@@ -61,6 +61,9 @@
         android:label="fragment_bottom_navigation_host"
         tools:layout="@layout/fragment_bottom_navigation_host" >
         <action
+            android:id="@+id/action_bottomNavigationHostFragment_to_currentEventsFragment"
+            app:destination="@id/currentEventsFragment" />
+        <action
             android:id="@+id/action_bottomNavigationHostFragment_to_eventListFragment"
             app:destination="@id/eventListFragment" />
         <action
@@ -69,5 +72,13 @@
         <action
             android:id="@+id/action_bottomNavigationHostFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_bottomNavigationHostFragment_to_profileFragment2"
+            app:destination="@id/profileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/currentEventsFragment"
+        android:name="ru.newuserkk.volunteers.presentation.event.CurrentEventsFragment"
+        android:label="fragment_current_events"
+        tools:layout="@layout/fragment_current_events" />
 </navigation>
