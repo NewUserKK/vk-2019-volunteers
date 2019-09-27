@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/item_list_event_name"
-            style="@style/EventText"
+            style="@style/PrimaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="35sp"
@@ -37,10 +37,10 @@
 
         <TextView
             android:id="@+id/item_list_event_place"
-            style="@style/EventText"
+            style="@style/SecondaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/item_list_event_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,10 +49,10 @@
 
         <TextView
             android:id="@+id/item_list_event_date"
-            style="@style/EventText"
+            style="@style/SecondaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
