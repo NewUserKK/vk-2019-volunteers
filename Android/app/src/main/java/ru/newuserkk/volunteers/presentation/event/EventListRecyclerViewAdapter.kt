@@ -10,9 +10,9 @@ import kotlinx.android.synthetic.main.item_list_participant.view.*
 import ru.newuserkk.volunteers.R
 import ru.newuserkk.volunteers.presentation.common.view.AvatarView
 
-typealias EventParticipantItem = Pair<AvatarView, String>
+typealias EventItem = Pair<AvatarView, String>
 
-class EventParticipantRecyclerViewAdapter(private val values: List<EventParticipantItem>) : RecyclerView.Adapter<EventParticipantRecyclerViewAdapter.ViewHolder>() {
+class EventListRecyclerViewAdapter(private val values: List<EventParticipantItem>) : RecyclerView.Adapter<EventListRecyclerViewAdapter.ViewHolder>() {
 
     var onClickListener: ((EventParticipantItem) -> Unit)? = null
 
