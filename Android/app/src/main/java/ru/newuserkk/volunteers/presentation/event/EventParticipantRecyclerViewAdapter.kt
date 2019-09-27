@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_event_participant.view.*
 import kotlinx.android.synthetic.main.item_list_participant.view.*
 import ru.newuserkk.volunteers.R
 import ru.newuserkk.volunteers.presentation.common.view.AvatarView
@@ -29,7 +28,7 @@ class EventParticipantRecyclerViewAdapter(private val values: List<EventParticip
         val item = values[position]
         holder.apply {
             avatarView.person = item.first.person
-            name.text = item.second
+            nameView.text = item.second
 //            itemView.setOnClickListener {
 //                onClickListener?.invoke(item)
 //            }
@@ -38,6 +37,6 @@ class EventParticipantRecyclerViewAdapter(private val values: List<EventParticip
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val avatarView: AvatarView = view.participant_avatar_view
-        val name: TextView = view.participant_avatar_name
+        val nameView: TextView = view.participant_avatar_name
     }
 }

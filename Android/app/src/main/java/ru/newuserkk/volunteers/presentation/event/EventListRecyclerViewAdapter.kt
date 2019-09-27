@@ -6,12 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_event_participant.view.*
 import kotlinx.android.synthetic.main.item_list_event.view.*
-import kotlinx.android.synthetic.main.item_list_participant.view.*
 import ru.newuserkk.volunteers.R
 import ru.newuserkk.volunteers.domain.event.model.Event
-import ru.newuserkk.volunteers.domain.museum.model.Museum
 import ru.newuserkk.volunteers.presentation.common.view.AvatarView
 
 typealias EventItem = Pair<AvatarView, String>
@@ -43,8 +40,8 @@ class EventListRecyclerViewAdapter(private val values: List<Event>) : RecyclerVi
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        val name: TextView = view.item_list_event_name
-        val place: TextView = view.item_list_event_place
+        val name: TextView = view.item_list_museum_name
+        val place: TextView = view.item_list_museum_place
         val date: TextView = view.item_list_event_date
     }
 }

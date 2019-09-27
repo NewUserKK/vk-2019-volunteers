@@ -43,24 +43,11 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="3dp"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@id/item_list_event_date"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_list_museum_name"
             tools:text="Saint Petersburg" />
-
-        <TextView
-            android:id="@+id/item_list_event_date"
-            style="@style/SecondaryText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="3dp"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_list_museum_place"
-            tools:text="27.09.2019" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
