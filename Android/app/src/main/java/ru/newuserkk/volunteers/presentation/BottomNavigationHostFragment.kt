@@ -23,6 +23,7 @@ class BottomNavigationHostFragment : AbstractFragment() {
 
     override fun View.setupFragment() {
         bottom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        loadFragment(R.id.eventListFragment)
     }
 
     private fun loadFragment(itemId: Int) {

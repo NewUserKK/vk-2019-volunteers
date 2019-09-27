@@ -3,6 +3,7 @@ package ru.newuserkk.volunteers.presentation.event
 
 import android.view.View
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -28,6 +29,7 @@ class EventListFragment : AbstractFragment() {
                 navigateToEventDetail(it)
             }
         }
+        event_list.adapter = eventAdapter
         loadEvents()
     }
 
