@@ -29,7 +29,7 @@ public class VolunteerController {
       response = Volunteer.class)
   @PostMapping
   public Volunteer create(@RequestBody final Volunteer volunteer) {
-    return volunteerService.addOrUpdate(volunteer);
+    return volunteerService.add(volunteer);
   }
 
   @ApiOperation(

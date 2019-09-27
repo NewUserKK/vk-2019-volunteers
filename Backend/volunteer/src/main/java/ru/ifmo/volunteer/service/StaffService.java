@@ -2,6 +2,7 @@ package ru.ifmo.volunteer.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+import ru.ifmo.volunteer.exception.AlreadyExistsException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Staff;
 import ru.ifmo.volunteer.repository.StaffRepository;
@@ -24,14 +25,18 @@ public class StaffService {
                     String.format("Представитель с id %d не найден", id)));
   }
 
-  public Staff addOrUpdate(final Staff staff) {
+  public Staff add(Staff staff) {
+    if (staffRepository.findById(staff.getId()).isPresent()) {
+      throw new AlreadyExistsException(
+          String.format("Staff with %d id already exists", staff.getId()));
+    }
     staffRepository.save(staff);
     return staff;
   }
 
   public Staff update(final Staff staff) {
     findById(staff.getId());
-    return addOrUpdate(staff);
+    return staffRepository.save(staff);
   }
 
   public List<Staff> findAll() {

@@ -2,6 +2,7 @@ package ru.ifmo.volunteer.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+import ru.ifmo.volunteer.exception.AlreadyExistsException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Museum;
 import ru.ifmo.volunteer.repository.MuseumRepository;
@@ -30,13 +31,17 @@ public class MuseumService {
             () -> new ResourceNotFoundException(String.format("Событие с id %d не найдено", id)));
   }
 
-  public Museum addOrUpdate(Museum museum) {
+  public Museum add(Museum museum) {
+    if (museumRepository.findById(museum.getId()).isPresent()) {
+      throw new AlreadyExistsException(
+          String.format("Museum with %d id already exists", museum.getId()));
+    }
     museumRepository.save(museum);
     return museum;
   }
 
   public Museum update(Museum museum) {
     findById(museum.getId());
-    return addOrUpdate(museum);
+    return museumRepository.save(museum);
   }
 }

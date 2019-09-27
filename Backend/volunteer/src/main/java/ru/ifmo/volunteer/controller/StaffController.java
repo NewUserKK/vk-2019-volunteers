@@ -29,7 +29,7 @@ public class StaffController {
       response = Staff.class)
   @PostMapping
   public Staff create(@RequestBody final Staff staff) {
-    return staffService.addOrUpdate(staff);
+    return staffService.add(staff);
   }
 
   @ApiOperation(

@@ -2,6 +2,7 @@ package ru.ifmo.volunteer.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+import ru.ifmo.volunteer.exception.AlreadyExistsException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Role;
 import ru.ifmo.volunteer.repository.RoleRepository;
@@ -15,7 +16,11 @@ public class RoleService {
     this.roleRepository = roleRepository;
   }
 
-  public Role addOrUpdate(final Role role) {
+  public Role add(Role role) {
+    if (roleRepository.findById(role.getId()).isPresent()) {
+      throw new AlreadyExistsException(
+          String.format("Role with %d id already exists", role.getId()));
+    }
     roleRepository.save(role);
     return role;
   }
@@ -37,6 +42,6 @@ public class RoleService {
 
   public Role update(final Role role) {
     findById(role.getId());
-    return addOrUpdate(role);
+    return roleRepository.save(role);
   }
 }

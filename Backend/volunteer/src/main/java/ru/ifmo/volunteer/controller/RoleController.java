@@ -29,7 +29,7 @@ public class RoleController {
       response = Role.class)
   @PostMapping
   public Role create(@RequestBody final Role role) {
-    return roleService.addOrUpdate(role);
+    return roleService.add(role);
   }
 
   @ApiOperation(

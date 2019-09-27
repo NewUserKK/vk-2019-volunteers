@@ -2,6 +2,7 @@ package ru.ifmo.volunteer.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
+import ru.ifmo.volunteer.exception.AlreadyExistsException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Event;
 import ru.ifmo.volunteer.repository.EventRepository;
@@ -29,13 +30,17 @@ public class EventService {
             () -> new ResourceNotFoundException(String.format("Событие с id %d не найдено", id)));
   }
 
-  public Event addOrUpdate(Event event) {
+  public Event add(Event event) {
+    if (eventRepository.findById(event.getId()).isPresent()) {
+      throw new AlreadyExistsException(
+          String.format("Event with %d id already exists", event.getId()));
+    }
     eventRepository.save(event);
     return event;
   }
 
   public Event update(Event event) {
     findById(event.getId());
-    return addOrUpdate(event);
+    return eventRepository.save(event);
   }
 }

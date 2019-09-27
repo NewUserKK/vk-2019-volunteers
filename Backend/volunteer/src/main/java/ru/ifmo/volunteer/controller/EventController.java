@@ -29,7 +29,7 @@ public class EventController {
       response = Event.class)
   @PostMapping
   public Event create(Event event) {
-    return eventService.addOrUpdate(event);
+    return eventService.add(event);
   }
 
   @ApiOperation(

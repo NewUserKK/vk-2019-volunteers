@@ -28,7 +28,7 @@ public class MuseumController {
       response = Museum.class)
   @PostMapping
   public Museum create(Museum museum) {
-    return museumService.addOrUpdate(museum);
+    return museumService.add(museum);
   }
 
   @ApiOperation(
