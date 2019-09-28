@@ -17,14 +17,14 @@
             android:layout_marginEnd="10dp"
             android:text="@string/hello_blank_fragment"
             app:layout_constraintBottom_toTopOf="@id/profile_rating"
-            app:layout_constraintEnd_toStartOf="@id/profile_avatar_name"
+            app:layout_constraintEnd_toStartOf="@id/profile_name"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/profile_avatar_name"
+            android:id="@+id/profile_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="@+id/profile_avatar_view"

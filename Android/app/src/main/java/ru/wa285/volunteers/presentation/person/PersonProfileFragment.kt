@@ -24,6 +24,7 @@ import ru.wa285.volunteers.presentation.common.AbstractFragment
 import ru.wa285.volunteers.presentation.common.hide
 import ru.wa285.volunteers.presentation.common.show
 import ru.wa285.volunteers.presentation.common.switchTo
+import ru.wa285.volunteers.presentation.common.view.NamePicture
 
 
 class ProfileFragment : AbstractFragment() {
@@ -54,6 +55,8 @@ class ProfileFragment : AbstractFragment() {
             }
         }
         profile_achievements_list.adapter = achievementRecyclerViewAdapter
+        profile_name.text = person.name
+        profile_avatar_view.value = NamePicture(person.name, person.avatarUri)
         fillAchievements(person)
         profile_favourite_museum_list_title.setOnClickListener {
             requireParentFragment().findNavController().navigate(
