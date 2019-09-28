@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity(), NavHost {
         setContentView(R.layout.activity_main)
         navigationController = Navigation.findNavController(this, navHostFragmentId)
         main_app_bar_layout.setExpanded(false)
+        main_collapsing_toolbar_layout.isTitleEnabled = false
         setupToolbar(main_collapsing_toolbar)
     }
 

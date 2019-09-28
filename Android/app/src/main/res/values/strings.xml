@@ -1,12 +1,10 @@
 <resources>
-    <string name="app_name">VK-volunteers</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Volunteers</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="menu_events">Events</string>
-    <string name="menu_museums">Museums</string>
-    <string name="menu_profile">Profile</string>
-    <string name="menu_events_current">Current</string>
+    <string name="menu_events">События</string>
+    <string name="menu_museums">Музеи</string>
+    <string name="menu_profile">Профиль</string>
+    <string name="menu_events_current">Ближайшие</string>
     <string name="nearest_events_text">Ближайшие события:</string>
     <string name="name_request">Имя</string>
     <string name="surname_request">Фамилия</string>
@@ -33,6 +31,7 @@
     <string name="edit_extra_skills">Укажите свои навыки</string>
     <string name="request_clothes_size">Укажите размер одежды</string>
     <string name="edit_clothes_size">Размер одежды</string>
+    <string name="event_detail_sign_up">Sign up</string>
 
     <plurals name="numberOfMembers">
         <item quantity="one">%d участник.</item>

@@ -33,16 +33,16 @@ class EventDetailFragment : AbstractFragment() {
         event_detail_name.text = event.name
         event_detail_description.text = event.description
         launch {
-            val countMembers = async(Dispatchers.IO) {
+            val countMembers = withContext(Dispatchers.IO) {
                 eventRepository.getParticipantsByEvent(event).size
             }
-            val countFriends = async(Dispatchers.IO) {
+            val countFriends = withContext(Dispatchers.IO) {
                 eventRepository.getFriendsByEvent(event).size
             }
             event_detail_common_members.text =
-                resources.getQuantityString(R.plurals.numberOfMembers, countMembers.await(), countMembers)
+                resources.getQuantityString(R.plurals.numberOfMembers, countMembers, countMembers)
             event_detail_friends.text =
-                resources.getQuantityString(R.plurals.numberOfFriends, countFriends.await(), countFriends)
+                resources.getQuantityString(R.plurals.numberOfFriends, countFriends, countFriends)
         }
     }
 }

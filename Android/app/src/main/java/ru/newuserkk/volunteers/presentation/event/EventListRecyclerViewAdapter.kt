@@ -37,11 +37,10 @@ class EventListRecyclerViewAdapter(private val values: List<Event>) :
             // TODO: placeholder
             Picasso.get()
                 .load(item.avatarUri)
-                .centerCrop()
                 .into(imageView)
-//            itemView.setOnClickListener {
-//                onClickListener?.invoke(item)
-//            }
+            itemView.setOnClickListener {
+                onClickListener?.invoke(item)
+            }
         }
     }
 
