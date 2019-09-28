@@ -40,10 +40,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_patronymic"
-            app:layout_constraintBottom_toTopOf="@id/person_registration_edit_birth_date"
+            app:layout_constraintBottom_toTopOf="@id/person_registration_edit_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_surname" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/person_registration_edit_login"
+            style="@style/AppTheme.OptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/create_login"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/person_registration_edit_password"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_patronymic" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/person_registration_edit_password"
+            style="@style/AppTheme.OptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/create_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/person_registration_edit_birth_date"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_login" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/person_registration_edit_birth_date"
@@ -54,7 +76,7 @@
             app:layout_constraintBottom_toTopOf="@id/person_registration_edit_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_patronymic" />
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_password" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/person_registration_edit_email"
