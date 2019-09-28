@@ -12,6 +12,8 @@ import ru.wa285.volunteers.R
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.event.model.Event
+import ru.wa285.volunteers.domain.person.PersonRepository
+import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
 
@@ -20,6 +22,7 @@ class CurrentEventsFragment : AbstractFragment() {
     override val layoutResId: Int = R.layout.fragment_current_events
 
     private val eventRepository: EventRepository by kodein.instance()
+    private val personRepository: PersonRepository by kodein.instance()
 
     private val eventList = mutableListOf<Event>()
     lateinit var eventAdapter: EventListRecyclerViewAdapter
@@ -31,13 +34,16 @@ class CurrentEventsFragment : AbstractFragment() {
             }
         }
         event_list.adapter = eventAdapter
-        loadEvents()
+        val loggedUser = personRepository.getLoggedUser()
+        if (loggedUser != null) {
+            loadEvents(loggedUser)
+        }
     }
 
-    private fun loadEvents() {
+    private fun loadEvents(loggedUser: Person) {
         launch {
             val result = withContext(Dispatchers.IO) {
-                eventRepository.
+                eventRepository.getAllByPerson(loggedUser)
             }
             when (result) {
                 is OperationResult.Success -> {

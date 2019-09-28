@@ -32,11 +32,26 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:textSize="35sp"
-            app:layout_constraintBottom_toTopOf="@id/item_list_event_place"
+            app:layout_constraintBottom_toTopOf="@id/item_list_event_friends"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_list_event_image"
             tools:text="Test name" />
+
+        <TextView
+            android:id="@+id/item_list_event_friends"
+            style="@style/AppTheme.Text.Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="3dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@id/item_list_event_place"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_list_event_name"
+            android:textSize="25sp"
+            tools:text="6 friends" />
+
 
         <TextView
             android:id="@+id/item_list_event_place"
@@ -44,12 +59,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="3dp"
-            android:layout_marginTop="8dp"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/item_list_event_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_list_event_name"
+            app:layout_constraintTop_toBottomOf="@id/item_list_event_friends"
             tools:text="Saint Petersburg" />
 
         <TextView

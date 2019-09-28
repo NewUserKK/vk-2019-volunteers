@@ -15,6 +15,8 @@ import ru.wa285.volunteers.R
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.event.model.Event
+import ru.wa285.volunteers.domain.person.PersonRepository
+import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.presentation.common.AbstractFragment
 
 
@@ -24,6 +26,7 @@ class EventDetailFragment : AbstractFragment() {
 
     val args: EventDetailFragmentArgs by navArgs()
     private val eventRepository: EventRepository by kodein.instance()
+    private val personRepository: PersonRepository by kodein.instance()
     lateinit var event: Event
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +37,12 @@ class EventDetailFragment : AbstractFragment() {
     override fun View.setupFragment() {
         event_detail_name.text = event.name
         event_detail_description_value.text = event.description
+        val loggedUser = personRepository.getLoggedUser()
         launch {
             loadMembers()
-            loadFriends()
+            if (loggedUser != null) {
+                loadFriends(loggedUser)
+            }
         }
 
         event_detail_members_container.setOnClickListener {
@@ -44,9 +50,9 @@ class EventDetailFragment : AbstractFragment() {
         }
     }
 
-    private suspend fun View.loadFriends() {
+    private suspend fun View.loadFriends(loggedUser: Person) {
         val countFriendsResult = withContext(Dispatchers.IO) {
-            eventRepository.getFriendsByEvent(event)
+            eventRepository.getFriendsByEvent(event, loggedUser)
         }
         when (countFriendsResult) {
             is OperationResult.Success -> {
