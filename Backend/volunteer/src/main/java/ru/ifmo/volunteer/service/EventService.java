@@ -1,18 +1,22 @@
 package ru.ifmo.volunteer.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.exception.AlreadyExistsException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Event;
 import ru.ifmo.volunteer.repository.EventRepository;
+import ru.ifmo.volunteer.repository.VolunteerRepository;
 
 @Service
 public class EventService {
   private final EventRepository eventRepository;
+  private final VolunteerRepository volunteerRepository;
 
-  public EventService(EventRepository eventRepository) {
+  public EventService(EventRepository eventRepository, VolunteerRepository volunteerRepository) {
     this.eventRepository = eventRepository;
+    this.volunteerRepository = volunteerRepository;
   }
 
   public List<Event> read() {
@@ -45,5 +49,19 @@ public class EventService {
   public Event update(Event event) {
     findById(event.getId());
     return eventRepository.save(event);
+  }
+
+  public List<Event> getActualForUser(Long id) {
+    return eventRepository.findAllByUserId(id).stream()
+        .filter(event -> !event.getFinished())
+        .collect(Collectors.toList());
+  }
+
+  public void subscribe(Long userId, Long eventId) {
+    eventRepository.subscribe(userId, eventId);
+  }
+
+  public void unsubscribe(Long userId, Long eventId) {
+    eventRepository.unsubscribe(userId, eventId);
   }
 }

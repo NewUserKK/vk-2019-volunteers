@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ifmo.volunteer.model.Event;
 import ru.ifmo.volunteer.repository.EventRepository;
@@ -21,6 +22,18 @@ public class EventController {
 
   public EventController(EventService eventService) {
     this.eventService = eventService;
+  }
+
+  @ApiOperation(value = "Подписаться на событие", produces = "application/json")
+  @PostMapping("/subscribe")
+  public void subscribe(@RequestParam Long userId, @RequestParam Long eventId) {
+    eventService.subscribe(userId, eventId);
+  }
+
+  @ApiOperation(value = "Отписаться от события", produces = "application/json")
+  @PostMapping("/unsubscribe")
+  public void unsubscribe(@RequestParam Long userId, @RequestParam Long eventId) {
+    eventService.unsubscribe(userId, eventId);
   }
 
   @ApiOperation(
@@ -39,6 +52,16 @@ public class EventController {
   @GetMapping("{id}")
   public Event findEventById(@PathVariable Long id) {
     return eventService.findById(id);
+  }
+
+  @ApiOperation(
+      value = "Возвращает список событий, на которые подписан пользователь",
+      produces = "application/json",
+      response = Event.class,
+      responseContainer = "List")
+  @GetMapping("/actual")
+  public List<Event> getActualForUser(@PathVariable Long id) {
+    return eventService.getActualForUser(id);
   }
 
   @ApiOperation(
