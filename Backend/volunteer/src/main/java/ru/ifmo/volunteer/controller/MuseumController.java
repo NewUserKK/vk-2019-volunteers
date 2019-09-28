@@ -37,7 +37,7 @@ public class MuseumController {
   }
 
   @ApiOperation(
-      value = "Добавляет музей и возвращает её",
+      value = "Добавляет музей и возвращает его",
       produces = "application/json",
       response = Museum.class)
   @PostMapping
