@@ -3,8 +3,10 @@ package ru.wa285.volunteers.presentation.museum
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list_museum.view.*
 import ru.wa285.volunteers.R
 import ru.wa285.volunteers.domain.museum.model.Museum
@@ -32,6 +34,10 @@ class MuseumListRecyclerViewAdapter(private val values: List<Museum>) :
         holder.apply {
             nameView.text = item.name
             placeView.text = item.address
+            Picasso.get()
+                .load(item.logoUri)
+                .placeholder(R.drawable.placeholder_no_image)
+                .into(imageView)
             itemView.setOnClickListener {
                 onClickListener?.invoke(item)
             }
@@ -40,6 +46,7 @@ class MuseumListRecyclerViewAdapter(private val values: List<Museum>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameView: TextView = view.item_list_museum_name
+        val imageView: ImageView = view.item_list_museum_image
         val placeView: TextView = view.item_list_museum_place
     }
 }
