@@ -89,7 +89,7 @@ public class EventService {
     return eventRepository.isFavourite(eventId, userId) != null;
   }
 
-  public Event addResponsible(Long eventId, Long userId) {
-    return eventRepository.addResponsible(eventId, userId);
+  public void addResponsible(Long eventId, Long userId) {
+    eventRepository.addResponsible(eventId, userId);
   }
 }

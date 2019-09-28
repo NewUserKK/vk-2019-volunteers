@@ -60,5 +60,5 @@ public interface EventRepository extends JpaRepository<Event, Long> {
       value = "UPDATE event SET responsible = :userId WHERE id = :eventId",
       nativeQuery = true
   )
-  Event addResponsible(Long eventId, Long userId);
+  void addResponsible(Long eventId, Long userId);
 }

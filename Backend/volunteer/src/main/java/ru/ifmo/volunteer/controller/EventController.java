@@ -25,8 +25,8 @@ public class EventController {
 
   @ApiOperation(value = "Добавить ответственного", produces = "application/json")
   @PutMapping("{id}/addResponsible")
-  public Event addResponsible(@PathVariable Long id, @RequestParam Long userId) {
-    return eventService.addResponsible(id, userId);
+  public void addResponsible(@PathVariable Long id, @RequestParam Long userId) {
+    eventService.addResponsible(id, userId);
   }
 
   @ApiOperation(
