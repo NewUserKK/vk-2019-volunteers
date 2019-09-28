@@ -15,7 +15,7 @@ class MuseumListRecyclerViewAdapter(private val values: List<Museum>) : Recycler
     var onClickListener: ((Museum) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_event, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_museum, parent, false)
         return ViewHolder(view)
     }
 
@@ -29,9 +29,9 @@ class MuseumListRecyclerViewAdapter(private val values: List<Museum>) : Recycler
         holder.apply {
             nameView.text = item.name
             placeView.text = item.address
-//            itemView.setOnClickListener {
-//                onClickListener?.invoke(item)
-//            }
+            itemView.setOnClickListener {
+                onClickListener?.invoke(item)
+            }
         }
     }
 

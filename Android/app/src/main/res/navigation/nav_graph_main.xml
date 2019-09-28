@@ -49,7 +49,11 @@
         android:id="@+id/museumDetailFragment"
         android:name="ru.wa285.volunteers.presentation.museum.MuseumDetailFragment"
         android:label="fragment_museum_detail"
-        tools:layout="@layout/fragment_museum_detail" />
+        tools:layout="@layout/fragment_museum_detail" >
+        <argument
+            android:name="museum"
+            app:argType="ru.wa285.volunteers.domain.museum.model.Museum" />
+    </fragment>
     <fragment
         android:id="@+id/bottomNavigationHostFragment"
         android:name="ru.wa285.volunteers.presentation.BottomNavigationHostFragment"

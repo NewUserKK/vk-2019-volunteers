@@ -6,5 +6,5 @@ import ru.wa285.volunteers.domain.event.model.Event
 
 interface VolunteersEventApiService {
     @GET("event")
-    suspend fun getEvents() : Call<List<Event>>
+    fun getEvents() : Call<List<Event>>
 }
