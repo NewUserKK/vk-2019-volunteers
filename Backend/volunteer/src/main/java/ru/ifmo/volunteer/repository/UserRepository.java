@@ -49,10 +49,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   @Transactional
   @Modifying
-  @Query(
-      value = "UPDATE users SET password = :password WHERE login = :login",
-      nativeQuery = true
-  )
+  @Query(value = "UPDATE users SET password = :password WHERE login = :login", nativeQuery = true)
   User register(@Param("login") String login, @Param("password") String password);
 
+  @Query(
+      value =
+          "SELECT * FROM users WHERE id IN "
+              + "(SELECT user_id from user_to_role WHERE role_id = :roleId)",
+      nativeQuery = true)
+  List<User> getUsersByRoleId(@Param("roleId") Long roleId);
 }

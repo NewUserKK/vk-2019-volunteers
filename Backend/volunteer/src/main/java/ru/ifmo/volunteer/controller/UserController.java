@@ -129,6 +129,17 @@ public class UserController {
 //  public void block(@PathVariable Long )
 
   @ApiOperation(
+      value = "Возвращает список участников с некоторой ролью",
+      produces = "application/json",
+      response = User.class,
+      responseContainer = "List"
+  )
+  @GetMapping("byRole/{roleId}")
+  public List<User> getUsersByRoleId(@PathVariable Long roleId) {
+    return userService.getUsersByRoleId(roleId);
+  }
+
+  @ApiOperation(
       value = "Возвращает список участников для события",
       produces = "application/json",
       response = User.class,

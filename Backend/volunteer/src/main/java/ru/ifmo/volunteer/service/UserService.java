@@ -84,4 +84,8 @@ public class UserService {
   public User register(String login, String password) {
     return userRepository.register(login, password);
   }
+
+  public List<User> getUsersByRoleId(Long roleId) {
+    return userRepository.getUsersByRoleId(roleId);
+  }
 }
