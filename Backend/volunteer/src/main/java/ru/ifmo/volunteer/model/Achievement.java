@@ -15,6 +15,8 @@ public class Achievement {
 
   private String title;
 
+  private String description;
+
   public long getId() {
     return id;
   }
@@ -46,8 +48,6 @@ public class Achievement {
   public void setDescription(String description) {
     this.description = description;
   }
-
-  private String description;
 
 
 }
