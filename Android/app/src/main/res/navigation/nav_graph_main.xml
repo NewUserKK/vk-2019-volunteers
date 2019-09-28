@@ -65,6 +65,9 @@
         <action
             android:id="@+id/action_bottomNavigationHostFragment_to_museumDetailFragment"
             app:destination="@id/museumDetailFragment" />
+        <action
+            android:id="@+id/action_bottomNavigationHostFragment_to_personRegistrationFragment"
+            app:destination="@id/personRegistrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/currentEventsFragment"
