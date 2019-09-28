@@ -43,7 +43,7 @@ class EventListFragment : AbstractFragment() {
             when (result) {
                 is OperationResult.Success -> {
                     eventList.clear()
-                    eventList += result.value
+                    eventList += result.value.sortedByDescending { it.dateStart }
                     eventAdapter.notifyDataSetChanged()
                 }
                 is OperationResult.Failure -> {

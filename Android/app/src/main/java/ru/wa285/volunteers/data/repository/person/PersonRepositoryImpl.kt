@@ -8,6 +8,7 @@ import ru.wa285.volunteers.data.net.toOperationResult
 import ru.wa285.volunteers.data.net.tryConnect
 import ru.wa285.volunteers.data.repository.person.model.PersonWithPassword
 import ru.wa285.volunteers.domain.common.OperationResult
+import ru.wa285.volunteers.domain.event.model.Event
 import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
@@ -15,6 +16,8 @@ import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
 class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
 
     private val personApiService: PersonApiService = retrofit.create(PersonApiService::class.java)
+
+    private val eventSubscriptions = mutableListOf<Event>()
 
     private var loggedUser: Person? = null
 
@@ -53,5 +56,13 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
 
     override fun getLoggedUser(): Person? {
         return loggedUser
+    }
+
+    override suspend fun getEventSubscriptions(): List<Event> {
+        return if (eventSubscriptions.isNotEmpty()) {
+            eventSubscriptions
+        } else {
+
+        }
     }
 }
