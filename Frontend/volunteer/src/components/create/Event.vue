@@ -102,6 +102,8 @@
                     startDate: new Date(this.startDate).getTime(),
                     endDate: new Date(this.endDate).getTime(),
                     volunteersRequired: this.volunteersRequired,
+                    volunteersPresent: 0,
+                    finished: false,
                     type: this.type,
                     linkToEvent: this.linkToEvent,
                     photoLink: this.photoLink

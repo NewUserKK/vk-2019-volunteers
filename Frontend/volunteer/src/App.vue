@@ -78,11 +78,11 @@
                 localStorage.removeItem('user');
             });
             this.$root.$on('onAddMuseum', museum => {
-                this.roles.push(museum);
+                this.museums.push(museum);
                 this.$router.push('/museums');
             });
             this.$root.$on('onAddEvent', event => {
-                this.roles.push(event);
+                this.events.push(event);
                 this.$router.push('/events');
             });
             this.$root.$on('onAddRole', role => {
