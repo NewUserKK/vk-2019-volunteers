@@ -25,10 +25,7 @@ public class UserController {
     this.userService = userService;
   }
 
-  @ApiOperation(
-      value = "Добавить в друзья",
-      produces = "application/json"
-  )
+  @ApiOperation(value = "Добавить в друзья", produces = "application/json")
   @PostMapping("/addFriend")
   public void addToFriends(@RequestParam Long userId, @RequestParam Long friendId) {
     userService.addToFriends(userId, friendId);
@@ -38,16 +35,14 @@ public class UserController {
       value = "Получение списка друзей на мероприятии",
       produces = "application/json",
       response = User.class,
-      responseContainer = "List"
-  )
+      responseContainer = "List")
   @GetMapping("/participatedFriend")
   public List<User> getParticipatedFriend(@RequestParam Long eventId, @RequestParam Long userId) {
     return userService.getParticipantsFriendsById(eventId, userId);
   }
 
-
   @ApiOperation(
-      value = "Создает представителя музея и возвращает его",
+      value = "Создает юзера и возвращает его",
       produces = "application/json",
       response = User.class)
   @PostMapping
@@ -74,7 +69,7 @@ public class UserController {
   }
 
   @ApiOperation(
-      value = "Возвращает список всех представителей музея",
+      value = "Возвращает список всех юзеров",
       produces = "application/json",
       response = User.class,
       responseContainer = "List")
@@ -84,7 +79,7 @@ public class UserController {
   }
 
   @ApiOperation(
-      value = "Возвращает представителя музея по id",
+      value = "Возвращает юзера по id",
       produces = "application/json",
       response = User.class)
   @GetMapping("{id}")
@@ -93,7 +88,7 @@ public class UserController {
   }
 
   @ApiOperation(
-      value = "Изменяет представителя музея и возвращает его",
+      value = "Изменяет юзера и возвращает его",
       produces = "application/json",
       response = User.class)
   @PutMapping
@@ -101,10 +96,19 @@ public class UserController {
     return userService.update(user);
   }
 
-  @ApiOperation(value = "Удаляет представителя по id")
+  @ApiOperation(value = "Удаляет юзера по id")
   @DeleteMapping
   public void delete(final Long id) {
     userService.deleteById(id);
+  }
+
+  @ApiOperation(
+      value = "Возвращает true, если пользователь заблокирован, false -- иначе",
+      produces = "application/json",
+      response = Boolean.class)
+  @GetMapping("{id}/blocked")
+  public Boolean isBlocked(@PathVariable Long userId, @RequestParam Long museumId) {
+    return userService.isBlocked(userId, museumId);
   }
 
   @ApiOperation(

@@ -32,8 +32,7 @@ public class UserService {
       throw new AlreadyExistsException(
           String.format("User with %d id already exists", user.getId()));
     }
-    userRepository.save(user);
-    return user;
+    return userRepository.save(user);
   }
 
   public User findByToken(String token) {
@@ -76,5 +75,9 @@ public class UserService {
 
   public List<User> getParticipantsFriendsById(Long eventId, Long userId) {
     return userRepository.getParticipantsFriendsById(eventId, userId);
+  }
+
+  public Boolean isBlocked(Long userId, Long museumId) {
+    return userRepository.isBlocked(userId, museumId) != null;
   }
 }

@@ -39,8 +39,7 @@ public class MuseumService {
               throw new AlreadyExistsException(
                   String.format("Museum with %d id already exists", museum.getId()));
             });
-    museumRepository.save(museum);
-    return museum;
+    return museumRepository.save(museum);
   }
 
   public Museum update(Museum museum) {

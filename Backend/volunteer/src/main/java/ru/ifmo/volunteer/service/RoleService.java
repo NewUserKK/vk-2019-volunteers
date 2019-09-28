@@ -21,8 +21,7 @@ public class RoleService {
       throw new AlreadyExistsException(
           String.format("Role with %d id already exists", role.getId()));
     }
-    roleRepository.save(role);
-    return role;
+    return roleRepository.save(role);
   }
 
   public List<Role> findAll() {

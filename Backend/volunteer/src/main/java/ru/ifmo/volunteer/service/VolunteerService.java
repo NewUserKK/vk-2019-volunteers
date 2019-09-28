@@ -35,8 +35,7 @@ public class VolunteerService {
       throw new AlreadyExistsException(
           String.format("Volunteer with %d id already exists", volunteer.getId()));
     }
-    volunteerRepository.save(volunteer);
-    return volunteer;
+    return volunteerRepository.save(volunteer);
   }
 
   public void deleteById(final Long id) {

@@ -43,8 +43,7 @@ public class EventService {
               throw new AlreadyExistsException(
                   String.format("Event with %d id already exists", event.getId()));
             });
-    eventRepository.save(event);
-    return event;
+    return eventRepository.save(event);
   }
 
   public Event update(Event event) {
