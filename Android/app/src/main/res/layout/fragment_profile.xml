@@ -47,8 +47,6 @@
                 android:layout_marginTop="10dp"
                 tools:text="Test rating" />
 
-            
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
