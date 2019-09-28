@@ -13,9 +13,7 @@ public class Museum {
 
   private String city;
 
-  private String location;
-
-  private String building;
+  private String address;
 
   private String hours;
 
@@ -57,20 +55,12 @@ public class Museum {
     this.city = city;
   }
 
-  public String getLocation() {
-    return location;
+  public String getAddress() {
+    return address;
   }
 
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  public String getBuilding() {
-    return building;
-  }
-
-  public void setBuilding(String building) {
-    this.building = building;
+  public void setAddress(String address) {
+    this.address = address;
   }
 
   public String getHours() {

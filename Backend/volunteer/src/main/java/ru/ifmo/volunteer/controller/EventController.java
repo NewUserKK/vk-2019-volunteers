@@ -46,6 +46,13 @@ public class EventController {
     eventService.subscribe(userId, eventId);
   }
 
+  @ApiOperation(value = "Находится ли событие в избранном", produces = "application/json",
+  response = Boolean.class)
+  @GetMapping("{eventId}/inFavourite")
+  public Boolean isFavourite(@PathVariable Long eventId, @RequestParam Long userId) {
+    return eventService.isFavourite(eventId, userId);
+  }
+
   @ApiOperation(value = "Отписаться от события", produces = "application/json")
   @DeleteMapping("/unsubscribe")
   public void unsubscribe(@RequestParam Long userId, @RequestParam Long eventId) {

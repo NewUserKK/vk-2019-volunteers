@@ -58,10 +58,18 @@ public class EventService {
   }
 
   public void subscribe(Long userId, Long eventId) {
+    eventRepository
+        .findEventWithUserId(userId, eventId)
+        .ifPresent(u -> {
+          throw new AlreadyExistsException("Вы уже были подписаны на это событие");
+        });
     eventRepository.subscribe(userId, eventId);
   }
 
   public void unsubscribe(Long userId, Long eventId) {
+    eventRepository
+        .findEventWithUserId(userId, eventId)
+        .orElseThrow(() -> new ResourceNotFoundException("Вы не были подписаны на это событие"));
     eventRepository.unsubscribe(userId, eventId);
   }
 
@@ -75,5 +83,9 @@ public class EventService {
     return eventRepository.findAllByMuseumId(id).stream()
         .filter(event -> !event.getFinished())
         .collect(Collectors.toList());
+  }
+
+  public Boolean isFavourite(Long eventId, Long userId) {
+    return eventRepository.isFavourite(eventId, userId) != null;
   }
 }

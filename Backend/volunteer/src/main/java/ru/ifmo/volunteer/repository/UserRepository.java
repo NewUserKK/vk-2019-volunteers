@@ -2,7 +2,9 @@ package ru.ifmo.volunteer.repository;
 
 import java.util.List;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -19,6 +21,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
   @Query(value = "SELECT * FROM users WHERE vk_token = :token", nativeQuery = true)
   Optional<User> findByToken(@Param("token") String token);
 
+  @Transactional
+  @Modifying
   @Query(value = "INSERT INTO user_to_friend VALUES(:userId, :friendId)", nativeQuery = true)
   void addToFriends(@Param("userId") Long userId, @Param("friendId") Long friendId);
 
