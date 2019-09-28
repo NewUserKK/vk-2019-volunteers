@@ -21,14 +21,13 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
     override suspend fun authorize(credentials: PersonAuthCredentials): OperationResult<Person> {
         return tryConnect {
             val response = personApiService.authorize(credentials).execute()
-
             if (response.isSuccessful) {
                 val person = response.body() ?: error("Person should not be null")
                 loggedUser = person
                 OperationResult.Success(person)
 
             } else {
-                val t: OperationResult<Person> = if (response.code() == 401) {
+                val t: OperationResult<Person> = if (response.code() == 403) {
                     OperationResult.Failure(IncorrectCredentialsException())
                 } else {
                     OperationResult.Failure(BadResponseException(response))
@@ -40,6 +39,7 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
 
     override suspend fun register(person: PersonWithPassword): OperationResult<Person> {
         return tryConnect<Person> {
+            println(person)
             val response = personApiService.register(person).execute()
             val body = response.body()
             if (response.isSuccessful && body != null) {

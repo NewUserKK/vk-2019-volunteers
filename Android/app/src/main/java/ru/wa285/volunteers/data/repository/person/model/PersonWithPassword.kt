@@ -14,8 +14,7 @@ data class PersonWithPassword @JsonCreator constructor(
     @JsonProperty("phone") val phone: String?,
     @JsonProperty("email") val email: String?,
     @JsonProperty("login") val login: String,
-    @JsonProperty("birthday")
-    val birthday: Date,
+    @JsonProperty("birthday") val birthday: Date,
     @JsonProperty("photoLink") val avatarUri: String?,
     @JsonProperty("id") val id: Long = 0,
     @JsonProperty("password") val password: String,
