@@ -27,8 +27,7 @@ public class VolunteerController {
   @ApiOperation(
       value = "Авторизация через логин-пароль",
       produces = "application/json",
-      response = Volunteer.class
-  )
+      response = Volunteer.class)
   @PostMapping("/auth")
   public Volunteer authorize(@RequestBody UserCredentials userCredentials) {
     return volunteerService.authorize(userCredentials.getLogin(), userCredentials.getPassword());
@@ -75,5 +74,15 @@ public class VolunteerController {
   @DeleteMapping
   public void delete(final Long id) {
     volunteerService.deleteById(id);
+  }
+
+  @ApiOperation(
+      value = "Возвращает список участников для события",
+      produces = "application/json",
+      response = Volunteer.class,
+      responseContainer = "List")
+  @GetMapping("/participants")
+  public List<Volunteer> getParticipantsById(@PathVariable Long id) {
+    return volunteerService.getParticipantsById(id);
   }
 }

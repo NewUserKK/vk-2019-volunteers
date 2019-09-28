@@ -4,7 +4,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.ifmo.volunteer.model.Event;
+import ru.ifmo.volunteer.model.Volunteer;
 
 public interface EventRepository extends JpaRepository<Event, Long> {
 
@@ -25,4 +28,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
       value = "DELETE FROM starred_events WHERE event_id = :eventId AND volunteer_id = :userId",
       nativeQuery = true)
   void unsubscribe(@Param("userId") Long userId, @Param("eventId") Long eventId);
+
+
 }

@@ -51,4 +51,8 @@ public class VolunteerService {
     findById(volunteer.getId());
     return volunteerRepository.save(volunteer);
   }
+
+  public List<Volunteer> getParticipantsById(Long id) {
+    return volunteerRepository.getParticipantsById(id);
+  }
 }
