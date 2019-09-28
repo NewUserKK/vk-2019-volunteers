@@ -2,4 +2,5 @@
 <resources>
     <dimen name="avatar_view_size">40dp</dimen>
     <dimen name="list_item_background_corner_radius">5dp</dimen>
+    <dimen name="picture_height">150dp</dimen>
 </resources>
