@@ -37,6 +37,18 @@ public class Event {
 
   private Boolean finished;
 
+  @ManyToOne
+  @JoinColumn(name = "responsible")
+  private User responsible;
+
+  public User getResponsible() {
+    return responsible;
+  }
+
+  public void setResponsible(User responsible) {
+    this.responsible = responsible;
+  }
+
   public Boolean getFinished() {
     return finished;
   }
