@@ -33,6 +33,7 @@
         <argument
             android:name="person"
             app:argType="ru.newuserkk.volunteers.domain.person.model.Person" />
+
     </fragment>
     <fragment
         android:id="@+id/personRegistrationFragment"

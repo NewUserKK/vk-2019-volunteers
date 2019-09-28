@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textSize="35sp"
         tools:text="Polikek" />
 
     <ru.newuserkk.volunteers.presentation.common.view.AvatarView
@@ -32,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@id/museum_detail_avatar_view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
         android:textSize="20sp"
         tools:text="Test description" />
 
@@ -43,14 +45,15 @@
         app:layout_constraintTop_toBottomOf="@id/museum_detail_description"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="23sp"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
         android:text="@string/nearest_events_text" />
 
     <include layout="@layout/list_event"
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:id="@+id/museum_detail_museum_list"
-        app:layout_constraintTop_toBottomOf="@id/museum_detail_description"
+        app:layout_constraintTop_toBottomOf="@id/museum_detail_nearest_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
