@@ -23,7 +23,7 @@
                     <td>{{volunteer.surname}}</td>
                     <td>{{volunteer.name}}</td>
                     <td>{{volunteer.patronymic}}</td>
-                    <td>{{volunteer.birthday}}</td>
+                    <td>{{new Date(volunteer.birthday).toLocaleDateString()}}</td>
                     <td>{{volunteer.socialLink}}</td>
                     <td>{{volunteer.hasVolunteeringExperience ? 'Да' : 'Нет'}}</td>
                     <td>{{volunteer.hasAllergies ? 'Да' : 'Нет'}}</td>

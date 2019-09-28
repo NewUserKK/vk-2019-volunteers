@@ -10,7 +10,7 @@ import Directories from "../components/directory/Directories";
 import Create from "../components/create/Create";
 import Museum from "../components/create/Museum";
 import Event from "../components/create/Event";
-import User from "../components/create/User";
+import User from "../components/create/Responsible";
 import Role from "../components/create/Role";
 
 export default [

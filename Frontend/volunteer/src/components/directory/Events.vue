@@ -8,6 +8,7 @@
                     <th class="table-head">Название</th>
                     <th class="table-head">Описание</th>
                     <th class="table-head">Музей</th>
+                    <th class="table-head">Ответственный</th>
                     <th class="table-head">Начало</th>
                     <th class="table-head">Конец</th>
                     <th class="table-head">Тип</th>
@@ -20,8 +21,9 @@
                     <td>{{event.title}}</td>
                     <td>{{event.description}}</td>
                     <td>{{event.museum && event.museum.name}}</td>
-                    <td>{{event.startDate}}</td>
-                    <td>{{event.endDate}}</td>
+                    <td>{{event.responsible ? event.responsible.name + ' ' + event.responsible.surname : ''}}</td>
+                    <td>{{new Date(event.startDate).toLocaleString()}}</td>
+                    <td>{{new Date(event.endDate).toLocaleString()}}</td>
                     <td>{{event.type}}</td>
                     <td>{{event.linkToEvent}}</td>
                     <td>{{event.photoLink}}</td>
