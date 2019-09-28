@@ -26,6 +26,14 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher_background" />
 
+        <ImageView
+            android:id="@+id/item_list_event_favourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_24px"
+            app:layout_constraintTop_toTopOf="@id/item_list_event_image"
+            app:layout_constraintEnd_toEndOf="@id/item_list_event_image" />
+
         <TextView
             android:id="@+id/item_list_event_name"
             android:layout_width="match_parent"

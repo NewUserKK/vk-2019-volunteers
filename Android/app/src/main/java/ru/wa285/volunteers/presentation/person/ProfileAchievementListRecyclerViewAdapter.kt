@@ -1,6 +1,5 @@
 package ru.wa285.volunteers.presentation.person
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list_achievement.view.*
 import ru.wa285.volunteers.R
-import ru.wa285.volunteers.domain.person.model.Achievement
+import ru.wa285.volunteers.domain.achievement.model.Achievement
 
 class ProfileAchievementListRecyclerViewAdapter(private val values: List<Achievement>) : RecyclerView.Adapter<ProfileAchievementListRecyclerViewAdapter.ViewHolder>() {
 

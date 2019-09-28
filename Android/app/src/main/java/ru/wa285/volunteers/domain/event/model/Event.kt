@@ -15,5 +15,7 @@ data class Event @JsonCreator constructor(
     @JsonProperty("startDate") val dateStart: Date,
     @JsonProperty("endDate") val dateEnd: Date,
     @JsonProperty("type") val type: String,
-    @JsonProperty("id") val id: Long = 0
+    @JsonProperty("id") val id: Long = 0,
+    //TODO: назначить ключ
+    @JsonProperty("") val isFavourite: Boolean = false
 ) : Serializable

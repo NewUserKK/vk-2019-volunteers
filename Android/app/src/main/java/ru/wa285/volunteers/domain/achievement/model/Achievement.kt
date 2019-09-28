@@ -1,4 +1,4 @@
-package ru.wa285.volunteers.domain.person.model
+package ru.wa285.volunteers.domain.achievement.model
 
 import java.io.Serializable
 
