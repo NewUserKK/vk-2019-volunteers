@@ -6,7 +6,6 @@ import android.view.View
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.content_event_detail.view.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.kodein.di.generic.instance
@@ -39,7 +38,7 @@ class EventDetailFragment : AbstractFragment() {
             val countFriends = withContext(Dispatchers.IO) {
                 eventRepository.getFriendsByEvent(event).size
             }
-            event_detail_common_members.text =
+            event_detail_members.text =
                 resources.getQuantityString(R.plurals.numberOfMembers, countMembers, countMembers)
             event_detail_friends.text =
                 resources.getQuantityString(R.plurals.numberOfFriends, countFriends, countFriends)

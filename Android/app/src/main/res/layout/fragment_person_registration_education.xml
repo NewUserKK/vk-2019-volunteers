@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/person_registration_request_extra_skills"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -21,7 +21,7 @@
 
         <EditText
             android:id="@+id/person_registration_edit_working_place"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/person_registration_request_diploma"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_working_place"
@@ -40,7 +40,7 @@
 
         <EditText
             android:id="@+id/person_registration_edit_diploma"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/person_registration_request_languages"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_diploma"
@@ -60,7 +60,7 @@
         <!--    TODO: подумать о енуме-->
         <EditText
             android:id="@+id/person_registration_edit_languages"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
