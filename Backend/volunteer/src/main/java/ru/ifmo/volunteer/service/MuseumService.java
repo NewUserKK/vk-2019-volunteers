@@ -47,4 +47,8 @@ public class MuseumService {
     findById(museum.getId());
     return museumRepository.save(museum);
   }
+
+  public List<Museum> getFavourites(Long id) {
+    return museumRepository.getFavourites(id);
+  }
 }

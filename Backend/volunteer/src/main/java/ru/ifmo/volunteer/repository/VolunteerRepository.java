@@ -10,11 +10,6 @@ import ru.ifmo.volunteer.model.Volunteer;
 
 @Repository
 public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {
-  @Query(
-      value = "SELECT * FROM volunteer WHERE login=:login AND password=crypt(:password, password)",
-      nativeQuery = true)
-  Optional<Volunteer> findByLoginAndPassword(
-      @Param("login") String login, @Param("password") String password);
 
   @Query(
       value =

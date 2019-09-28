@@ -53,8 +53,6 @@ public class Volunteer {
 
   private Boolean notify;
 
-  private String login;
-
   private String email;
 
   private String phone;
@@ -225,14 +223,6 @@ public class Volunteer {
 
   public void setNotify(Boolean notify) {
     this.notify = notify;
-  }
-
-  public String getLogin() {
-    return login;
-  }
-
-  public void setLogin(String login) {
-    this.login = login;
   }
 
   public String getEmail() {

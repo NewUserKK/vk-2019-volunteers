@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Staff {
+public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,26 @@ public class Staff {
   private LocalDate birthday;
 
   private String login;
+
+  private String vkToken;
+
+  public String getVkToken() {
+    return vkToken;
+  }
+
+  public void setVkToken(String vkToken) {
+    this.vkToken = vkToken;
+  }
+
+  public Boolean getVerified() {
+    return verified;
+  }
+
+  public void setVerified(Boolean verified) {
+    this.verified = verified;
+  }
+
+  private Boolean verified;
 
   public Long getId() {
     return id;

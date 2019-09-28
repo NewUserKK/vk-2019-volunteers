@@ -69,7 +69,7 @@ def seed(f):
   museums_length = random.randint(10, 30)
   for i in range(museums_length):
     f.write(template % (generate_random(cities), generate_random(locations), generate_random(buildings), generate_random(hours), generate_random(photos)))
-  template = "INSERT INTO STAFF(name, surname, patronymic, email, phone, photo_link, birthday, login, password) VALUES('%s', '%s', '%s', '%s', '%s', '%s', current_timestamp, '%s', crypt('qwerty', gen_salt('bf', 8)));\n"
+  template = "INSERT INTO "
   staff_length = random.randint(10, 30)
   for _ in range(staff_length):
     if random.randint(0, 1):
@@ -119,7 +119,7 @@ def seed(f):
 def init(f):
   f.write("DELETE FROM ROLE;\n")
   f.write("DELETE FROM MUSEUM;\n")
-  f.write("DELETE FROM STAFF;\n")
+  f.write("DELETE FROM ")
   f.write("DELETE FROM VOLUNTEER;\n")
   f.write("DELETE FROM EVENT;\n")
   f.write("ALTER SEQUENCE role_id_seq RESTART;\n")

@@ -1,6 +1,7 @@
 package ru.ifmo.volunteer.controller;
 
 import io.swagger.annotations.ApiOperation;
+import java.lang.reflect.Member;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ifmo.volunteer.model.Museum;
 import ru.ifmo.volunteer.service.MuseumService;
@@ -20,6 +22,17 @@ public class MuseumController {
 
   public MuseumController(MuseumService museumService) {
     this.museumService = museumService;
+  }
+
+  @ApiOperation(
+      value = "Возвращает список избранных музеев",
+      produces = "application/json",
+      response = Museum.class,
+      responseContainer = "List"
+  )
+  @GetMapping("/favourites")
+  public List<Museum> getFavourites(@PathVariable Long id) {
+    return museumService.getFavourites(id);
   }
 
   @ApiOperation(

@@ -17,11 +17,7 @@ public class VolunteerService {
     this.volunteerRepository = volunteerRepository;
   }
 
-  public Volunteer authorize(String login, String password) {
-    return volunteerRepository
-        .findByLoginAndPassword(login, password)
-        .orElseThrow(() -> new AuthorizationException("Неверный логин или пароль"));
-  }
+
 
   public List<Volunteer> findAll() {
     return volunteerRepository.findAll();
