@@ -59,5 +59,16 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="AppTheme.OptionEditText">
+        <item name="met_baseColor">@color/colorAccent</item>
+        <item name="met_floatingLabel">highlight</item>
+        <item name="met_floatingLabelTextColor">@color/colorAccent</item>
+        <item name="met_floatingLabelTextSize">14dp</item>
+        <item name="met_helperTextColor">@color/colorAccent</item>
+        <item name="met_primaryColor">@color/colorAccent</item>
+        <item name="met_textColor">@color/textColor</item>
+        <item name="met_textColorHint">@color/textColor</item>
+        <item name="met_underlineColor">@color/colorAccent</item>
+    </style>
 
 </resources>
