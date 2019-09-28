@@ -19,11 +19,11 @@
     <string name="request_phone">Номер телефона:</string>
     <string name="edit_phone">Введите номер телефона</string>
     <string name="request_vk">Ссылка на аккаунт ВКонтакте:</string>
-    <string name="edit_vk">Укажите ссылку</string>
+    <string name="edit_vk">Укажите ссылку на аккаунт ВКонтакте</string>
     <string name="request_working_place">Место учебы/работы:</string>
     <string name="edit_working_place">Укажите место работы/учебы</string>
     <string name="request_diploma">Специальность по диплому:</string>
-    <string name="edit_diploma">Укажите специальность</string>
+    <string name="edit_diploma">Укажите специальность по диплому</string>
     <string name="request_languages">Владение иностранными языками:</string>
     <string name="request_experience">Есть ли у вас опыт волонтерства?</string>
     <string name="answer_experience">Да</string>
@@ -44,6 +44,7 @@
     <string name="authorization_social_networks_suggest">Авторизоваться через\n социальные сети:</string>
     <string name="person_authorization_enter">Войти</string>
     <string name="profile_favourite_museums">Избранные музеи</string>
+    <string name="edit_languages">Укажите степени владения иностранными языками</string>
 
     <plurals name="numberOfMembers">
         <item quantity="one">%d участник</item>

@@ -9,139 +9,68 @@
         android:layout_height="wrap_content"
         android:padding="5dp">
 
-        <TextView
-            android:id="@+id/person_registration_request_name"
-            style="@style/AppTheme.Text.RequestText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/name_request"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/person_registration_edit_name"
-            style="@style/AppTheme.Text.RequestText"
+            style="@style/AppTheme.OptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_request_name" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/person_registration_request_surname"
-            style="@style/AppTheme.Text.RequestText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/surname_request"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_name" />
-
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/person_registration_edit_surname"
-            style="@style/AppTheme.Text.RequestText"
+            style="@style/AppTheme.OptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_surname"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_request_surname" />
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_name" />
 
-        <TextView
-            android:id="@+id/person_registration_request_patronymic"
-            style="@style/AppTheme.Text.RequestText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/patronymic"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_surname" />
-
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/person_registration_edit_patronymic"
-            style="@style/AppTheme.Text.RequestText"
+            style="@style/AppTheme.OptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_patronymic"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_request_patronymic" />
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_surname" />
 
-        <TextView
-            android:id="@+id/person_registration_request_birth_date"
-            style="@style/AppTheme.Text.RequestText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/request_birth_date"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_patronymic" />
-
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/person_registration_edit_birth_date"
-            style="@style/AppTheme.Text.RequestText"
+            style="@style/AppTheme.OptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_birth_date"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_request_birth_date" />
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_patronymic" />
 
-        <TextView
-            android:id="@+id/person_registration_request_email"
-            style="@style/AppTheme.Text.RequestText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/request_email"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_birth_date" />
-
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/person_registration_edit_email"
-            style="@style/AppTheme.Text.RequestText"
+            style="@style/AppTheme.OptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_email"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_request_email" />
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_birth_date" />
 
-        <TextView
-            android:id="@+id/person_registration_request_phone"
-            style="@style/AppTheme.Text.RequestText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/request_phone"
-            app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_email" />
-
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/person_registration_edit_phone"
-            style="@style/AppTheme.Text.RequestText"
+            style="@style/AppTheme.OptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_phone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_request_phone" />
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_email" />
 
-        <TextView
-            android:id="@+id/person_registration_request_vk"
-            style="@style/AppTheme.Text.RequestText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/request_vk"
-            app:layout_constraintStart_toStartOf="parent"
-
-            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_phone" />
-
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/person_registration_edit_vk"
-            style="@style/AppTheme.Text.RequestText"
+            style="@style/AppTheme.OptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_vk"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_registration_request_vk" />
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_phone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

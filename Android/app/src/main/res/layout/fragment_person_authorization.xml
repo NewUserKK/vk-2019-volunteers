@@ -15,8 +15,9 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp">
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/person_authorization_request_login"
+                style="@style/AppTheme.OptionEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/edit_login"
@@ -28,8 +29,9 @@
                 app:layout_constraintVertical_bias="0"
                 app:layout_constraintVertical_chainStyle="packed" />
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/person_authorization_request_password"
+                style="@style/AppTheme.OptionEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
