@@ -42,6 +42,7 @@ class MuseumListFragment : AbstractFragment() {
             }
             when (result) {
                 is OperationResult.Success -> {
+                    museumList.clear()
                     museumList += result.value
                     museumRecyclerViewAdapter.notifyDataSetChanged()
                 }

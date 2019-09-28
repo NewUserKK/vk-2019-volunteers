@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     style="@style/AppTheme.ListItem"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,14 +14,13 @@
 
         <ImageView
             android:id="@+id/item_list_event_image"
+            style="AppTheme.ImageView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/picture_height"
             android:layout_marginBottom="10dp"
-            android:scaleType="fitCenter"
-            style="AppTheme.ImageView"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@id/item_list_event_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_launcher_background" />
@@ -30,9 +29,10 @@
             android:id="@+id/item_list_event_favourite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_24px"
-            app:layout_constraintTop_toTopOf="@id/item_list_event_image"
-            app:layout_constraintEnd_toEndOf="@id/item_list_event_image" />
+            android:src="@drawable/ic_favourite_outline_24px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_list_event_name" />
 
         <TextView
             android:id="@+id/item_list_event_name"
@@ -40,47 +40,34 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:textSize="35sp"
-            app:layout_constraintBottom_toTopOf="@id/item_list_event_friends"
+            app:layout_constraintBottom_toTopOf="@id/item_list_event_place"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_list_event_image"
             tools:text="Test name" />
 
         <TextView
-            android:id="@+id/item_list_event_friends"
-            style="@style/AppTheme.Text.Description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="3dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toTopOf="@id/item_list_event_place"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_list_event_name"
-            tools:text="6 friends" />
-
-
-        <TextView
             android:id="@+id/item_list_event_place"
             style="@style/AppTheme.Text.Description"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="3dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toTopOf="@id/item_list_event_date"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_list_event_friends"
+            app:layout_constraintTop_toBottomOf="@id/item_list_event_name"
             tools:text="Saint Petersburg" />
 
         <TextView
             android:id="@+id/item_list_event_date"
             style="@style/AppTheme.Text.Description"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="3dp"
             android:layout_marginTop="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_list_event_place"
             tools:text="27.09.2019" />

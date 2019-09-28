@@ -43,6 +43,7 @@ class EventParticipantListFragment : AbstractFragment() {
                 is OperationResult.Success -> {
                     participantList.clear()
                     participantList += result.value
+                    participantAdapter.notifyDataSetChanged()
                 }
                 is OperationResult.Failure -> {
                     Toast.makeText(context, result.error.message, Toast.LENGTH_SHORT).show()

@@ -48,6 +48,7 @@ class CurrentEventsFragment : AbstractFragment() {
             }
             when (result) {
                 is OperationResult.Success -> {
+                    eventList.clear()
                     eventList += result.value
                     eventAdapter.notifyDataSetChanged()
                 }

@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_museum_list.view.*
+import kotlinx.android.synthetic.main.fragment_profile_favourite_museum_list.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -34,7 +35,7 @@ class ProfileFavoriteMuseumListFragment : AbstractFragment() {
                 navigateToMuseumDetails(it)
             }
         }
-        museum_list.adapter = museumRecyclerViewAdapter
+        profile_favourite_museum_list.adapter = museumRecyclerViewAdapter
         fillMuseumList()
     }
 
@@ -45,6 +46,7 @@ class ProfileFavoriteMuseumListFragment : AbstractFragment() {
             }
             when (result) {
                 is OperationResult.Success -> {
+                    museumList.clear()
                     museumList += result.value
                     museumRecyclerViewAdapter.notifyDataSetChanged()
                 }
@@ -56,8 +58,8 @@ class ProfileFavoriteMuseumListFragment : AbstractFragment() {
     }
 
     private fun navigateToMuseumDetails(museum: Museum) {
-        val action = BottomNavigationHostFragmentDirections
-            .actionBottomNavigationHostFragmentToMuseumDetailFragment(museum)
-        requireParentFragment().findNavController().navigate(action)
+        val action = ProfileFavoriteMuseumListFragmentDirections
+            .actionProfileFavoriteMuseumListFragmentToMuseumDetailFragment(museum)
+        findNavController().navigate(action)
     }
 }

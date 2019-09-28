@@ -114,6 +114,7 @@ class ProfileFragment : AbstractFragment() {
             }
             when (result) {
                 is OperationResult.Success -> {
+                    achievementsList.clear()
                     achievementsList += result.value
                     achievementRecyclerViewAdapter.notifyDataSetChanged()
                 }

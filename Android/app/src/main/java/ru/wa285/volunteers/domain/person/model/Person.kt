@@ -16,3 +16,5 @@ data class Person @JsonCreator constructor(
     @JsonProperty("photoLink") val avatarUri: String?,
     @JsonProperty("id") val id: Long = 0
 ): Serializable
+
+fun Person.fullName(): String = "$name $surname $patronymic"

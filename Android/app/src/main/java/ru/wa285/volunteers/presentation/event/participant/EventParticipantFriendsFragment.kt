@@ -2,6 +2,7 @@ package ru.wa285.volunteers.presentation.event.participant
 
 import android.view.View
 import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_event_participant_friends.view.*
 import kotlinx.android.synthetic.main.fragment_event_participant_list.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +33,7 @@ class EventParticipantFriendsFragment : AbstractFragment() {
             onClickListener = {
             }
         }
-        event_participant_list.adapter = participantAdapter
+        event_participant_friends_list.adapter = participantAdapter
         launch {
             val result = withContext(Dispatchers.IO) {
                 val logged = personRepository.getLoggedUser()
@@ -43,6 +44,7 @@ class EventParticipantFriendsFragment : AbstractFragment() {
                 is OperationResult.Success -> {
                     participantList.clear()
                     participantList += result.value
+                    participantAdapter.notifyDataSetChanged()
                 }
                 is OperationResult.Failure -> when (result.error) {
                     is UnauthorizedException -> Toast.makeText(
