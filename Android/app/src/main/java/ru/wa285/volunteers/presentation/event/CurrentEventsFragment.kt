@@ -3,6 +3,7 @@ package ru.wa285.volunteers.presentation.event
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_current_events.view.*
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,7 +34,7 @@ class CurrentEventsFragment : AbstractFragment() {
                 navigateToEventDetail(it)
             }
         }
-        event_list.adapter = eventAdapter
+        current_events_list.adapter = eventAdapter
         val loggedUser = personRepository.getLoggedUser()
         if (loggedUser != null) {
             loadEvents(loggedUser)
