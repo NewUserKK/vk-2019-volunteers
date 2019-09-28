@@ -45,6 +45,8 @@
     <string name="person_authorization_enter">Войти</string>
     <string name="profile_favourite_museums">Избранные музеи</string>
     <string name="edit_languages">Укажите степени владения иностранными языками</string>
+    <string name="create_password">Придумайте пароль</string>
+    <string name="create_login">Придумайте логин</string>
 
     <plurals name="numberOfMembers">
         <item quantity="one">%d участник</item>

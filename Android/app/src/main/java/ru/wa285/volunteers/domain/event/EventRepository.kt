@@ -11,9 +11,11 @@ interface EventRepository {
 
     suspend fun getAllByMuseum(museum: Museum): OperationResult<List<Event>>
 
+    suspend fun getAllByPerson(person: Person): OperationResult<List<Event>>
+
     suspend fun addEvent(event: Event): OperationResult<Event>
 
     suspend fun getParticipantsByEvent(event: Event): OperationResult<List<Person>>
 
-    suspend fun getFriendsByEvent(event: Event): OperationResult<List<Person>>
+    suspend fun getFriendsByEvent(event: Event, person: Person): OperationResult<List<Person>>
 }
