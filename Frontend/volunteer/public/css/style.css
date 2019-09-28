@@ -1,0 +1,288 @@
+:root {
+    --border-color: rgb(185, 185, 185);
+    --border-radius: 6px;
+    --black-color: #333;
+    --caption-color: #3B5998;
+    --error-color: red;
+    --datatable-color: #E1E1E1;
+    --datatable-dark-cell-color: #f8f8f8;
+    color: var(--black-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+html {
+    min-width: 600px;
+    margin: 0 auto;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+@media (max-width: 1024px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 800px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+.museum-picture {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    display: block;
+    background: url("../img/background.jpg") repeat 0 0;
+}
+
+.the-header {
+    display: flex;
+    align-items: center;
+}
+
+.the-header .enter-or-register-box {
+    display: inline-block;
+    text-align: right;
+    color: var(--datatable-color);
+    font-family: "Arial Narrow", sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    position: absolute;
+    right: 0.5em;
+    top: 200px;
+}
+
+.the-header .navigation {
+    width: 100%;
+    display: inline-block;
+    padding: 0.75rem 0.25rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    justify-content: flex-end;
+}
+
+.middle {
+    margin-top: 1rem;
+    padding: 1rem;
+    overflow: auto;
+}
+
+footer {
+    font-family: Montserrat, serif;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+.input {
+    padding: 2em;
+    background-color: var(--datatable-dark-cell-color);
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    padding-left: 2em;
+    padding-bottom: 2em;
+    padding-right: 2em;
+    z-index: 4;
+    opacity: 0.3;
+    display: none;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+.close-btn:before, .close-btn:after {
+    position: fixed;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #333;
+}
+
+.close-btn:before {
+    transform: rotate(45deg);
+}
+
+.close-btn:after {
+    transform: rotate(-45deg);
+}
+
+#vertical-navigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+    position: relative
+}
+
+
+/* CSS for each Parent Item */
+#vertical-navigation li {
+    float: left;
+    position: relative;
+}
+
+#vertical-navigation li a {
+    float: left;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #666;
+    text-transform: uppercase;
+    padding: 4px 9px 4px 9px;
+    margin-left: 2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*
+Change background color and font color
+of parent items when mouse hover
+*/
+#vertical-navigation li:hover a,
+#vertical-navigation li a:hover {
+    color: #ff5533;
+}
+
+/*
+Apply to group of Child Items
+Each Child Item will be invisible by default
+*/
+#vertical-navigation ul {
+    display: none;
+}
+
+/* Each Child Item will be visible if mouse hover */
+#vertical-navigation li:hover ul {
+    display: block;
+}
+
+#vertical-navigation ul {
+    float: none;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    top: 1.8em;
+    left: 0;
+}
+
+#vertical-navigation ul li {
+    float: none;
+    clear: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    color: #999;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 2;
+}
+
+/*
+Reset and re style
+link of each child item
+*/
+#vertical-navigation li:hover ul li a,
+#vertical-navigation ul li a {
+    line-height: 200%;
+    display: block;
+    padding: 0 6px 0 0;
+    float: none;
+    text-transform: lowercase;
+    color: #999;
+    background: none;
+}
+
+#vertical-navigation li:hover ul li a:hover,
+#vertical-navigation ul li a:hover {
+    background: none;
+    color: #4481ff;
+}
+
+#notfound {
+    position: relative;
+    height: 70vh;
+    text-align: center;
+}
+
+#notfound .notfound {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+.notfound {
+    max-width: 767px;
+    width: 100%;
+    line-height: 1.4;
+    padding: 0 15px;
+}
+
+.notfound .notfound-404 {
+    position: relative;
+    height: 150px;
+    line-height: 150px;
+    margin-bottom: 50px;
+}
+
+.notfound .notfound-404 h1 {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 186px;
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    background: url('../img/text.png');
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: cover;
+    background-position: center;
+}
+
+.notfound h2 {
+    font-family: Montserrat, serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.notfound p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.notfound a {
+    font-family: Montserrat, serif;
+    display: inline-block;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    background: #5c91fe;
+    padding: 10px 40px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 1px;
+    margin-top: 15px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+}
+
+.notfound a:hover {
+    opacity: 0.8;
+}
+
