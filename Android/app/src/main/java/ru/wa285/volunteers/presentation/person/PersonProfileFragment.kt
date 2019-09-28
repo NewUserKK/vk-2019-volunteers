@@ -1,7 +1,9 @@
 package ru.wa285.volunteers.presentation.person
 
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.content_profile.view.*
 import kotlinx.android.synthetic.main.fragment_person_authorization.view.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.coroutines.Dispatchers
@@ -10,6 +12,8 @@ import kotlinx.coroutines.withContext
 import org.kodein.di.generic.instance
 import ru.wa285.volunteers.R
 import ru.wa285.volunteers.data.common.exception.IncorrectCredentialsException
+import ru.wa285.volunteers.domain.achievement.AchievementRepository
+import ru.wa285.volunteers.domain.achievement.model.Achievement
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
@@ -25,6 +29,10 @@ class ProfileFragment : AbstractFragment() {
     override val layoutResId: Int = R.layout.fragment_profile
 
     private val personRepository: PersonRepository by instance()
+    private val achievementsRepository: AchievementRepository by instance()
+
+    private val achievementsList = mutableListOf<Achievement>()
+    lateinit var achievementRecyclerViewAdapter: ProfileAchievementListRecyclerViewAdapter
 
     override fun View.setupFragment() {
         val loggedUser = personRepository.getLoggedUser()
@@ -37,6 +45,14 @@ class ProfileFragment : AbstractFragment() {
 
     private fun View.setupProfile(person: Person) {
         profile_container.switchTo(profile_content)
+        achievementRecyclerViewAdapter = ProfileAchievementListRecyclerViewAdapter(achievementsList).apply {
+            onClickListener = {
+                //TODO: показывать какую-то плашку с инфой об ачивке
+                Toast.makeText(context, it.name + "\n" + it.description, Toast.LENGTH_SHORT).show()
+            }
+        }
+        content_profile_achievements_list.adapter = achievementRecyclerViewAdapter
+        fillAchievements(person)
     }
 
     private fun View.setupAuthFragment() {
@@ -73,6 +89,23 @@ class ProfileFragment : AbstractFragment() {
                     else -> {
                     }
                 }.also { authorized.error.printStackTrace() }
+            }
+        }
+    }
+
+    private fun fillAchievements(person: Person) {
+        launch {
+            val result = withContext(Dispatchers.IO) {
+                achievementsRepository.getAll(person)
+            }
+            when (result) {
+                is OperationResult.Success -> {
+                    achievementsList += result.value
+                    achievementRecyclerViewAdapter.notifyDataSetChanged()
+                }
+                is OperationResult.Failure -> {
+                    Toast.makeText(context, result.error.message, Toast.LENGTH_LONG).show()
+                }
             }
         }
     }
