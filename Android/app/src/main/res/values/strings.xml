@@ -43,6 +43,7 @@
     <string name="edit_password">Введите пароль</string>
     <string name="authorization_social_networks_suggest">Авторизоваться через\n социальные сети:</string>
     <string name="authorization_enter">Войти</string>
+    <string name="profile_favourite_museums">Избранные музеи</string>
 
     <plurals name="numberOfMembers">
         <item quantity="one">%d участник</item>

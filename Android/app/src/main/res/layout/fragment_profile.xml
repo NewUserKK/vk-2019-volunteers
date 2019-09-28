@@ -12,7 +12,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp" >
+            android:padding="16dp" >
 
             <ru.wa285.volunteers.presentation.common.view.AvatarView
                 android:id="@+id/profile_avatar_view"
@@ -22,7 +22,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintHorizontal_bias="0"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="12dp"
                 app:layout_constraintEnd_toStartOf="@id/profile_avatar_name"
                 android:text="@string/hello_blank_fragment" />
 
@@ -44,8 +44,32 @@
                 app:layout_constraintTop_toBottomOf="@id/profile_avatar_view"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
+                android:textSize="28sp"
                 tools:text="Test rating" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/profile_achievements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/profile_rating"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_list_achievement">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/profile_favourite_museums"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/profile_achievements"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="12dp"
+                android:textSize="28sp"
+                android:text="@string/profile_favourite_museums" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
