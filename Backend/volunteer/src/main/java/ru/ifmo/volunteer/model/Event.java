@@ -1,6 +1,5 @@
 package ru.ifmo.volunteer.model;
 
-import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,9 +17,9 @@ public class Event {
   @JoinColumn(name = "museum_id")
   private Museum museum;
 
-  private LocalDate startDate;
+  private Long startDate;
 
-  private LocalDate endDate;
+  private Long endDate;
 
   private Long volunteersRequired;
 
@@ -62,19 +61,19 @@ public class Event {
     this.museum = museum;
   }
 
-  public LocalDate getStartDate() {
+  public Long getStartDate() {
     return startDate;
   }
 
-  public void setStartDate(LocalDate startDate) {
+  public void setStartDate(Long startDate) {
     this.startDate = startDate;
   }
 
-  public LocalDate getEndDate() {
+  public Long getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(LocalDate endDate) {
+  public void setEndDate(Long endDate) {
     this.endDate = endDate;
   }
 

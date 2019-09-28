@@ -1,6 +1,5 @@
 package ru.ifmo.volunteer.model;
 
-import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +18,7 @@ public class Volunteer {
 
   private String patronymic;
 
-  private LocalDate birthday;
+  private Long birthday;
 
   private String socialLink;
 
@@ -89,11 +88,11 @@ public class Volunteer {
     this.patronymic = patronymic;
   }
 
-  public LocalDate getBirthday() {
+  public Long getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(LocalDate birthday) {
+  public void setBirthday(Long birthday) {
     this.birthday = birthday;
   }
 

@@ -1,6 +1,5 @@
 package ru.ifmo.volunteer.model;
 
-import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +26,7 @@ public class User {
 
   private String photoLink;
 
-  private LocalDate birthday;
+  private Long birthday;
 
   private String login;
 
@@ -107,11 +106,11 @@ public class User {
     this.photoLink = photoLink;
   }
 
-  public LocalDate getBirthday() {
+  public Long getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(LocalDate birthday) {
+  public void setBirthday(Long birthday) {
     this.birthday = birthday;
   }
 
