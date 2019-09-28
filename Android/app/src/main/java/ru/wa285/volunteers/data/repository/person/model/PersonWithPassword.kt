@@ -7,5 +7,6 @@ import ru.wa285.volunteers.domain.person.model.Person
 
 data class PersonWithPassword @JsonCreator constructor(
     @JsonUnwrapped val person: Person,
-    @JsonProperty("password") val password: String
+    @JsonProperty("password") val password: String,
+    @JsonProperty("vkToken") val vkToken: String? = null
 )

@@ -18,6 +18,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name="ru.wa285.volunteers.presentation.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
