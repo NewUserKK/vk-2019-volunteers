@@ -1,8 +1,10 @@
 package ru.wa285.volunteers.presentation.person
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.content_profile.*
 import kotlinx.android.synthetic.main.content_profile.view.*
 import kotlinx.android.synthetic.main.fragment_person_authorization.view.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
@@ -19,6 +21,7 @@ import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
+import ru.wa285.volunteers.domain.person.model.fullName
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
 import ru.wa285.volunteers.presentation.common.hide
@@ -55,8 +58,7 @@ class ProfileFragment : AbstractFragment() {
             }
         }
         profile_achievements_list.adapter = achievementRecyclerViewAdapter
-        profile_name.text = person.name
-        profile_avatar_view.value = NamePicture(person.name, person.avatarUri)
+        fillFields(person)
         fillAchievements(person)
         profile_favourite_museum_list_title.setOnClickListener {
             requireParentFragment().findNavController().navigate(
@@ -81,6 +83,7 @@ class ProfileFragment : AbstractFragment() {
         requireParentFragment().findNavController().navigate(action)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun View.authorizePerson() {
         launch {
             val authorized = withContext(Dispatchers.IO) {
@@ -104,6 +107,22 @@ class ProfileFragment : AbstractFragment() {
                     else -> {}
                 }.also { authorized.error.printStackTrace() }
             }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun fillFields(person: Person) {
+        profile_fullname.text = person.fullName()
+        profile_avatar_view.value = NamePicture(person.name, person.avatarUri)
+        profile_login.text = "@ ${person.login}"
+        profile_birthday.text = "Дата рождения: ${person.birthday}"
+        val email = person.email
+        if (email != null) {
+            profile_email.text = "E-mail: $email"
+        }
+        val phone = person.phone
+        if (phone != null) {
+            profile_phone.text = "Номер телефона: $phone"
         }
     }
 

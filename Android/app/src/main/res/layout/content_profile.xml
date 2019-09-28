@@ -12,25 +12,66 @@
 
         <ru.wa285.volunteers.presentation.common.view.AvatarView
             android:id="@+id/profile_avatar_view"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginEnd="10dp"
             app:layout_constraintBottom_toTopOf="@id/profile_rating"
-            app:layout_constraintEnd_toStartOf="@id/profile_name"
+            app:layout_constraintEnd_toStartOf="@id/profile_fullname"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/profile_name"
+            android:id="@+id/profile_fullname"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="@+id/profile_avatar_view"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/profile_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/profile_avatar_view"
             app:layout_constraintTop_toTopOf="@+id/profile_avatar_view"
-            tools:text="OLEG" />
+            android:textSize="24sp"
+            tools:text="Oleg Ivanov" />
+
+        <TextView
+            android:id="@+id/profile_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/profile_fullname"
+            app:layout_constraintStart_toStartOf="@id/profile_fullname"
+            app:layout_constraintBottom_toBottomOf="@id/profile_avatar_view"
+            tools:text="\@Socolio" />
+
+        <TextView
+            android:id="@+id/profile_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/profile_avatar_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/profile_email"
+            android:layout_marginTop="8dp"
+            tools:text="19.09.1990" />
+
+        <TextView
+            android:id="@+id/profile_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/profile_birthday"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/profile_phone"
+            tools:text="wafggeegdf@eeegefwef.wfjkw" />
+
+        <TextView
+            android:id="@+id/profile_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/profile_email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/profile_rating"
+            tools:text="+657899876" />
 
         <TextView
             android:id="@+id/profile_rating"
@@ -42,7 +83,7 @@
             app:layout_constraintBottom_toTopOf="@id/profile_achievements_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile_avatar_view"
+            app:layout_constraintTop_toBottomOf="@id/profile_phone"
             tools:text="Test rating" />
 
         <androidx.recyclerview.widget.RecyclerView
