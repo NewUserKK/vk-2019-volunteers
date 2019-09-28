@@ -65,7 +65,7 @@ def seed(f):
   roles_length = len(roles)
   for i in range(roles_length):
     f.write(template % (roles[i]))
-  template = "INSERT INTO MUSEUM(city, location, building, hours, photo) VALUES('%s', '%s', '%s', '%s', '%s');\n"
+  template = "INSERT INTO MUSEUM(city, location, building, hours, photo, name) VALUES('%s', '%s', '%s', '%s', '%s', 'Политех');\n"
   museums_length = random.randint(10, 30)
   for i in range(museums_length):
     f.write(template % (generate_random(cities), generate_random(locations), generate_random(buildings), generate_random(hours), generate_random(photos)))
@@ -130,7 +130,7 @@ def init(f):
 
 
 def main():
-  f = open("../data.sql", "w+", encoding="utf8")
+  f = open("data.sql", "w+", encoding="utf8")
   init(f)
   seed(f)
   f.close()
