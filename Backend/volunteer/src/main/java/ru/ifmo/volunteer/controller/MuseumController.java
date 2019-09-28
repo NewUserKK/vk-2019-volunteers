@@ -41,7 +41,7 @@ public class MuseumController {
       produces = "application/json",
       response = Museum.class)
   @PostMapping
-  public Museum create(Museum museum) {
+  public Museum create(@RequestBody Museum museum) {
     return museumService.add(museum);
   }
 
