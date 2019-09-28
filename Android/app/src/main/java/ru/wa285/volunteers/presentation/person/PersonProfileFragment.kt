@@ -14,6 +14,7 @@ import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
 import ru.wa285.volunteers.presentation.common.AbstractFragment
+import ru.wa285.volunteers.presentation.common.show
 import ru.wa285.volunteers.presentation.common.switchTo
 
 
@@ -57,7 +58,7 @@ class ProfileFragment : AbstractFragment() {
                 is OperationResult.Success -> setupProfile(authorized.value)
                 is OperationResult.Failure -> when (authorized.error) {
                     is IncorrectCredentialsException -> {
-
+                        person_authorization_error.show()
                     }
                     else -> {
                     }
