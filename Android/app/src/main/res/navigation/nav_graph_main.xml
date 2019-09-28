@@ -94,7 +94,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFavoriteMuseumListFragment"
-        android:name="ru.wa285.volunteers.ProfileFavoriteMuseumListFragment"
+        android:name="ru.wa285.volunteers.presentation.person.ProfileFavoriteMuseumListFragment"
         android:label="ProfileFavoriteMuseumListFragment" >
         <argument
             android:name="person"
