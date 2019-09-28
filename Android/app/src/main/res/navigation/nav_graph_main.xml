@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/eventListFragment"
         android:name="ru.wa285.volunteers.presentation.event.EventListFragment"
-        android:label="fragment_event_list"
+        android:label="Мероприятия"
         tools:layout="@layout/fragment_event_list" />
     <fragment
         android:id="@+id/eventDetailFragment"
         android:name="ru.wa285.volunteers.presentation.event.EventDetailFragment"
-        android:label="fragment_event_detail"
+        android:label="Детали мероприятия"
         tools:layout="@layout/fragment_event_detail" >
         <action
             android:id="@+id/action_eventDetailFragment_to_personRegistrationFragment"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="ru.wa285.volunteers.presentation.person.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Профиль"
         tools:layout="@layout/fragment_profile" >
         <argument
             android:name="person"
@@ -41,17 +41,17 @@
     <fragment
         android:id="@+id/personRegistrationFragment"
         android:name="ru.wa285.volunteers.presentation.person.PersonRegistrationFragment"
-        android:label="fragment_person_registration"
+        android:label="Регистрация"
         tools:layout="@layout/fragment_person_registration" />
     <fragment
         android:id="@+id/museumListFragment"
         android:name="ru.wa285.volunteers.presentation.museum.MuseumListFragment"
-        android:label="fragment_museum_list"
+        android:label="Музеи"
         tools:layout="@layout/fragment_museum_list" />
     <fragment
         android:id="@+id/museumDetailFragment"
         android:name="ru.wa285.volunteers.presentation.museum.MuseumDetailFragment"
-        android:label="fragment_museum_detail"
+        android:label="Информация о музее"
         tools:layout="@layout/fragment_museum_detail" >
         <argument
             android:name="museum"
@@ -60,7 +60,7 @@
     <fragment
         android:id="@+id/bottomNavigationHostFragment"
         android:name="ru.wa285.volunteers.presentation.BottomNavigationHostFragment"
-        android:label="fragment_bottom_navigation_host"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_bottom_navigation_host" >
         <action
             android:id="@+id/action_bottomNavigationHostFragment_to_eventDetailFragment"
@@ -95,7 +95,7 @@
     <fragment
         android:id="@+id/profileFavoriteMuseumListFragment"
         android:name="ru.wa285.volunteers.presentation.person.ProfileFavoriteMuseumListFragment"
-        android:label="ProfileFavoriteMuseumListFragment" >
+        android:label="Избранные музеи">
         <argument
             android:name="person"
             app:argType="ru.wa285.volunteers.domain.person.model.Person" />
