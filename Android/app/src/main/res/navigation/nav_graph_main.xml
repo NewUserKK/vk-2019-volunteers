@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/eventListFragment"
-        android:name="ru.newuserkk.volunteers.presentation.event.EventListFragment"
+        android:name="ru.wa285.volunteers.presentation.event.EventListFragment"
         android:label="fragment_event_list"
         tools:layout="@layout/fragment_event_list" />
     <fragment
         android:id="@+id/eventDetailFragment"
-        android:name="ru.newuserkk.volunteers.presentation.event.EventDetailFragment"
+        android:name="ru.wa285.volunteers.presentation.event.EventDetailFragment"
         android:label="fragment_event_detail"
         tools:layout="@layout/fragment_event_detail" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="ru.newuserkk.volunteers.presentation.person.ProfileFragment"
+        android:name="ru.wa285.volunteers.presentation.person.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <argument
@@ -37,22 +37,22 @@
     </fragment>
     <fragment
         android:id="@+id/personRegistrationFragment"
-        android:name="ru.newuserkk.volunteers.presentation.person.PersonRegistrationFragment"
+        android:name="ru.wa285.volunteers.presentation.person.PersonRegistrationFragment"
         android:label="fragment_person_registration"
         tools:layout="@layout/fragment_person_registration" />
     <fragment
         android:id="@+id/museumListFragment"
-        android:name="ru.newuserkk.volunteers.presentation.museum.MuseumListFragment"
+        android:name="ru.wa285.volunteers.presentation.museum.MuseumListFragment"
         android:label="fragment_museum_list"
         tools:layout="@layout/fragment_museum_list" />
     <fragment
         android:id="@+id/museumDetailFragment"
-        android:name="ru.newuserkk.volunteers.presentation.museum.MuseumDetailFragment"
+        android:name="ru.wa285.volunteers.presentation.museum.MuseumDetailFragment"
         android:label="fragment_museum_detail"
         tools:layout="@layout/fragment_museum_detail" />
     <fragment
         android:id="@+id/bottomNavigationHostFragment"
-        android:name="ru.newuserkk.volunteers.presentation.BottomNavigationHostFragment"
+        android:name="ru.wa285.volunteers.presentation.BottomNavigationHostFragment"
         android:label="fragment_bottom_navigation_host"
         tools:layout="@layout/fragment_bottom_navigation_host" >
         <action
@@ -64,12 +64,12 @@
     </fragment>
     <fragment
         android:id="@+id/currentEventsFragment"
-        android:name="ru.newuserkk.volunteers.presentation.event.CurrentEventsFragment"
+        android:name="ru.wa285.volunteers.presentation.event.CurrentEventsFragment"
         android:label="fragment_current_events"
         tools:layout="@layout/fragment_current_events" />
     <fragment
         android:id="@+id/eventParticipantFragment"
-        android:name="ru.newuserkk.volunteers.presentation.event.participant.EventParticipantFragment"
+        android:name="ru.wa285.volunteers.presentation.event.participant.EventParticipantFragment"
         android:label="EventParticipantFragment"
         tools:layout="@layout/fragment_event_participant">
         <action

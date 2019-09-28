@@ -15,7 +15,7 @@
         android:textSize="35sp"
         tools:text="Polikek" />
 
-    <ru.newuserkk.volunteers.presentation.common.view.AvatarView
+    <ru.wa285.volunteers.presentation.common.view.AvatarView
         android:id="@+id/museum_detail_avatar_view"
         android:layout_width="@dimen/avatar_view_size"
         android:layout_height="@dimen/avatar_view_size"
