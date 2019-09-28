@@ -23,6 +23,12 @@ public class EventController {
     this.eventService = eventService;
   }
 
+//  @ApiOperation(value = "Добавить ответственного", produces = "application/json")
+//  @PostMapping("/addResponsible")
+//  public Event addResponsible(@PathVariable Long eventId, @RequestParam Long userId) {
+//
+//  }
+
   @ApiOperation(value = "Подписаться на событие", produces = "application/json")
   @PostMapping("/subscribe")
   public void subscribe(@RequestParam Long userId, @RequestParam Long eventId) {
