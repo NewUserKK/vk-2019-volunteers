@@ -29,6 +29,17 @@ public class EventController {
 //
 //  }
 
+  @ApiOperation(
+      value = "Получение списка событий по музею",
+      produces = "application/json",
+      response = Event.class,
+      responseContainer = "List"
+  )
+  @GetMapping("{id}/events")
+  public List<Event> getEventsByMuseum(@PathVariable Long id) {
+    return eventService.getEventsByMuseum(id);
+  }
+
   @ApiOperation(value = "Подписаться на событие", produces = "application/json")
   @PostMapping("/subscribe")
   public void subscribe(@RequestParam Long userId, @RequestParam Long eventId) {
@@ -36,7 +47,7 @@ public class EventController {
   }
 
   @ApiOperation(value = "Отписаться от события", produces = "application/json")
-  @PostMapping("/unsubscribe")
+  @DeleteMapping("/unsubscribe")
   public void unsubscribe(@RequestParam Long userId, @RequestParam Long eventId) {
     eventService.unsubscribe(userId, eventId);
   }
@@ -67,6 +78,14 @@ public class EventController {
   @GetMapping("{id}/actual")
   public List<Event> getActualForUser(@PathVariable Long id) {
     return eventService.getActualForUser(id);
+  }
+
+  @ApiOperation(
+      value = "Возвращает историю событий, в которых участвовал пользователь"
+  )
+  @GetMapping("{id}/history")
+  public List<Event> getHistoryForUser(@PathVariable Long id) {
+    return eventService.getHistoryForUser(id);
   }
 
   @ApiOperation(

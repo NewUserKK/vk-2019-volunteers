@@ -30,4 +30,8 @@ public interface EventRepository extends JpaRepository<Event, Long> {
   void unsubscribe(@Param("userId") Long userId, @Param("eventId") Long eventId);
 
 
+  @Query(
+      value = "SELECT * FROM event WHERE museum_id = :id", nativeQuery = true
+  )
+  List<Event> findAllByMuseumId(@Param("id") Long id);
 }

@@ -66,5 +66,15 @@ public class EventService {
     eventRepository.unsubscribe(userId, eventId);
   }
 
+  public List<Event> getHistoryForUser(Long id) {
+    return eventRepository.findAllByUserId(id).stream()
+        .filter(Event::getFinished)
+        .collect(Collectors.toList());
+  }
 
+  public List<Event> getEventsByMuseum(Long id) {
+    return eventRepository.findAllByMuseumId(id).stream()
+        .filter(event -> !event.getFinished())
+        .collect(Collectors.toList());
+  }
 }
