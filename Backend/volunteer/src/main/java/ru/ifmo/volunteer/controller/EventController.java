@@ -64,7 +64,7 @@ public class EventController {
       produces = "application/json",
       response = Event.class,
       responseContainer = "List")
-  @GetMapping("/actual")
+  @GetMapping("{id}/actual")
   public List<Event> getActualForUser(@PathVariable Long id) {
     return eventService.getActualForUser(id);
   }

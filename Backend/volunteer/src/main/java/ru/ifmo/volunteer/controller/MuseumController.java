@@ -30,7 +30,7 @@ public class MuseumController {
       response = Museum.class,
       responseContainer = "List"
   )
-  @GetMapping("/favourites")
+  @GetMapping("{id}/favourites")
   public List<Museum> getFavourites(@PathVariable Long id) {
     return museumService.getFavourites(id);
   }

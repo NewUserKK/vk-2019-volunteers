@@ -35,6 +35,18 @@ public class UserController {
   }
 
   @ApiOperation(
+      value = "Получение списка друзей на мероприятии",
+      produces = "application/json",
+      response = User.class,
+      responseContainer = "List"
+  )
+  @GetMapping("/participatedFriend")
+  public List<User> getParticipatedFriend(@RequestParam Long eventId, @RequestParam Long userId) {
+    return userService.getParticipantsFriendsById(eventId, userId);
+  }
+
+
+  @ApiOperation(
       value = "Создает представителя музея и возвращает его",
       produces = "application/json",
       response = User.class)
@@ -93,5 +105,15 @@ public class UserController {
   @DeleteMapping
   public void delete(final Long id) {
     userService.deleteById(id);
+  }
+
+  @ApiOperation(
+      value = "Возвращает список участников для события",
+      produces = "application/json",
+      response = User.class,
+      responseContainer = "List")
+  @GetMapping("{id}/participants")
+  public List<User> getParticipantsById(@PathVariable Long id) {
+    return userService.getParticipantsById(id);
   }
 }

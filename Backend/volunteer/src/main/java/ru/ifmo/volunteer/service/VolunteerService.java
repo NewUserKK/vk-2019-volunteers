@@ -48,7 +48,5 @@ public class VolunteerService {
     return volunteerRepository.save(volunteer);
   }
 
-  public List<Volunteer> getParticipantsById(Long id) {
-    return volunteerRepository.getParticipantsById(id);
-  }
+
 }

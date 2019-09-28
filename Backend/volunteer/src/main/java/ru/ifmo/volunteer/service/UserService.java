@@ -69,4 +69,12 @@ public class UserService {
   public void addToFriends(Long userId, Long friendId) {
     userRepository.addToFriends(userId, friendId);
   }
+
+  public List<User> getParticipantsById(Long id) {
+    return userRepository.getParticipantsById(id);
+  }
+
+  public List<User> getParticipantsFriendsById(Long eventId, Long userId) {
+    return userRepository.getParticipantsFriendsById(eventId, userId);
+  }
 }

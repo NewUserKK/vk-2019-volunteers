@@ -25,8 +25,6 @@ public class VolunteerController {
     this.volunteerService = volunteerService;
   }
 
-
-
   @ApiOperation(
       value = "Добавляет волонтёра и возвращает его",
       produces = "application/json",
@@ -68,15 +66,5 @@ public class VolunteerController {
   @DeleteMapping
   public void delete(final Long id) {
     volunteerService.deleteById(id);
-  }
-
-  @ApiOperation(
-      value = "Возвращает список участников для события",
-      produces = "application/json",
-      response = Volunteer.class,
-      responseContainer = "List")
-  @GetMapping("/participants")
-  public List<Volunteer> getParticipantsById(@PathVariable Long id) {
-    return volunteerService.getParticipantsById(id);
   }
 }
