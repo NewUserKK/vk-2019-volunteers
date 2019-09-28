@@ -6,7 +6,7 @@ import java.io.Serializable
 
 data class Museum @JsonCreator constructor(
     @JsonProperty("name") val name: String,
-//    @JsonProperty("description") val description: String,
+    @JsonProperty("description") val description: String,
     // TODO: address
     @JsonProperty("city") val address: String,
     @JsonProperty("photo") val logoUri: String?,

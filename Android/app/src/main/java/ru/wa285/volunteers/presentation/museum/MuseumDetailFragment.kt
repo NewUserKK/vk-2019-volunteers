@@ -24,6 +24,6 @@ class MuseumDetailFragment : AbstractFragment() {
     override fun View.setupFragment() {
         museum_detail_name.text = museum.name
         museum_detail_avatar_view.value = NamePicture(museum.name, museum.logoUri)
-//        museum_detail_description.text = museum.description
+        museum_detail_description.text = museum.description
     }
 }

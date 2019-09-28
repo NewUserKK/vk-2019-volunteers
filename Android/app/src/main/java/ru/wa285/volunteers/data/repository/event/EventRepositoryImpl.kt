@@ -2,7 +2,7 @@ package ru.wa285.volunteers.data.repository.event
 
 import retrofit2.Retrofit
 import ru.wa285.volunteers.data.common.exception.BadResponseException
-import ru.wa285.volunteers.data.net.VolunteersEventApiService
+import ru.wa285.volunteers.data.net.EventApiService
 import ru.wa285.volunteers.data.net.toOperationResult
 import ru.wa285.volunteers.data.net.tryConnect
 import ru.wa285.volunteers.domain.common.OperationResult
@@ -10,13 +10,11 @@ import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.event.model.Event
 import ru.wa285.volunteers.domain.museum.model.Museum
 import ru.wa285.volunteers.domain.person.model.Person
-import java.io.IOException
-import java.net.ConnectException
 
 class EventRepositoryImpl(private val retrofit: Retrofit) : EventRepository {
 
-    private val retrofitService: VolunteersEventApiService =
-        retrofit.create(VolunteersEventApiService::class.java)
+    private val retrofitService: EventApiService =
+        retrofit.create(EventApiService::class.java)
 
     override suspend fun getAll(): OperationResult<List<Event>> {
         return tryConnect {

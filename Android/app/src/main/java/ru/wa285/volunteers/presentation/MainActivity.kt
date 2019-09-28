@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity(), NavHost {
         main_app_bar_layout.setExpanded(true)
         Picasso.get()
             .load(imageUri)
+            .placeholder(R.drawable.placeholder_no_image)
             .into(main_collapsing_toolbar_image)
     }
 

@@ -16,12 +16,12 @@
             android:paddingVertical="8dp">
 
             <EditText
-                android:id="@+id/authorization_request_login"
+                android:id="@+id/person_authorization_request_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/edit_login"
                 android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@id/authorization_request_password"
+                app:layout_constraintBottom_toTopOf="@id/person_authorization_request_password"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -29,43 +29,43 @@
                 app:layout_constraintVertical_chainStyle="packed" />
 
             <EditText
-                android:id="@+id/authorization_request_password"
+                android:id="@+id/person_authorization_request_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:hint="@string/edit_password"
                 android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@id/authorization_enter"
+                app:layout_constraintBottom_toTopOf="@id/person_authorization_enter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/authorization_request_login" />
+                app:layout_constraintTop_toBottomOf="@id/person_authorization_request_login" />
 
             <ImageView
-                android:id="@+id/authorization_vk"
+                android:id="@+id/person_authorization_vk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/ic_vk"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/authorization_enter"
+                app:layout_constraintEnd_toStartOf="@+id/person_authorization_enter"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/authorization_request_password" />
+                app:layout_constraintTop_toBottomOf="@id/person_authorization_request_password" />
 
             <Button
-                android:id="@+id/authorization_enter"
+                android:id="@+id/person_authorization_enter"
+                style="@style/AppTheme.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/authorization_enter_button"
-                android:text="@string/authorization_enter"
+                android:layout_marginTop="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="@string/person_authorization_enter"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/authorization_vk"
-                app:layout_constraintTop_toBottomOf="@id/authorization_request_password" />
+                app:layout_constraintStart_toEndOf="@id/person_authorization_vk"
+                app:layout_constraintTop_toBottomOf="@id/person_authorization_request_password" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -34,9 +34,9 @@ class EventListRecyclerViewAdapter(private val values: List<Event>) :
             nameView.text = item.name
             placeView.text = item.museum.address
             dateView.text = "${item.dateStart} — ${item.dateEnd}"
-            // TODO: placeholder
             Picasso.get()
                 .load(item.avatarUri)
+                .placeholder(R.drawable.placeholder_no_image)
                 .into(imageView)
             itemView.setOnClickListener {
                 onClickListener?.invoke(item)

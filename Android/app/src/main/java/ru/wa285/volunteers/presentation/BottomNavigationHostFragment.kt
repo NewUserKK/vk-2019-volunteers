@@ -20,6 +20,7 @@ class BottomNavigationHostFragment : AbstractFragment() {
         }
 
     var lastActiveFragmentTag: String? = null
+    var lastActiveFragmentId: Int = R.id.eventListFragment
 
     override fun View.setupFragment() {
         bottom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
@@ -48,8 +49,9 @@ class BottomNavigationHostFragment : AbstractFragment() {
 
         if (lastActiveFragmentTag != null) {
             val lastFragment = childFragmentManager.findFragmentByTag(lastActiveFragmentTag)
-            if (lastFragment != null)
+            if (lastFragment != null) {
                 transaction.hide(lastFragment)
+            }
         }
 
         if (!fragment.isAdded) {
@@ -60,5 +62,6 @@ class BottomNavigationHostFragment : AbstractFragment() {
 
         transaction.commit()
         lastActiveFragmentTag = tag
+        lastActiveFragmentId = itemId
     }
 }

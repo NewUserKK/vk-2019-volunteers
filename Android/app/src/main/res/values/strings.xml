@@ -42,7 +42,7 @@
     <string name="edit_login">Введите логин</string>
     <string name="edit_password">Введите пароль</string>
     <string name="authorization_social_networks_suggest">Авторизоваться через\n социальные сети:</string>
-    <string name="authorization_enter">Войти</string>
+    <string name="person_authorization_enter">Войти</string>
 
     <plurals name="numberOfMembers">
         <item quantity="one">%d участник</item>

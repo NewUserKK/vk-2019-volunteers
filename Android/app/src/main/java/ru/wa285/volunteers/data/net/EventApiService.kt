@@ -4,7 +4,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import ru.wa285.volunteers.domain.event.model.Event
 
-interface VolunteersEventApiService {
+interface EventApiService {
     @GET("event")
     fun getEvents() : Call<List<Event>>
 }
