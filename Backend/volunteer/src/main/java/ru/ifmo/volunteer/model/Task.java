@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Task {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private long id;
 
   private Long responsible;
 
@@ -23,11 +23,11 @@ public class Task {
 
   private Long eventId;
 
-  public Long getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(long id) {
     this.id = id;
   }
 

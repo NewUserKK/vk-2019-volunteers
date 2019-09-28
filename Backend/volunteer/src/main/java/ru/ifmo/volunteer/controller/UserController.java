@@ -121,6 +121,13 @@ public class UserController {
     return userService.isBlocked(userId, museumId);
   }
 
+//  @ApiOperation(
+//      value = "Забанить юзера",
+//      produces = "application/json",
+//  )
+//  @GetMapping("{id}/block")
+//  public void block(@PathVariable Long )
+
   @ApiOperation(
       value = "Возвращает список участников для события",
       produces = "application/json",

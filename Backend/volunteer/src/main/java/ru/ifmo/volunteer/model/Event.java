@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 public class Event {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private long id;
 
   @ManyToOne
   @JoinColumn(name = "museum_id")
@@ -45,11 +45,11 @@ public class Event {
     this.finished = finished;
   }
 
-  public Long getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
