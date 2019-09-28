@@ -20,7 +20,7 @@
             app:destination="@id/personRegistrationFragment" />
         <argument
             android:name="event"
-            app:argType="ru.newuserkk.volunteers.domain.event.model.Event" />
+            app:argType="ru.wa285.volunteers.domain.event.model.Event" />
         <action
             android:id="@+id/action_eventDetailFragment_to_eventParticipantFragment"
             app:destination="@id/eventParticipantFragment" />
@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_profile" >
         <argument
             android:name="person"
-            app:argType="ru.newuserkk.volunteers.domain.person.model.Person" />
+            app:argType="ru.wa285.volunteers.domain.person.model.Person" />
 
     </fragment>
     <fragment
@@ -77,6 +77,6 @@
             app:destination="@id/profileFragment" />
         <argument
             android:name="event"
-            app:argType="ru.newuserkk.volunteers.domain.event.model.Event" />
+            app:argType="ru.wa285.volunteers.domain.event.model.Event" />
     </fragment>
 </navigation>
