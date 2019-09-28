@@ -2,6 +2,7 @@ package ru.newuserkk.volunteers.presentation.event
 
 
 import android.view.View
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
 import kotlinx.coroutines.Dispatchers
@@ -9,6 +10,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.kodein.di.generic.instance
 import ru.newuserkk.volunteers.R
+import ru.newuserkk.volunteers.domain.common.OperationResult
 import ru.newuserkk.volunteers.domain.event.EventRepository
 import ru.newuserkk.volunteers.domain.event.model.Event
 import ru.newuserkk.volunteers.presentation.BottomNavigationHostFragmentDirections
@@ -35,10 +37,18 @@ class EventListFragment : AbstractFragment() {
 
     private fun loadEvents() {
         launch {
-            eventList += withContext(Dispatchers.IO) {
+            val result = withContext(Dispatchers.IO) {
                 eventRepository.getAll()
             }
-            eventAdapter.notifyDataSetChanged()
+            when (result) {
+                is OperationResult.Success -> {
+                    eventList += result.value
+                    eventAdapter.notifyDataSetChanged()
+                }
+                is OperationResult.Failure -> {
+                    Toast.makeText(context, result.error.message, Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 

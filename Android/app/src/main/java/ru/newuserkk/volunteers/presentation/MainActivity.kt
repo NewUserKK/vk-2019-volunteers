@@ -12,12 +12,14 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.squareup.picasso.Picasso
+import com.vk.api.sdk.utils.VKUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.newuserkk.volunteers.R
 import ru.newuserkk.volunteers.presentation.common.NavigationResultListener
 import ru.newuserkk.volunteers.presentation.common.hide
 import ru.newuserkk.volunteers.presentation.common.show
 import kotlin.properties.Delegates
+
 
 class MainActivity : AppCompatActivity(), NavHost {
 
@@ -33,6 +35,9 @@ class MainActivity : AppCompatActivity(), NavHost {
         main_app_bar_layout.setExpanded(false)
         main_collapsing_toolbar_layout.isTitleEnabled = false
         setupToolbar(main_collapsing_toolbar)
+        val fingerprints = VKUtils.getCertificateFingerprint(this, this.packageName)
+        println(fingerprints)
+
     }
 
     private fun setupToolbar(toolbar: Toolbar) {

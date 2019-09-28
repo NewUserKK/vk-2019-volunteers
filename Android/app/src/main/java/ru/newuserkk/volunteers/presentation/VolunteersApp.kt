@@ -1,11 +1,13 @@
 package ru.newuserkk.volunteers.presentation
 
 import android.app.Application
+import android.content.res.Resources
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
+import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -28,6 +30,7 @@ class VolunteersApp : Application() {
             .addConverterFactory(JacksonConverterFactory.create(jacksonMapper))
             .build()
         kodein = Kodein {
+            bind<Resources>() with provider { resources }
             bind<Retrofit>() with instance(retrofit)
             bind<EventRepository>() with singleton { EventRepositoryImpl(instance()) }
         }

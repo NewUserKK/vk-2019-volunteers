@@ -16,25 +16,24 @@
         android:label="fragment_event_detail"
         tools:layout="@layout/fragment_event_detail" >
         <action
-            android:id="@+id/action_eventDetailFragment_to_eventParticipantFragment"
-            app:destination="@id/eventParticipantFragment" />
-        <action
             android:id="@+id/action_eventDetailFragment_to_personRegistrationFragment"
             app:destination="@id/personRegistrationFragment" />
         <argument
             android:name="event"
             app:argType="ru.newuserkk.volunteers.domain.event.model.Event" />
+        <action
+            android:id="@+id/action_eventDetailFragment_to_eventParticipantFragment"
+            app:destination="@id/eventParticipantFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="ru.newuserkk.volunteers.presentation.person.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/eventParticipantFragment"
-        android:name="ru.newuserkk.volunteers.presentation.event.EventParticipantFragment"
-        android:label="fragment_event_participant"
-        tools:layout="@layout/fragment_event_participant" />
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="person"
+            app:argType="ru.newuserkk.volunteers.domain.person.model.Person" />
+    </fragment>
     <fragment
         android:id="@+id/personRegistrationFragment"
         android:name="ru.newuserkk.volunteers.presentation.person.PersonRegistrationFragment"
@@ -67,4 +66,16 @@
         android:name="ru.newuserkk.volunteers.presentation.event.CurrentEventsFragment"
         android:label="fragment_current_events"
         tools:layout="@layout/fragment_current_events" />
+    <fragment
+        android:id="@+id/eventParticipantFragment"
+        android:name="ru.newuserkk.volunteers.presentation.event.participant.EventParticipantFragment"
+        android:label="EventParticipantFragment"
+        tools:layout="@layout/fragment_event_participant">
+        <action
+            android:id="@+id/action_eventParticipantFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <argument
+            android:name="event"
+            app:argType="ru.newuserkk.volunteers.domain.event.model.Event" />
+    </fragment>
 </navigation>

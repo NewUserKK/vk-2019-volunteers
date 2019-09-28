@@ -1,4 +1,4 @@
-package ru.newuserkk.volunteers.presentation.event
+package ru.newuserkk.volunteers.presentation.event.participant
 
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +16,9 @@ class EventParticipantRecyclerViewAdapter(private val values: List<Person>) : Re
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_participant, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int {
