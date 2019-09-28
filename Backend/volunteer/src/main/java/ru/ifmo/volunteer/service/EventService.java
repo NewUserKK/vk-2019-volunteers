@@ -88,4 +88,8 @@ public class EventService {
   public Boolean isFavourite(Long eventId, Long userId) {
     return eventRepository.isFavourite(eventId, userId) != null;
   }
+
+  public Event addResponsible(Long eventId, Long userId) {
+    return eventRepository.addResponsible(eventId, userId);
+  }
 }
