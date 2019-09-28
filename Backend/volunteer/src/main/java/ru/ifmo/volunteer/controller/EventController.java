@@ -64,7 +64,7 @@ public class EventController {
       produces = "application/json",
       response = Event.class)
   @PostMapping
-  public Event create(Event event) {
+  public Event create(@RequestBody Event event) {
     return eventService.add(event);
   }
 
