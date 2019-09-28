@@ -53,8 +53,14 @@ class ProfileFragment : AbstractFragment() {
                 Toast.makeText(context, it.name + "\n" + it.description, Toast.LENGTH_SHORT).show()
             }
         }
-        content_profile_achievements_list.adapter = achievementRecyclerViewAdapter
+        profile_achievements_list.adapter = achievementRecyclerViewAdapter
         fillAchievements(person)
+        profile_favourite_museum_list_title.setOnClickListener {
+            requireParentFragment().findNavController().navigate(
+                BottomNavigationHostFragmentDirections
+                    .actionBottomNavigationHostFragmentToProfileFavoriteMuseumListFragment(person)
+            )
+        }
     }
 
     private fun View.setupAuthFragment() {

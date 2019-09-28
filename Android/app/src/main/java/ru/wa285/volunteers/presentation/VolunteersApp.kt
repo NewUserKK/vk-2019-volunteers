@@ -12,19 +12,23 @@ import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
+import ru.wa285.volunteers.data.repository.achievement.AchievementRepositoryImpl
 import ru.wa285.volunteers.data.repository.event.EventRepositoryImpl
 import ru.wa285.volunteers.data.repository.museum.MuseumRepositoryImpl
 import ru.wa285.volunteers.data.repository.person.PersonRepositoryImpl
+import ru.wa285.volunteers.domain.achievement.AchievementRepository
 import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.museum.MuseumRepository
 import ru.wa285.volunteers.domain.museum.model.Museum
 import ru.wa285.volunteers.domain.person.PersonRepository
+import java.util.*
 
 class VolunteersApp : Application() {
 
     companion object {
         lateinit var kodein: Kodein
         lateinit var retrofit: Retrofit
+        lateinit var locale: Locale
     }
 
     override fun onCreate() {
@@ -36,12 +40,15 @@ class VolunteersApp : Application() {
             .baseUrl("http://demo135.foxtrot.vkhackathon.com:8080/api/v1/")
             .addConverterFactory(JacksonConverterFactory.create(jacksonMapper))
             .build()
+        locale = resources.configuration.locales[0]
         kodein = Kodein {
+            bind<Locale>() with instance(locale)
             bind<Resources>() with provider { resources }
             bind<Retrofit>() with instance(retrofit)
             bind<EventRepository>() with singleton { EventRepositoryImpl(instance()) }
             bind<MuseumRepository>() with singleton { MuseumRepositoryImpl(instance()) }
             bind<PersonRepository>() with singleton { PersonRepositoryImpl(instance()) }
+            bind<AchievementRepository>() with singleton { AchievementRepositoryImpl(instance()) }
         }
     }
 }

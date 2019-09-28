@@ -33,6 +33,9 @@
         <argument
             android:name="person"
             app:argType="ru.wa285.volunteers.domain.person.model.Person" />
+        <action
+            android:id="@+id/action_profileFragment_to_profileFavoriteMuseumListFragment"
+            app:destination="@id/profileFavoriteMuseumListFragment" />
 
     </fragment>
     <fragment
@@ -68,6 +71,9 @@
         <action
             android:id="@+id/action_bottomNavigationHostFragment_to_personRegistrationFragment"
             app:destination="@id/personRegistrationFragment" />
+        <action
+            android:id="@+id/action_bottomNavigationHostFragment_to_profileFavoriteMuseumListFragment"
+            app:destination="@id/profileFavoriteMuseumListFragment" />
     </fragment>
     <fragment
         android:id="@+id/currentEventsFragment"
@@ -85,5 +91,16 @@
         <argument
             android:name="event"
             app:argType="ru.wa285.volunteers.domain.event.model.Event" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFavoriteMuseumListFragment"
+        android:name="ru.wa285.volunteers.ProfileFavoriteMuseumListFragment"
+        android:label="ProfileFavoriteMuseumListFragment" >
+        <argument
+            android:name="person"
+            app:argType="ru.wa285.volunteers.domain.person.model.Person" />
+        <action
+            android:id="@+id/action_profileFavoriteMuseumListFragment_to_museumDetailFragment"
+            app:destination="@id/museumDetailFragment" />
     </fragment>
 </navigation>

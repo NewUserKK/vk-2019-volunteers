@@ -11,6 +11,8 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_list_event.view.*
 import ru.wa285.volunteers.R
 import ru.wa285.volunteers.domain.event.model.Event
+import ru.wa285.volunteers.presentation.VolunteersApp
+import ru.wa285.volunteers.presentation.common.toLocalizedString
 
 class EventListRecyclerViewAdapter(private val values: List<Event>) :
     RecyclerView.Adapter<EventListRecyclerViewAdapter.ViewHolder>() {
@@ -33,7 +35,9 @@ class EventListRecyclerViewAdapter(private val values: List<Event>) :
         holder.apply {
             nameView.text = item.name
             placeView.text = item.museum.address
-            dateView.text = "${item.dateStart} — ${item.dateEnd}"
+            val startDate = item.dateStart.toLocalizedString(VolunteersApp.locale)
+            val endDate = item.dateEnd.toLocalizedString(VolunteersApp.locale)
+            dateView.text = "$startDate — $endDate"
             Picasso.get()
                 .load(item.avatarUri)
                 .placeholder(R.drawable.placeholder_no_image)
