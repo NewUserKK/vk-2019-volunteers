@@ -6,13 +6,13 @@ import ru.newuserkk.volunteers.domain.person.model.Person
 
 interface EventRepository {
 
-    fun getAll(): List<Event>
+    suspend fun getAll(): List<Event>
 
-    fun getAllByMuseum(museum: Museum): List<Event>
+    suspend fun getAllByMuseum(museum: Museum): List<Event>
 
-    fun addEvent(event: Event): Event
+    suspend fun addEvent(event: Event): Event
 
-    fun getParticipantsByEvent(event: Event): List<Person>
+    suspend fun getParticipantsByEvent(event: Event): List<Person>
 
-    fun getFriendsByEvent(event: Event): List<Person>
+    suspend fun getFriendsByEvent(event: Event): List<Person>
 }

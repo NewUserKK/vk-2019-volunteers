@@ -1,8 +1,12 @@
 package ru.newuserkk.volunteers.domain.museum.model
 
-data class Museum(
-    val name: String,
-    val address: String,
-    val logoUri: String,
-    val id: Long
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonProperty
+
+data class Museum @JsonCreator constructor(
+    @JsonProperty("name") val name: String,
+    // TODO: address
+    @JsonProperty("city") val address: String,
+    @JsonProperty("photo") val logoUri: String,
+    @JsonProperty("id") val id: Long
 )
