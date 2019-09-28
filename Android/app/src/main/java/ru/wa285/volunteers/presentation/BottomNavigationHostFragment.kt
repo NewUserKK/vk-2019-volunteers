@@ -4,11 +4,18 @@ import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_bottom_navigation_host.view.*
 import ru.wa285.volunteers.R
+import ru.wa285.volunteers.presentation.State.lastActiveFragmentId
+import ru.wa285.volunteers.presentation.State.lastActiveFragmentTag
 import ru.wa285.volunteers.presentation.common.AbstractFragment
 import ru.wa285.volunteers.presentation.event.CurrentEventsFragment
 import ru.wa285.volunteers.presentation.event.EventListFragment
 import ru.wa285.volunteers.presentation.museum.MuseumListFragment
 import ru.wa285.volunteers.presentation.person.ProfileFragment
+
+object State {
+    var lastActiveFragmentTag: String? = null
+    var lastActiveFragmentId: Int = R.id.eventListFragment
+}
 
 class BottomNavigationHostFragment : AbstractFragment() {
 
@@ -19,12 +26,10 @@ class BottomNavigationHostFragment : AbstractFragment() {
             true
         }
 
-    var lastActiveFragmentTag: String? = null
-    var lastActiveFragmentId: Int = R.id.eventListFragment
 
     override fun View.setupFragment() {
         bottom_navigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        loadFragment(R.id.eventListFragment)
+        loadFragment(lastActiveFragmentId)
     }
 
     private fun loadFragment(itemId: Int) {

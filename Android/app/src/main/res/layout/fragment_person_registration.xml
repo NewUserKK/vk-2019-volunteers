@@ -2,7 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -51,9 +53,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/create_login"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/person_registration_edit_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_patronymic" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -62,9 +64,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/create_password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:inputType="textPassword"
             app:layout_constraintBottom_toTopOf="@id/person_registration_edit_birth_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_login" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
@@ -84,6 +87,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_email"
+            app:layout_constraintBottom_toTopOf="@id/person_registration_edit_phone"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_birth_date" />
 

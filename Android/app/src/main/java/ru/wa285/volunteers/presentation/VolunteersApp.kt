@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.res.Resources
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.util.StdDateFormat
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
@@ -30,6 +31,7 @@ class VolunteersApp : Application() {
         super.onCreate()
         val jacksonMapper = ObjectMapper()
         jacksonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+        jacksonMapper.dateFormat = StdDateFormat().withColonInTimeZone(true)
         retrofit = Retrofit.Builder()
             .baseUrl("http://demo135.foxtrot.vkhackathon.com:8080/api/v1/")
             .addConverterFactory(JacksonConverterFactory.create(jacksonMapper))

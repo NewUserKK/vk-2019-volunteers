@@ -39,7 +39,7 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
     }
 
     override suspend fun register(person: PersonWithPassword): OperationResult<Person> {
-        return tryConnect {
+        return tryConnect<Person> {
             val response = personApiService.register(person).execute()
             val body = response.body()
             if (response.isSuccessful && body != null) {

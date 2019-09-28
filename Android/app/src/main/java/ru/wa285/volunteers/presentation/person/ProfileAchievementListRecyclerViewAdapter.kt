@@ -26,7 +26,9 @@ class ProfileAchievementListRecyclerViewAdapter(private val values: List<Achieve
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.apply {
-            Picasso.get().load(item.logoUri).into(imageView)
+            Picasso.get()
+                .load(item.logoUri)
+                .into(imageView)
             itemView.setOnClickListener {
                 onClickListener?.invoke(item)
             }

@@ -4,6 +4,9 @@ package ru.wa285.volunteers.presentation.person
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.fasterxml.jackson.databind.DeserializationFeature
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.util.StdDateFormat
 import kotlinx.android.synthetic.main.fragment_person_registration.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,6 +33,10 @@ class PersonRegistrationFragment : AbstractFragment() {
             val item = constructItem()
             if (item != null) {
                 launch {
+//                    val mapper = ObjectMapper()
+//                    mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+//                    mapper.dateFormat = StdDateFormat().withColonInTimeZone(true)
+//                    println(mapper.writeValueAsString(item))
                     val result = withContext(Dispatchers.IO) {
                         personRepository.register(item)
                     }
@@ -51,7 +58,7 @@ class PersonRegistrationFragment : AbstractFragment() {
         findNavController().popBackStack()
     }
 
-    fun View.constructItem(): PersonWithPassword? {
+    private fun View.constructItem(): PersonWithPassword? {
         val date = try {
             SimpleDateFormat("dd.mm.yyyy", resources.configuration.locales[0])
                 .parse(person_registration_edit_birth_date.text.toString())
@@ -65,16 +72,14 @@ class PersonRegistrationFragment : AbstractFragment() {
         }
 
         return PersonWithPassword(
-            person = Person(
-                name = person_registration_edit_name.text.toString(),
-                surname = person_registration_edit_surname.text.toString(),
-                patronymic = person_registration_edit_patronymic.text.toString(),
-                phone = person_registration_edit_phone.text.toString(),
-                email = person_registration_edit_email.text.toString(),
-                login = person_registration_edit_login.text.toString(),
-                birthday = date,
-                avatarUri = null
-            ),
+            name = person_registration_edit_name.text.toString(),
+            surname = person_registration_edit_surname.text.toString(),
+            patronymic = person_registration_edit_patronymic.text.toString(),
+            phone = person_registration_edit_phone.text.toString(),
+            email = person_registration_edit_email.text.toString(),
+            login = person_registration_edit_login.text.toString(),
+            birthday = date,
+            avatarUri = null,
             password = person_registration_edit_password.text.toString()
         )
     }
