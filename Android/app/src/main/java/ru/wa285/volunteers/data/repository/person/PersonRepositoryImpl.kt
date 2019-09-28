@@ -4,7 +4,6 @@ import retrofit2.Retrofit
 import ru.wa285.volunteers.data.common.exception.BadResponseException
 import ru.wa285.volunteers.data.common.exception.IncorrectCredentialsException
 import ru.wa285.volunteers.data.net.PersonApiService
-import ru.wa285.volunteers.data.net.toOperationResult
 import ru.wa285.volunteers.data.net.tryConnect
 import ru.wa285.volunteers.data.repository.person.model.PersonWithPassword
 import ru.wa285.volunteers.domain.common.OperationResult
@@ -17,7 +16,7 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
 
     private val personApiService: PersonApiService = retrofit.create(PersonApiService::class.java)
 
-    private val eventSubscriptions = mutableListOf<Event>()
+    private val eventSubscriptions = mutableSetOf<Event>()
 
     private var loggedUser: Person? = null
 
@@ -58,11 +57,48 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
         return loggedUser
     }
 
-    override suspend fun getEventSubscriptions(): List<Event> {
+    override suspend fun getEventSubscriptions(person: Person): OperationResult<List<Event>> {
         return if (eventSubscriptions.isNotEmpty()) {
-            eventSubscriptions
+            OperationResult.Success(eventSubscriptions.toList())
         } else {
+            tryConnect<List<Event>> {
+                val response = personApiService.getEventSubscriptions(person.id).execute()
+                val body = response.body()
+                if (response.isSuccessful && body != null) {
+                    eventSubscriptions += body
+                    OperationResult.Success(body)
+                } else {
+                    OperationResult.Failure(BadResponseException(response))
+                }
+            }
+        }
+    }
 
+    override suspend fun subscribeToEvent(event: Event, person: Person): OperationResult<Unit> {
+        return tryConnect<Unit> {
+            val response =
+                personApiService.subscribeToEvent(eventId = event.id, personId = person.id)
+                    .execute()
+            if (response.isSuccessful) {
+                eventSubscriptions += event
+                OperationResult.Success(Unit)
+            } else {
+                OperationResult.Failure(BadResponseException(response))
+            }
+        }
+    }
+
+    override suspend fun unsubscribeFromEvent(event: Event, person: Person): OperationResult<Unit> {
+        return tryConnect<Unit> {
+            val response =
+                personApiService.unsubscribeFromEvent(eventId = event.id, personId = person.id)
+                    .execute()
+            if (response.isSuccessful) {
+                eventSubscriptions -= event
+                OperationResult.Success(Unit)
+            } else {
+                OperationResult.Failure(BadResponseException(response))
+            }
         }
     }
 }

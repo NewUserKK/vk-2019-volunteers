@@ -18,5 +18,8 @@ interface PersonApiService {
     fun getEventSubscriptions(@Path("id") personId: Long): Call<List<Event>>
 
     @POST("event/subscribe")
-    fun subscribeToEvent(@Query("eventId") eventId: Long, @Query("personId") personId: Long)
+    fun subscribeToEvent(@Query("eventId") eventId: Long, @Query("userId") personId: Long): Call<Unit>
+
+    @DELETE("event/unsubscribe")
+    fun unsubscribeFromEvent(@Query("eventId") eventId: Long, @Query("userId") personId: Long): Call<Unit>
 }

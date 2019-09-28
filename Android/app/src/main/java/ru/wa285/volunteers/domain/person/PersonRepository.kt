@@ -13,8 +13,9 @@ interface PersonRepository {
 
     fun getLoggedUser(): Person?
 
-    suspend fun getEventSubscriptions(person: Person): List<Event>
+    suspend fun getEventSubscriptions(person: Person): OperationResult<List<Event>>
 
-    suspend fun subsribeToEvent(event: Event, person: Person)
+    suspend fun subscribeToEvent(event: Event, person: Person): OperationResult<Unit>
+    suspend fun unsubscribeFromEvent(event: Event, person: Person): OperationResult<Unit>
 
 }

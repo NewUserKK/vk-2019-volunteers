@@ -25,13 +25,29 @@ class CurrentEventsFragment : AbstractFragment() {
     private val eventRepository: EventRepository by kodein.instance()
     private val personRepository: PersonRepository by kodein.instance()
 
-    private val eventList = mutableListOf<Event>()
+    private val eventList = mutableListOf<EventAdapterItem>()
     lateinit var eventAdapter: EventListRecyclerViewAdapter
+
+    override fun onResume() {
+        super.onResume()
+        if (::eventAdapter.isInitialized) {
+            eventAdapter.notifyDataSetChanged()
+        }
+    }
 
     override fun View.setupFragment() {
         eventAdapter = EventListRecyclerViewAdapter(eventList).apply {
             onClickListener = {
                 navigateToEventDetail(it)
+            }
+            onFavouriteClickListener = { event, fav ->
+                launch(Dispatchers.IO) {
+                    if (fav) {
+                        personRepository.subscribeToEvent(event, personRepository.getLoggedUser()!!)
+                    } else {
+                        personRepository.unsubscribeFromEvent(event, personRepository.getLoggedUser()!!)
+                    }
+                }
             }
         }
         current_events_list.adapter = eventAdapter
@@ -49,7 +65,17 @@ class CurrentEventsFragment : AbstractFragment() {
             when (result) {
                 is OperationResult.Success -> {
                     eventList.clear()
-                    eventList += result.value
+                    val logged = personRepository.getLoggedUser()
+                    eventList += if (logged != null) {
+                        val favourites = (withContext(Dispatchers.IO) {
+                            personRepository.getEventSubscriptions(logged)
+                        } as OperationResult.Success).value.toSet()
+                        result.value.sortedByDescending { it.dateStart }
+                            .map { EventAdapterItem(it, it in favourites) }
+                    } else {
+                        result.value.sortedByDescending { it.dateStart }
+                            .map { EventAdapterItem(it, false) }
+                    }
                     eventAdapter.notifyDataSetChanged()
                 }
                 is OperationResult.Failure -> {
