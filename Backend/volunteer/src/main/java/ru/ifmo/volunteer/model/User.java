@@ -32,6 +32,16 @@ public class User {
 
   private String vkToken;
 
+  public Long getRating() {
+    return rating;
+  }
+
+  public void setRating(Long rating) {
+    this.rating = rating;
+  }
+
+  private Long rating;
+
   public String getVkToken() {
     return vkToken;
   }

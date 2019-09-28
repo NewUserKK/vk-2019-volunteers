@@ -37,6 +37,8 @@ public class Event {
 
   private Boolean finished;
 
+  private Long requiredRating;
+
   @ManyToOne
   @JoinColumn(name = "responsible")
   private User responsible;
@@ -143,5 +145,13 @@ public class Event {
 
   public void setLinkToEvent(String linkToEvent) {
     this.linkToEvent = linkToEvent;
+  }
+
+  public Long getRequiredRating() {
+    return requiredRating;
+  }
+
+  public void setRequiredRating(Long requiredRating) {
+    this.requiredRating = requiredRating;
   }
 }

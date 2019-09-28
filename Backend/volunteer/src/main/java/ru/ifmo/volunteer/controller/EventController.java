@@ -29,6 +29,14 @@ public class EventController {
     eventService.addResponsible(id, userId);
   }
 
+  @ApiOperation(value = "Получить минимальный рейтинг для участников события",
+  produces = "application/json",
+  response = Long.class)
+  @GetMapping("{id}/rating_required")
+  public Long ratingRequired(@PathVariable Long id) {
+    return eventService.ratingRequired(id);
+  }
+
   @ApiOperation(
       value = "Получение списка событий по музею",
       produces = "application/json",

@@ -61,4 +61,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
       nativeQuery = true
   )
   void addResponsible(Long eventId, Long userId);
+
+  @Query(value = "SELECT required_rating FROM event WHERE id = :id", nativeQuery = true)
+  Long ratingRequired(@Param("id") Long id);
 }

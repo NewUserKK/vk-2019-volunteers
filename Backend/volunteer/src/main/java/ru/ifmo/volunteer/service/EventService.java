@@ -92,4 +92,8 @@ public class EventService {
   public void addResponsible(Long eventId, Long userId) {
     eventRepository.addResponsible(eventId, userId);
   }
+
+  public Long ratingRequired(Long id) {
+    return eventRepository.ratingRequired(id);
+  }
 }

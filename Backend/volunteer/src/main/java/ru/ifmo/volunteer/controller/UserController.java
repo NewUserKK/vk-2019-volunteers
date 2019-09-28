@@ -42,6 +42,16 @@ public class UserController {
   }
 
   @ApiOperation(
+      value = "Возвращает рейтинг юзера",
+      produces = "application/json",
+      response = Long.class
+  )
+  @GetMapping("{id}/rating")
+  public Long getRating(@PathVariable Long id) {
+    return userService.getRating(id);
+  }
+
+  @ApiOperation(
       value = "Создает юзера и возвращает его",
       produces = "application/json",
       response = User.class)

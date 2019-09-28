@@ -88,4 +88,8 @@ public class UserService {
   public List<User> getUsersByRoleId(Long roleId) {
     return userRepository.getUsersByRoleId(roleId);
   }
+
+  public Long getRating(Long id) {
+    return userRepository.getRating(id);
+  }
 }
