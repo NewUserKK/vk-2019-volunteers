@@ -8,61 +8,91 @@
 
     <TextView
         android:id="@+id/event_detail_name"
-        style="@style/PrimaryText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:gravity="center_horizontal"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@id/event_detail_members"
+        app:layout_constraintBottom_toTopOf="@id/event_detail_members_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Test name" />
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Волонтёрство" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/event_detail_members"
+        android:id="@+id/event_detail_members_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingVertical="5dp"
         app:layout_constraintBottom_toTopOf="@id/event_detail_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/event_detail_name">
 
-        <TextView
-            android:id="@+id/event_detail_common_members"
+        <ImageView
+            android:id="@+id/event_detail_members_icon"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="14sp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_rss_feed_24px"
+            android:tint="@color/textColorLight"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/event_detail_members"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/event_detail_friends"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/event_detail_members"
+            style="@style/AppTheme.Text.Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/event_detail_point"
+            app:layout_constraintStart_toEndOf="@id/event_detail_members_icon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="10 members" />
 
         <TextView
-            android:id="@+id/event_detail_friends"
+            android:id="@+id/event_detail_point"
+            style="@style/AppTheme.Text.Description"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/event_detail_common_members"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="3 friends" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="‧"
+            app:layout_constraintBottom_toBottomOf="@id/event_detail_members"
+            app:layout_constraintEnd_toStartOf="@id/event_detail_friends"
+            app:layout_constraintStart_toEndOf="@id/event_detail_members"
+            app:layout_constraintTop_toTopOf="@id/event_detail_members"
+            tools:ignore="HardcodedText" />
 
+
+        <TextView
+            android:id="@+id/event_detail_friends"
+            style="@style/AppTheme.Text.Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/event_detail_point"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/event_detail_point"
+            app:layout_constraintTop_toTopOf="@+id/event_detail_point"
+            tools:text="3 friends" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/event_detail_description"
-        style="@style/SecondaryText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/event_detail_members"
-        tools:text="Test description" />
+        app:layout_constraintTop_toBottomOf="@id/event_detail_members_container"
+        tools:text="Description of the event\nmay be\nvery\nlong" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/person_registration_request_name"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
@@ -21,7 +21,7 @@
 
         <EditText
             android:id="@+id/person_registration_edit_name"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/person_registration_request_surname"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_name"
@@ -40,7 +40,7 @@
 
         <EditText
             android:id="@+id/person_registration_edit_surname"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/person_registration_request_patronymic"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_surname"
@@ -59,7 +59,7 @@
 
         <EditText
             android:id="@+id/person_registration_edit_patronymic"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
 
         <TextView
             android:id="@+id/person_registration_request_birth_date"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_patronymic"
@@ -78,7 +78,7 @@
 
         <EditText
             android:id="@+id/person_registration_edit_birth_date"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
 
         <TextView
             android:id="@+id/person_registration_request_email"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_birth_date"
@@ -97,7 +97,7 @@
 
         <EditText
             android:id="@+id/person_registration_edit_email"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +107,7 @@
 
         <TextView
             android:id="@+id/person_registration_request_phone"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_email"
@@ -116,7 +116,7 @@
 
         <EditText
             android:id="@+id/person_registration_edit_phone"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +126,7 @@
 
         <TextView
             android:id="@+id/person_registration_request_vk"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_phone"
@@ -135,7 +135,7 @@
 
         <EditText
             android:id="@+id/person_registration_edit_vk"
-            style="@style/RequestText"
+            style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
