@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ifmo.volunteer.model.Event;
-import ru.ifmo.volunteer.model.Volunteer;
-import ru.ifmo.volunteer.repository.EventRepository;
 import ru.ifmo.volunteer.service.EventService;
 
 @RestController

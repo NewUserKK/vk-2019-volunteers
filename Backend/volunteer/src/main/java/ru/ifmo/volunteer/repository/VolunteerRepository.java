@@ -19,7 +19,7 @@ public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {
   @Query(
       value =
           "SELECT * FROM volunteer WHERE volunteer.id IN "
-              + "(SELECT user_id FROM participants WHERE event_id = :event_id)",
+              + "(SELECT user_id FROM participants WHERE event_id = :eventId)",
       nativeQuery = true)
   List<Volunteer> getParticipantsById(@Param("eventId") Long eventId);
 }
