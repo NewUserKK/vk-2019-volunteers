@@ -1,3 +1,58 @@
 <resources>
-    <string name="app_name">VK-volunteers</string>
+    <string name="app_name">Volunteers</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_events">События</string>
+    <string name="menu_museums">Музеи</string>
+    <string name="menu_profile">Профиль</string>
+    <string name="menu_events_current">Ближайшие</string>
+    <string name="nearest_events_text">Ближайшие события:</string>
+    <string name="name_request">Имя:</string>
+    <string name="surname_request">Фамилия:</string>
+    <string name="patronymic">Отчество:</string>
+    <string name="request_birth_date">Дата рождения</string>
+    <string name="edit_name">Введите имя</string>
+    <string name="edit_surname">Введите фамилию</string>
+    <string name="edit_patronymic">Введите отчество</string>
+    <string name="edit_birth_date">Введите дату рождения</string>
+    <string name="request_email">E-mail:</string>
+    <string name="edit_email">Введите e-mail</string>
+    <string name="request_phone">Номер телефона:</string>
+    <string name="edit_phone">Введите номер телефона</string>
+    <string name="request_vk">Ссылка на аккаунт ВКонтакте:</string>
+    <string name="edit_vk">Укажите ссылку</string>
+    <string name="request_working_place">Место учебы/работы:</string>
+    <string name="edit_working_place">Укажите место работы/учебы</string>
+    <string name="request_diploma">Специальность по диплому:</string>
+    <string name="edit_diploma">Укажите специальность</string>
+    <string name="request_languages">Владение иностранными языками:</string>
+    <string name="request_experience">Есть ли у вас опыт волонтерства?</string>
+    <string name="answer_experience">Да</string>
+    <string name="request_extra_skills">Опишите свои навыки и умения:</string>
+    <string name="edit_extra_skills">Укажите навыки и умения</string>
+    <string name="request_clothes_size">Укажите размер одежды:</string>
+    <string name="edit_clothes_size">Размер одежды</string>
+    <string name="event_detail_sign_up">Записаться</string>
+    <string name="event_participant_list_title">Участники</string>
+    <string name="event_participant_friends_title">Друзья</string>
+    <string name="city">Город:</string>
+    <string name="location">Локация:</string>
+    <string name="date">Дата:</string>
+    <string name="description">Описание:</string>
+    <string name="authorization_title">Войти в приложение</string>
+    <string name="edit_login">Введите логин</string>
+    <string name="edit_password">Введите пароль</string>
+    <string name="authorization_social_networks_suggest">Авторизоваться через\n социальные сети:</string>
+    <string name="authorization_enter">Войти</string>
+
+    <plurals name="numberOfMembers">
+        <item quantity="one">%d участник</item>
+        <item quantity="few">%d участника</item>
+        <item quantity="other">%d участников</item>
+    </plurals>
+
+    <plurals name="numberOfFriends">
+        <item quantity="one">%d друг</item>
+        <item quantity="few">%d друга</item>
+        <item quantity="other">%d друзей</item>
+    </plurals>
 </resources>

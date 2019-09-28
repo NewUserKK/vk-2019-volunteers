@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/person_registration_request_extra_skills"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/request_working_place" />
+
+        <EditText
+            android:id="@+id/person_registration_edit_working_place"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_extra_skills"
+            android:layout_marginBottom="15dp"
+            android:hint="@string/edit_working_place" />
+
+        <TextView
+            android:id="@+id/person_registration_request_diploma"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_working_place"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/request_diploma" />
+
+        <EditText
+            android:id="@+id/person_registration_edit_diploma"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_diploma"
+            android:layout_marginBottom="15dp"
+            android:hint="@string/edit_diploma" />
+
+        <TextView
+            android:id="@+id/person_registration_request_languages"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_diploma"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/request_languages" />
+
+        <!--    TODO: подумать о енуме-->
+        <EditText
+            android:id="@+id/person_registration_edit_languages"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_languages"
+            android:layout_marginBottom="15dp"
+            tools:text="ПОДУМАТЬ О ЕНУМЕ!!!!!!!!!" />
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
