@@ -30,7 +30,7 @@ class EventDetailFragment : AbstractFragment() {
 
     override fun View.setupFragment() {
         event_detail_name.text = event.name
-        event_detail_description.text = event.description
+        event_detail_description_value.text = event.description
         launch {
             val countMembers = withContext(Dispatchers.IO) {
                 eventRepository.getParticipantsByEvent(event).size

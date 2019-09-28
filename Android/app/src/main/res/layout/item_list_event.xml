@@ -16,7 +16,6 @@
             android:id="@+id/item_list_event_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@id/item_list_event_name"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,9 +26,9 @@
 
         <TextView
             android:id="@+id/item_list_event_name"
-            style="@style/PrimaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:textSize="35sp"
             app:layout_constraintBottom_toTopOf="@id/item_list_event_place"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,10 +38,10 @@
 
         <TextView
             android:id="@+id/item_list_event_place"
-            style="@style/SecondaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="3dp"
+            android:layout_marginTop="5dp"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/item_list_event_date"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,10 +51,10 @@
 
         <TextView
             android:id="@+id/item_list_event_date"
-            style="@style/SecondaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="3dp"
+            android:layout_marginTop="5dp"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

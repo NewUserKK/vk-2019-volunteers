@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="5dp"
-        app:layout_constraintBottom_toTopOf="@id/event_detail_description"
+        app:layout_constraintBottom_toTopOf="@id/event_detail_description_value"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/event_detail_name">
@@ -88,11 +88,60 @@
         android:id="@+id/event_detail_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_members_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="25sp"
+        android:text="@string/description" />
+
+    <TextView
+        android:id="@+id/event_detail_description_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/event_detail_members_container"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_description"
         tools:text="Description of the event\nmay be\nvery\nlong" />
+
+    <TextView
+        android:id="@+id/event_detail_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_description_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:text="@string/city" />
+
+    <TextView
+        android:id="@+id/event_detail_place_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_place"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Saint Petersburg" />
+
+    <TextView
+        android:id="@+id/event_detail_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_place_value"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:text="@string/location" />
+
+    <TextView
+        android:id="@+id/event_detail_date_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/event_detail_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="28.09.2019" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

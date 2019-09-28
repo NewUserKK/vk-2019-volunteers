@@ -28,10 +28,13 @@
     <string name="request_experience">Есть ли у вас опыт волонтерства?</string>
     <string name="answer_experience">Да</string>
     <string name="request_extra_skills">Опишите свои навыки и умения</string>
-    <string name="edit_extra_skills">Укажите свои навыки</string>
+    <string name="edit_extra_skills">Укажите навыки и умения</string>
     <string name="request_clothes_size">Укажите размер одежды</string>
     <string name="edit_clothes_size">Размер одежды</string>
     <string name="event_detail_sign_up">Записаться</string>
+    <string name="city">Город:</string>
+    <string name="location">Локация:</string>
+    <string name="description">Описание:</string>
 
     <plurals name="numberOfMembers">
         <item quantity="one">%d участник</item>
