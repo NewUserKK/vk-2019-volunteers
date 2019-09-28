@@ -12,7 +12,10 @@ import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 import ru.wa285.volunteers.data.repository.event.EventRepositoryImpl
+import ru.wa285.volunteers.data.repository.museum.MuseumRepositoryImpl
 import ru.wa285.volunteers.domain.event.EventRepository
+import ru.wa285.volunteers.domain.museum.MuseumRepository
+import ru.wa285.volunteers.domain.museum.model.Museum
 
 class VolunteersApp : Application() {
 
@@ -33,6 +36,7 @@ class VolunteersApp : Application() {
             bind<Resources>() with provider { resources }
             bind<Retrofit>() with instance(retrofit)
             bind<EventRepository>() with singleton { EventRepositoryImpl(instance()) }
+            bind<MuseumRepository>() with singleton { MuseumRepositoryImpl(instance()) }
         }
     }
 }

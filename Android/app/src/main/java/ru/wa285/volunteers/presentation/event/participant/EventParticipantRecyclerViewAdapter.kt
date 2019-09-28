@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.item_list_participant.view.*
 import ru.wa285.volunteers.R
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.presentation.common.view.AvatarView
+import ru.wa285.volunteers.presentation.common.view.NamePicture
 
 class EventParticipantRecyclerViewAdapter(private val values: List<Person>) : RecyclerView.Adapter<EventParticipantRecyclerViewAdapter.ViewHolder>() {
 
@@ -28,7 +29,7 @@ class EventParticipantRecyclerViewAdapter(private val values: List<Person>) : Re
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.apply {
-            avatarView.person = item
+            avatarView.value = NamePicture(item.name, item.avatarUri)
             nameView.text = item.name
 //            itemView.setOnClickListener {
 //                onClickListener?.invoke(item)

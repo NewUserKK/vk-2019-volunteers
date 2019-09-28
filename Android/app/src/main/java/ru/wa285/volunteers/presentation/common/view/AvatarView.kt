@@ -10,12 +10,13 @@ import de.hdodenhof.circleimageview.CircleImageView
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.presentation.common.switchTo
 
+data class NamePicture(val name: String, val avatarUri: String?)
 
 class AvatarView : ViewSwitcher {
 
-    var person: Person? = null
+    var value: NamePicture? = null
         set(value) {
-            requireNotNull(value) { "Person cannot be null!" }
+            requireNotNull(value) { "Value cannot be null!" }
 
             field = value
 
@@ -64,7 +65,7 @@ class AvatarView : ViewSwitcher {
         addView(mAvatar)
     }
 
-    private fun switchToAvatarIcon(value: Person) {
+    private fun switchToAvatarIcon(value: NamePicture) {
         switchTo(mAvatar)
         Picasso.get()
             .load(value.avatarUri)
@@ -77,12 +78,12 @@ class AvatarView : ViewSwitcher {
             })
     }
 
-    private fun switchToLetterIcon(value: Person) {
+    private fun switchToLetterIcon(value: NamePicture) {
         switchTo(mLetterIcon)
         mLetterIcon.letter = value.name
     }
 
     fun hasAvatar(): Boolean {
-        return person?.avatarUri != null
+        return value?.avatarUri != null
     }
 }
