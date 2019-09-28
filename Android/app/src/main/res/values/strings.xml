@@ -32,6 +32,9 @@
     <string name="request_clothes_size">Укажите размер одежды:</string>
     <string name="edit_clothes_size">Размер одежды</string>
     <string name="event_detail_sign_up">Записаться</string>
+    <string name="event_participant_list_title">Участники</string>
+    <string name="event_participant_friends_title">Друзья</string>
+    <string name="city">Город:</string>
     <string name="location">Локация:</string>
     <string name="date">Дата:</string>
     <string name="description">Описание:</string>
