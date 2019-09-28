@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/museum_detail_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="35sp"
+        tools:text="Polikek" />
+
+    <ru.wa285.volunteers.presentation.common.view.AvatarView
+        android:id="@+id/museum_detail_avatar_view"
+        android:layout_width="@dimen/avatar_view_size"
+        android:layout_height="@dimen/avatar_view_size"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <TextView
+        android:id="@+id/museum_detail_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="3dp"
+        app:layout_constraintTop_toBottomOf="@id/museum_detail_avatar_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        tools:text="Test description" />
+
+    <TextView
+        android:id="@+id/museum_detail_closest_events_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="3dp"
+        app:layout_constraintTop_toBottomOf="@id/museum_detail_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:text="@string/nearest_events_text" />
+
+    <include layout="@layout/list_event"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:id="@+id/museum_detail_closest_events_list"
+        app:layout_constraintTop_toBottomOf="@id/museum_detail_closest_events_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

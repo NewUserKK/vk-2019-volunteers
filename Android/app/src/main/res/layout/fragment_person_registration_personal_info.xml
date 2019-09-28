@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/person_registration_request_name"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name_request"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/person_registration_edit_name"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_name" />
+
+        <TextView
+            android:id="@+id/person_registration_request_surname"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/surname_request"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_name" />
+
+        <EditText
+            android:id="@+id/person_registration_edit_surname"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_surname"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_surname" />
+
+        <TextView
+            android:id="@+id/person_registration_request_patronymic"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/patronymic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_surname" />
+
+        <EditText
+            android:id="@+id/person_registration_edit_patronymic"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_patronymic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_patronymic" />
+
+        <TextView
+            android:id="@+id/person_registration_request_birth_date"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/request_birth_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_patronymic" />
+
+        <EditText
+            android:id="@+id/person_registration_edit_birth_date"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_birth_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_birth_date" />
+
+        <TextView
+            android:id="@+id/person_registration_request_email"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/request_email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_birth_date" />
+
+        <EditText
+            android:id="@+id/person_registration_edit_email"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_email" />
+
+        <TextView
+            android:id="@+id/person_registration_request_phone"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/request_phone"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_email" />
+
+        <EditText
+            android:id="@+id/person_registration_edit_phone"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_phone" />
+
+        <TextView
+            android:id="@+id/person_registration_request_vk"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/request_vk"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/person_registration_edit_phone" />
+
+        <EditText
+            android:id="@+id/person_registration_edit_vk"
+            style="@style/AppTheme.Text.RequestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_vk"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/person_registration_request_vk" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
