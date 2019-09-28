@@ -51,6 +51,16 @@ public class UserController {
   }
 
   @ApiOperation(
+      value = "Добавляет пароль к юзеру",
+      produces = "application/json",
+      response =  User.class
+  )
+  @PostMapping("/register")
+  public User register(@RequestBody UserCredentials userCredentials) {
+    return userService.register(userCredentials.getLogin(), userCredentials.getPassword());
+  }
+
+  @ApiOperation(
       value = "Авторизация через vk",
       produces = "application/json",
       response = User.class)

@@ -46,4 +46,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
       value = "SELECT is_blocked FROM blocked WHERE used_id = :userId AND museum_id = :museumId",
       nativeQuery = true)
   Boolean isBlocked(@Param("userId") Long userId, @Param("museumId") Long museumId);
+
+  @Transactional
+  @Modifying
+  @Query(
+      value = "UPDATE users SET password = :password WHERE login = :login",
+      nativeQuery = true
+  )
+  User register(@Param("login") String login, @Param("password") String password);
+
 }

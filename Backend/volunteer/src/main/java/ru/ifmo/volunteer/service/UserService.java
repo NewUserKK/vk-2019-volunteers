@@ -80,4 +80,8 @@ public class UserService {
   public Boolean isBlocked(Long userId, Long museumId) {
     return userRepository.isBlocked(userId, museumId) != null;
   }
+
+  public User register(String login, String password) {
+    return userRepository.register(login, password);
+  }
 }
