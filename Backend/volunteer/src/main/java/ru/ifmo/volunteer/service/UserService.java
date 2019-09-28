@@ -65,4 +65,8 @@ public class UserService {
   public void deleteById(final Long id) {
     userRepository.deleteById(id);
   }
+
+  public void addToFriends(Long userId, Long friendId) {
+    userRepository.addToFriends(userId, friendId);
+  }
 }

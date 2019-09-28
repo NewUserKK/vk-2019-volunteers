@@ -26,6 +26,15 @@ public class UserController {
   }
 
   @ApiOperation(
+      value = "Добавить в друзья",
+      produces = "application/json"
+  )
+  @PostMapping("/addFriend")
+  public void addToFriends(@RequestParam Long userId, @RequestParam Long friendId) {
+    userService.addToFriends(userId, friendId);
+  }
+
+  @ApiOperation(
       value = "Создает представителя музея и возвращает его",
       produces = "application/json",
       response = User.class)

@@ -16,9 +16,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
   Optional<User> findByLoginAndPassword(
       @Param("login") String login, @Param("password") String password);
 
-  @Query(
-      value = "SELECT * FROM user WHERE vk_token = :token",
-      nativeQuery = true
-  )
+  @Query(value = "SELECT * FROM user WHERE vk_token = :token", nativeQuery = true)
   Optional<User> findByToken(@Param("token") String token);
+
+  @Query(value = "INSERT INTO user_to_friend VALUES(:userId, :friendId)", nativeQuery = true)
+  void addToFriends(@Param("userId") Long userId, @Param("friendId") Long friendId);
 }
