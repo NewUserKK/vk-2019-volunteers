@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.content_event_detail.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,6 +20,8 @@ import ru.wa285.volunteers.domain.event.model.Event
 import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.presentation.common.AbstractFragment
+import ru.wa285.volunteers.presentation.common.hide
+import ru.wa285.volunteers.presentation.common.show
 
 
 class EventDetailFragment : AbstractFragment() {
@@ -37,6 +41,17 @@ class EventDetailFragment : AbstractFragment() {
     override fun View.setupFragment() {
         event_detail_name.text = event.name
         event_detail_description_value.text = event.description
+        Picasso.get()
+            .load(event.avatarUri)
+            .into(event_detail_image, object : Callback {
+                override fun onSuccess() {
+                    event_detail_image.show()
+                }
+
+                override fun onError(e: Exception?) {
+                    event_detail_image.hide()
+                }
+            })
         val loggedUser = personRepository.getLoggedUser()
         launch {
             loadMembers()

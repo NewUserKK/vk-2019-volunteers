@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.kodein.di.generic.instance
 import ru.wa285.volunteers.R
+import ru.wa285.volunteers.data.common.exception.BadResponseException
 import ru.wa285.volunteers.data.common.exception.IncorrectCredentialsException
 import ru.wa285.volunteers.domain.achievement.AchievementRepository
 import ru.wa285.volunteers.domain.achievement.model.Achievement
@@ -20,6 +21,7 @@ import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
+import ru.wa285.volunteers.presentation.common.hide
 import ru.wa285.volunteers.presentation.common.show
 import ru.wa285.volunteers.presentation.common.switchTo
 
@@ -84,10 +86,13 @@ class ProfileFragment : AbstractFragment() {
                 is OperationResult.Success -> setupProfile(authorized.value)
                 is OperationResult.Failure -> when (authorized.error) {
                     is IncorrectCredentialsException -> {
+                        person_authorization_error.hide()
                         person_authorization_error.show()
                     }
-                    else -> {
+                    is BadResponseException -> {
+                        person_authorization_error.text = "Что-то пошло не так. Код ошибки: ${authorized.error.code}"
                     }
+                    else -> {}
                 }.also { authorized.error.printStackTrace() }
             }
         }

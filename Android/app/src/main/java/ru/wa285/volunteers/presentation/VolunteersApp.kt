@@ -31,7 +31,7 @@ class VolunteersApp : Application() {
         super.onCreate()
         val jacksonMapper = ObjectMapper()
         jacksonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-        jacksonMapper.dateFormat = StdDateFormat().withColonInTimeZone(true)
+//        jacksonMapper.dateFormat = StdDateFormat().withColonInTimeZone(true)
         retrofit = Retrofit.Builder()
             .baseUrl("http://demo135.foxtrot.vkhackathon.com:8080/api/v1/")
             .addConverterFactory(JacksonConverterFactory.create(jacksonMapper))

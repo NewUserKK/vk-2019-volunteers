@@ -49,6 +49,7 @@
     <string name="ok">OK</string>
     <string name="create_password">Пароль</string>
     <string name="create_login">Логин</string>
+    <string name="add_to_favorites">Add to favorites</string>
 
     <plurals name="numberOfMembers">
         <item quantity="one">%d участник</item>
