@@ -1,6 +1,7 @@
 package ru.wa285.volunteers.presentation.person
 
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_person_authorization.view.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +14,7 @@ import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
+import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
 import ru.wa285.volunteers.presentation.common.show
 import ru.wa285.volunteers.presentation.common.switchTo
@@ -42,6 +44,14 @@ class ProfileFragment : AbstractFragment() {
         person_authorization_enter.setOnClickListener {
             authorizePerson()
         }
+        person_authorization_register_button.setOnClickListener {
+            navigateToRegistration()
+        }
+    }
+
+    private fun navigateToRegistration() {
+        val action = BottomNavigationHostFragmentDirections.actionBottomNavigationHostFragmentToPersonRegistrationFragment()
+        requireParentFragment().findNavController().navigate(action)
     }
 
     private fun View.authorizePerson() {

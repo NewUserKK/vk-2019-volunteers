@@ -49,7 +49,7 @@
     <string name="ok">OK</string>
     <string name="create_password">Пароль</string>
     <string name="create_login">Логин</string>
-    
+
     <plurals name="numberOfMembers">
         <item quantity="one">%d участник</item>
         <item quantity="few">%d участника</item>

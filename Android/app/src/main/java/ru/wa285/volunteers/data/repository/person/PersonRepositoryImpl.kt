@@ -4,7 +4,9 @@ import retrofit2.Retrofit
 import ru.wa285.volunteers.data.common.exception.BadResponseException
 import ru.wa285.volunteers.data.common.exception.IncorrectCredentialsException
 import ru.wa285.volunteers.data.net.PersonApiService
+import ru.wa285.volunteers.data.net.toOperationResult
 import ru.wa285.volunteers.data.net.tryConnect
+import ru.wa285.volunteers.data.repository.person.model.PersonWithPassword
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
@@ -32,6 +34,19 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
                     OperationResult.Failure(BadResponseException(response))
                 }
                 t
+            }
+        }
+    }
+
+    override suspend fun register(person: PersonWithPassword): OperationResult<Person> {
+        return tryConnect {
+            val response = personApiService.register(person).execute()
+            val body = response.body()
+            if (response.isSuccessful && body != null) {
+                loggedUser = body
+                OperationResult.Success(body)
+            } else {
+                OperationResult.Failure(BadResponseException(response))
             }
         }
     }
