@@ -25,7 +25,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/person_registration_request_volunteer_experience"
-            android:layout_marginBottom="15dp"
             android:text="@string/answer_experience" />
 
         <TextView
@@ -35,6 +34,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_volunteer_experience"
             app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="15dp"
             android:text="@string/request_experience" />
 
         <CheckBox
@@ -44,7 +44,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/person_registration_request_child_experience"
-            android:layout_marginBottom="15dp"
             android:text="@string/answer_experience" />
 
         <TextView
@@ -52,6 +51,7 @@
             style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_child_experience"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/request_extra_skills" />
@@ -63,7 +63,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/person_registration_request_extra_skills"
-            android:layout_marginBottom="15dp"
             android:hint="@string/edit_extra_skills" />
 
         <TextView
@@ -71,6 +70,7 @@
             style="@style/AppTheme.Text.RequestText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             app:layout_constraintTop_toBottomOf="@id/person_registration_edit_extra_skills"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/request_clothes_size" />
