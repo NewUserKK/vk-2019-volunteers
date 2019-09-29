@@ -92,7 +92,7 @@
     <fragment
         android:id="@+id/eventParticipantFragment"
         android:name="ru.wa285.volunteers.presentation.event.participant.EventParticipantFragment"
-        android:label="EventParticipantFragment"
+        android:label="Участники"
         tools:layout="@layout/fragment_event_participant">
         <action
             android:id="@+id/action_eventParticipantFragment_to_profileFragment"

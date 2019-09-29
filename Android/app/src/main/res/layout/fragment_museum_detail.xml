@@ -12,6 +12,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/museum_detail_avatar_view"
+        app:layout_constraintBottom_toTopOf="@id/museum_detail_description"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         android:textSize="35sp"
         android:fontFamily="@font/montserrat_regular"
         tools:text="Polytech" />
@@ -24,17 +28,19 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/museum_detail_name"
+        app:layout_constraintStart_toEndOf="@id/museum_detail_name"/>
 
     <TextView
         android:id="@+id/museum_detail_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:paddingHorizontal="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/museum_detail_avatar_view"
+        app:layout_constraintTop_toBottomOf="@id/museum_detail_name"
+        app:layout_constraintBottom_toTopOf="@id/museum_detail_closest_events_title"
         android:fontFamily="@font/montserrat_regular"
         android:textSize="20sp"
         tools:text="Test description" />
@@ -48,6 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/museum_detail_description"
+        app:layout_constraintBottom_toTopOf="@id/museum_detail_closest_events_list"
         android:fontFamily="@font/montserrat_regular"
         android:textSize="25sp"
         android:text="@string/nearest_events_text" />

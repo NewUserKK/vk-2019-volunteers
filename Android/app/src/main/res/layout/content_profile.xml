@@ -124,11 +124,55 @@
             android:gravity="center_vertical"
             android:padding="4dp"
             android:text="@string/profile_favourite_museums"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/profile_qr_code"
             app:layout_constraintTop_toBottomOf="@id/profile_achievements_list"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="24sp" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/profile_edit_satellite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/profile_favourite_museum_list_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/profile_qr_code"
+            app:layout_constraintBottom_toTopOf="@id/profile_upload_satellite"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:hint="@string/profile_request_satellite"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/profile_upload_satellite"
+            style="@style/AppTheme.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_edit_satellite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/profile_qr_code"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/event_registration_submit"
+            android:textAllCaps="false" />
+
+        <ImageView
+            android:id="@+id/profile_qr_code"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:layout_constraintTop_toTopOf="@id/profile_edit_satellite"
+            app:layout_constraintStart_toEndOf="@id/profile_upload_satellite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/profile_upload_satellite"
+            android:layout_marginTop="32dp"
+            tools:src="@drawable/ic_vk" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

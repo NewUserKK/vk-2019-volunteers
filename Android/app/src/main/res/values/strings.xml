@@ -69,4 +69,5 @@
     <string name="event_registration_request_role">Желаемая роль</string>
     <string name="edit_comment">Введите комментарий</string>
     <string name="event_registration_submit">Подтвердить</string>
+    <string name="profile_request_satellite">Введите код\n карты \'Спутник\'</string>
 </resources>
