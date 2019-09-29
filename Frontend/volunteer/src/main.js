@@ -6,7 +6,15 @@ import Multiselect from "vue-multiselect";
 
 Vue.config.productionTip = false;
 Vue.prototype.$user = data.user;
-Vue.component('multiselect', Multiselect)
+Vue.component('multiselect', Multiselect);
+
+router.beforeEach((to, from, next) => {
+    if (to.fullPath === '/enter') next(); else if (localStorage.getItem('user')) {
+        next()
+    } else {
+        next('/enter')
+    }
+});
 
 new Vue({
     router,

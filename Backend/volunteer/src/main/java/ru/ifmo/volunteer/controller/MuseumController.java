@@ -1,7 +1,6 @@
 package ru.ifmo.volunteer.controller;
 
 import io.swagger.annotations.ApiOperation;
-import java.lang.reflect.Member;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import ru.ifmo.volunteer.model.Event;
 import ru.ifmo.volunteer.model.Museum;
 import ru.ifmo.volunteer.service.MuseumService;
 
@@ -21,7 +18,7 @@ import ru.ifmo.volunteer.service.MuseumService;
 public class MuseumController {
   private final MuseumService museumService;
 
-  public MuseumController(MuseumService museumService) {
+  public MuseumController(final MuseumService museumService) {
     this.museumService = museumService;
   }
 
@@ -29,10 +26,9 @@ public class MuseumController {
       value = "Возвращает список избранных музеев",
       produces = "application/json",
       response = Museum.class,
-      responseContainer = "List"
-  )
+      responseContainer = "List")
   @GetMapping("{id}/favourites")
-  public List<Museum> getFavourites(@PathVariable Long id) {
+  public List<Museum> getFavourites(@PathVariable final long id) {
     return museumService.getFavourites(id);
   }
 
@@ -41,7 +37,7 @@ public class MuseumController {
       produces = "application/json",
       response = Museum.class)
   @PostMapping
-  public Museum create(@RequestBody Museum museum) {
+  public Museum create(@RequestBody final Museum museum) {
     return museumService.add(museum);
   }
 
@@ -50,7 +46,7 @@ public class MuseumController {
       produces = "application/json",
       response = Museum.class)
   @GetMapping("{id}")
-  public Museum findMuseumById(@PathVariable Long id) {
+  public Museum findMuseumById(@PathVariable final long id) {
     return museumService.findById(id);
   }
 
@@ -59,7 +55,7 @@ public class MuseumController {
       produces = "application/json",
       response = Museum.class)
   @PutMapping
-  public Museum update(@RequestBody Museum museum) {
+  public Museum update(@RequestBody final Museum museum) {
     return museumService.update(museum);
   }
 
@@ -77,8 +73,8 @@ public class MuseumController {
       value = "Удаляет музей по id",
       produces = "application/json",
       response = Museum.class)
-  @DeleteMapping
-  public void deleteById(Long id) {
+  @DeleteMapping("{id}")
+  public void deleteById(@PathVariable final long id) {
     museumService.deleteById(id);
   }
 }

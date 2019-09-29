@@ -1,6 +1,5 @@
 package ru.ifmo.volunteer.service;
 
-import java.time.LocalDate;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.model.Achievement;
@@ -10,19 +9,16 @@ import ru.ifmo.volunteer.repository.AchievementRepository;
 public class AchievementService {
   private final AchievementRepository achievementRepository;
 
-
-  public AchievementService(
-      AchievementRepository achievementRepository) {
+  public AchievementService(final AchievementRepository achievementRepository) {
     this.achievementRepository = achievementRepository;
   }
 
-
-  public List<Achievement> getAllByUserId(Long userId) {
+  public List<Achievement> getAllByUserId(final long userId) {
     return achievementRepository.getAllByUserId(userId);
   }
 
-  public void awardUser(Long userId, Long achievementId) {
-    Long date = System.currentTimeMillis();
+  public void awardUser(final long userId, final long achievementId) {
+    final var date = System.currentTimeMillis();
     achievementRepository.awardUser(userId, achievementId, date);
   }
 }

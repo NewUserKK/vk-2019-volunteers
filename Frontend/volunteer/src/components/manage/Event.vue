@@ -1,6 +1,8 @@
 <template>
     <div>
         <h1>Событие №{{$route.params.id}}</h1>
+        <h4>Участники:</h4>
+        <div class="chosen">{{participants.length > 0 ? participants.map(u => u.name + ' ' + u.surname).join(", ") : "-"}}</div>
         <h4>Выбраны роли:</h4>
         <div class="chosen">{{chosenRoles.length > 0 ? chosenRoles.map(r => r.name).join(", ") : "-"}}</div>
         <div class="roles">
@@ -19,7 +21,7 @@
             </div>
             <a class="myButton" @click="add">Добавить</a>
             <h4 v-if="this.loaded && !this.event.finished">Вы можете <a href="javascript:void(0)" @click="finish">завершить</a> событие</h4>
-            <h4 v-if="this.loaded && this.event.volunteersPresent < this.event.volunteersRequired">Вы так же можете <a href="javascript:void(0)" @click="distribute">дораспределить</a> волонтёров на событие</h4>
+            <h4 v-if="this.loaded && this.event.volunteersPresent < this.event.volunteersRequired && this.event.volunteersPresent < this.userCount">Вы так же можете <a href="javascript:void(0)" @click="distribute">дораспределить</a> волонтёров на событие</h4>
         </div>
     </div>
 </template>
@@ -40,6 +42,7 @@
                 participants: [],
                 loaded: false,
                 event: null,
+                userCount: null
             }
         },
         beforeMount() {
@@ -53,6 +56,9 @@
                     axios.get(`user/${this.$route.params.id}/participants`).then(response => {
                         this.participants = response.data;
                     });
+                    axios.get('user').then(response => {
+                        this.userCount = response.data.length;
+                    });
                     axios.get(`role/byEvent/${this.$route.params.id}`).then(response => {
                         this.chosenRoles = response.data;
                         for (let role of this.roles) {
@@ -65,14 +71,16 @@
                 });
             },
             add() {
-                const requests = [];
-                const eventId = this.$route.params.id;
-                for (let role of this.selectedRoles) {
-                    requests.push(axios.post('role/' + eventId + '/add/' + role.id));
+                if (this.selectedRoles.length > 0) {
+                    const requests = [];
+                    const eventId = this.$route.params.id;
+                    for (let role of this.selectedRoles) {
+                        requests.push(axios.post('role/' + eventId + '/add/' + role.id));
+                    }
+                    axios.all(requests).then(() => {
+                        this.$router.push('/events');
+                    });
                 }
-                axios.all(requests).then(() => {
-                    this.$router.push('/events');
-                });
             },
             finish() {
                 axios.put(`event/${this.$route.params.id}/finish`).then(() => {
@@ -84,6 +92,7 @@
                     for (let user of response.data) {
                         this.participants.push(user);
                     }
+                    this.event.volunteersPresent = this.event.volunteersRequired;
                 });
             }
         }

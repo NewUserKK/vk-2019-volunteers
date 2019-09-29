@@ -49,7 +49,7 @@ public class VolunteerController {
       produces = "application/json",
       response = Volunteer.class)
   @GetMapping("{id}")
-  public Volunteer findById(@PathVariable final Long id) {
+  public Volunteer findById(@PathVariable final long id) {
     return volunteerService.findById(id);
   }
 
@@ -63,8 +63,8 @@ public class VolunteerController {
   }
 
   @ApiOperation(value = "Удаляет волонтёра по id")
-  @DeleteMapping
-  public void delete(final Long id) {
+  @DeleteMapping("{id}")
+  public void delete(@PathVariable final long id) {
     volunteerService.deleteById(id);
   }
 }

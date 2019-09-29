@@ -16,7 +16,7 @@ public class RoleService {
     this.roleRepository = roleRepository;
   }
 
-  public Role add(Role role) {
+  public Role add(final Role role) {
     if (roleRepository.findById(role.getId()).isPresent()) {
       throw new AlreadyExistsException(
           String.format("Role with %d id already exists", role.getId()));
@@ -28,14 +28,14 @@ public class RoleService {
     return roleRepository.findAll();
   }
 
-  public Role findById(final Long id) {
+  public Role findById(final long id) {
     return roleRepository
         .findById(id)
         .orElseThrow(
             () -> new ResourceNotFoundException(String.format("Роль с id %d не найдена", id)));
   }
 
-  public void deleteById(final Long id) {
+  public void deleteById(final long id) {
     roleRepository.deleteById(id);
   }
 
@@ -44,11 +44,11 @@ public class RoleService {
     return roleRepository.save(role);
   }
 
-  public List<Role> findByEventId(final Long id) {
+  public List<Role> findByEventId(final long id) {
     return roleRepository.findByEventId(id);
   }
 
-  public void addToEvent(final Long eventId, final Long roleId) {
+  public void addToEvent(final long eventId, final long roleId) {
     roleRepository.addToEvent(eventId, roleId);
   }
 }

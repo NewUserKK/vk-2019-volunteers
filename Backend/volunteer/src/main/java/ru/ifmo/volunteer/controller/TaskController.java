@@ -14,7 +14,7 @@ import ru.ifmo.volunteer.service.TaskService;
 public class TaskController {
   private final TaskService taskService;
 
-  public TaskController(TaskService taskService) {
+  public TaskController(final TaskService taskService) {
     this.taskService = taskService;
   }
 
@@ -22,11 +22,9 @@ public class TaskController {
       value = "Получения списка всех заданий для события",
       produces = "application/json",
       response = Task.class,
-      responseContainer = "List"
-  )
+      responseContainer = "List")
   @GetMapping("{id}/tasks")
-  public List<Task> getAllTasksByEventId(@PathVariable Long id) {
+  public List<Task> getAllTasksByEventId(@PathVariable final long id) {
     return taskService.getAllTasksByEventId(id);
   }
-
 }

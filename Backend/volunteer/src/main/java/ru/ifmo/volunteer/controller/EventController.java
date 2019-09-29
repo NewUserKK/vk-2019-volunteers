@@ -19,13 +19,13 @@ import ru.ifmo.volunteer.service.EventService;
 public class EventController {
   private final EventService eventService;
 
-  public EventController(EventService eventService) {
+  public EventController(final EventService eventService) {
     this.eventService = eventService;
   }
 
   @ApiOperation(value = "Добавить ответственного", produces = "application/json")
   @PutMapping("{id}/addResponsible")
-  public void addResponsible(@PathVariable Long id, @RequestParam Long userId) {
+  public void addResponsible(@PathVariable final long id, @RequestParam final long userId) {
     eventService.addResponsible(id, userId);
   }
 
@@ -34,7 +34,7 @@ public class EventController {
       produces = "application/json",
       response = Long.class)
   @GetMapping("{id}/rating_required")
-  public Long ratingRequired(@PathVariable Long id) {
+  public Long ratingRequired(@PathVariable final long id) {
     return eventService.ratingRequired(id);
   }
 
@@ -44,13 +44,13 @@ public class EventController {
       response = Event.class,
       responseContainer = "List")
   @GetMapping("{id}/events")
-  public List<Event> getEventsByMuseum(@PathVariable Long id) {
+  public List<Event> getEventsByMuseum(@PathVariable final long id) {
     return eventService.getEventsByMuseum(id);
   }
 
   @ApiOperation(value = "Подписаться на событие", produces = "application/json")
   @PostMapping("/subscribe")
-  public void subscribe(@RequestParam Long userId, @RequestParam Long eventId) {
+  public void subscribe(@RequestParam final long userId, @RequestParam final long eventId) {
     eventService.subscribe(userId, eventId);
   }
 
@@ -59,21 +59,19 @@ public class EventController {
       produces = "application/json",
       response = Boolean.class)
   @GetMapping("{eventId}/isFavourite")
-  public Boolean isFavourite(@PathVariable Long eventId, @RequestParam Long userId) {
+  public Boolean isFavourite(@PathVariable final long eventId, @RequestParam final long userId) {
     return eventService.isFavourite(eventId, userId);
   }
 
-  @ApiOperation(
-      value = "Завершить событие",
-      produces = "application/json")
+  @ApiOperation(value = "Завершить событие", produces = "application/json")
   @PutMapping("{id}/finish")
-  public void finish(@PathVariable Long id) {
+  public void finish(@PathVariable final long id) {
     eventService.finish(id);
   }
 
   @ApiOperation(value = "Отписаться от события", produces = "application/json")
   @DeleteMapping("/unsubscribe")
-  public void unsubscribe(@RequestParam Long userId, @RequestParam Long eventId) {
+  public void unsubscribe(@RequestParam final long userId, @RequestParam final long eventId) {
     eventService.unsubscribe(userId, eventId);
   }
 
@@ -82,7 +80,7 @@ public class EventController {
       produces = "application/json",
       response = Event.class)
   @PostMapping
-  public Event create(@RequestBody Event event) {
+  public Event create(@RequestBody final Event event) {
     return eventService.add(event);
   }
 
@@ -91,7 +89,7 @@ public class EventController {
       produces = "application/json",
       response = Event.class)
   @GetMapping("{id}")
-  public Event findEventById(@PathVariable Long id) {
+  public Event findEventById(@PathVariable final long id) {
     return eventService.findById(id);
   }
 
@@ -101,13 +99,13 @@ public class EventController {
       response = Event.class,
       responseContainer = "List")
   @GetMapping("{id}/actual")
-  public List<Event> getActualForUser(@PathVariable Long id) {
+  public List<Event> getActualForUser(@PathVariable final long id) {
     return eventService.getActualForUser(id);
   }
 
   @ApiOperation(value = "Возвращает историю событий, в которых участвовал пользователь")
   @GetMapping("{id}/history")
-  public List<Event> getHistoryForUser(@PathVariable Long id) {
+  public List<Event> getHistoryForUser(@PathVariable final long id) {
     return eventService.getHistoryForUser(id);
   }
 
@@ -116,7 +114,7 @@ public class EventController {
       produces = "application/json",
       response = Event.class)
   @PutMapping
-  public Event update(@RequestBody Event event) {
+  public Event update(@RequestBody final Event event) {
     return eventService.update(event);
   }
 
@@ -134,8 +132,8 @@ public class EventController {
       value = "Удаляет событие по id",
       produces = "application/json",
       response = Event.class)
-  @DeleteMapping
-  public void deleteById(Long id) {
+  @DeleteMapping("{id}")
+  public void deleteById(@PathVariable final long id) {
     eventService.deleteById(id);
   }
 }

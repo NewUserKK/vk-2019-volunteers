@@ -34,7 +34,7 @@ public class RoleController {
 
   @ApiOperation(value = "Добавляет к событию роль")
   @PostMapping("{eventId}/add/{roleId}")
-  public void addToEvent(@PathVariable final Long eventId, @PathVariable final Long roleId) {
+  public void addToEvent(@PathVariable final long eventId, @PathVariable final long roleId) {
     roleService.addToEvent(eventId, roleId);
   }
 
@@ -54,7 +54,7 @@ public class RoleController {
       response = Role.class,
       responseContainer = "List")
   @GetMapping("byEvent/{id}")
-  public List<Role> findByEventId(@PathVariable final Long id) {
+  public List<Role> findByEventId(@PathVariable final long id) {
     return roleService.findByEventId(id);
   }
 
@@ -63,7 +63,7 @@ public class RoleController {
       produces = "application/json",
       response = Role.class)
   @GetMapping("{id}")
-  public Role findById(@PathVariable final Long id) {
+  public Role findById(@PathVariable final long id) {
     return roleService.findById(id);
   }
 
@@ -77,8 +77,8 @@ public class RoleController {
   }
 
   @ApiOperation(value = "Удаляет роль по id")
-  @DeleteMapping
-  public void delete(final Long id) {
+  @DeleteMapping("{id}")
+  public void delete(@PathVariable final long id) {
     roleService.deleteById(id);
   }
 }

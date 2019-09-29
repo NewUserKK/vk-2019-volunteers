@@ -9,39 +9,33 @@ import ru.ifmo.volunteer.model.Event;
 import ru.ifmo.volunteer.model.User;
 import ru.ifmo.volunteer.repository.EventRepository;
 import ru.ifmo.volunteer.repository.UserRepository;
-import ru.ifmo.volunteer.repository.VolunteerRepository;
 
 @Service
 public class EventService {
   private final EventRepository eventRepository;
-  private final VolunteerRepository volunteerRepository;
   private final UserRepository userRepository;
 
-  public EventService(
-      EventRepository eventRepository,
-      VolunteerRepository volunteerRepository,
-      UserRepository userRepository) {
+  public EventService(final EventRepository eventRepository, final UserRepository userRepository) {
     this.eventRepository = eventRepository;
-    this.volunteerRepository = volunteerRepository;
     this.userRepository = userRepository;
-}
+  }
 
   public List<Event> read() {
     return eventRepository.findAll();
   }
 
-  public void deleteById(Long id) {
+  public void deleteById(final long id) {
     eventRepository.deleteById(id);
   }
 
-  public Event findById(Long id) {
+  public Event findById(final long id) {
     return eventRepository
         .findById(id)
         .orElseThrow(
             () -> new ResourceNotFoundException(String.format("Событие с id %d не найдено", id)));
   }
 
-  public Event add(Event event) {
+  public Event add(final Event event) {
     eventRepository
         .findById(event.getId())
         .ifPresent(
@@ -52,18 +46,18 @@ public class EventService {
     return eventRepository.save(event);
   }
 
-  public Event update(Event event) {
+  public Event update(final Event event) {
     findById(event.getId());
     return eventRepository.save(event);
   }
 
-  public List<Event> getActualForUser(Long id) {
+  public List<Event> getActualForUser(final long id) {
     return eventRepository.findAllByUserId(id).stream()
         .filter(event -> !event.getFinished())
         .collect(Collectors.toList());
   }
 
-  public void subscribe(Long userId, Long eventId) {
+  public void subscribe(final long userId, final long eventId) {
     eventRepository
         .findEventWithUserId(userId, eventId)
         .ifPresent(
@@ -73,49 +67,50 @@ public class EventService {
     eventRepository.subscribe(userId, eventId);
   }
 
-  public void unsubscribe(Long userId, Long eventId) {
+  public void unsubscribe(final long userId, final long eventId) {
     eventRepository
         .findEventWithUserId(userId, eventId)
         .orElseThrow(() -> new ResourceNotFoundException("Вы не были подписаны на это событие"));
     eventRepository.unsubscribe(userId, eventId);
   }
 
-  public List<Event> getHistoryForUser(Long id) {
+  public List<Event> getHistoryForUser(final long id) {
     return eventRepository.findAllByUserId(id).stream()
         .filter(Event::getFinished)
         .collect(Collectors.toList());
   }
 
-  public List<Event> getEventsByMuseum(Long id) {
+  public List<Event> getEventsByMuseum(final long id) {
     return eventRepository.findAllByMuseumId(id).stream()
         .filter(event -> !event.getFinished())
         .collect(Collectors.toList());
   }
 
-  public Boolean isFavourite(Long eventId, Long userId) {
+  public Boolean isFavourite(final long eventId, final long userId) {
     return eventRepository.isFavourite(eventId, userId) != null;
   }
 
-  public void addResponsible(Long eventId, Long userId) {
+  public void addResponsible(final long eventId, final long userId) {
     eventRepository.addResponsible(eventId, userId);
     eventRepository.addRole(userId, 22L, eventId);
   }
 
-  public Long ratingRequired(Long id) {
+  public Long ratingRequired(final long id) {
     return eventRepository.ratingRequired(id);
   }
 
-  public void finish(Long id) {
+  public void finish(final long id) {
     List<User> users = userRepository.getParticipantsById(id);
     users.forEach(user -> userRepository.updateRating(user.getId(), user.getRating() + 15));
     eventRepository.finish(id);
   }
 
-  public void addRole(final Long userId, final Long roleId, final Long eventId) {
+  public void addRole(final long userId, final long roleId, final long eventId) {
     eventRepository.addRole(userId, roleId, eventId);
   }
 
-  public void addParticipant(final Long eventId, final Long userId) {
+  public void addParticipant(final long eventId, final long userId) {
     eventRepository.addParticipant(eventId, userId);
+    eventRepository.increment(eventId);
   }
 }

@@ -20,7 +20,7 @@ public class RequestController {
   private final RequestService requestService;
   private final EventService eventService;
 
-  public RequestController(RequestService requestService, EventService eventService) {
+  public RequestController(final RequestService requestService, final EventService eventService) {
     this.requestService = requestService;
     this.eventService = eventService;
   }
@@ -41,7 +41,7 @@ public class RequestController {
       response = Request.class,
       responseContainer = "List")
   @GetMapping("{id}")
-  public List<Request> byUser(@PathVariable final Long id) {
+  public List<Request> byUser(@PathVariable final long id) {
     return requestService.findAllByUserId(id);
   }
 
@@ -60,13 +60,14 @@ public class RequestController {
       produces = "application/json",
       response = Boolean.class)
   @GetMapping("{userId}/info")
-  public Boolean hasAdditionalInfo(@PathVariable Long userId, @RequestParam Long museum_id) {
+  public Boolean hasAdditionalInfo(
+      @PathVariable final long userId, @RequestParam final long museum_id) {
     return requestService.hasAdditionalInfo(userId, museum_id);
   }
 
   @ApiOperation(value = "Подать заявку на волонтёрство", produces = "application/json")
   @PostMapping("{eventId}/apply")
-  public void apply(@PathVariable Long eventId, @RequestParam Long requestId) {
+  public void apply(@PathVariable final long eventId, @RequestParam final long requestId) {
     requestService.apply(eventId, requestId);
   }
 
@@ -92,7 +93,7 @@ public class RequestController {
       produces = "application/json",
       response = Request.class)
   @PostMapping
-  public Request add(@RequestBody Request request) {
+  public Request add(@RequestBody final Request request) {
     return requestService.add(request);
   }
 }
