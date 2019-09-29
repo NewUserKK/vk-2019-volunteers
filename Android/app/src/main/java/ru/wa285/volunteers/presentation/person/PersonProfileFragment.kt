@@ -23,10 +23,7 @@ import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
 import ru.wa285.volunteers.domain.person.model.fullName
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
-import ru.wa285.volunteers.presentation.common.AbstractFragment
-import ru.wa285.volunteers.presentation.common.hide
-import ru.wa285.volunteers.presentation.common.show
-import ru.wa285.volunteers.presentation.common.switchTo
+import ru.wa285.volunteers.presentation.common.*
 import ru.wa285.volunteers.presentation.common.view.NamePicture
 
 
@@ -112,10 +109,10 @@ class ProfileFragment : AbstractFragment() {
 
     @SuppressLint("SetTextI18n")
     private fun fillFields(person: Person) {
-        profile_fullname.text = person.fullName()
+        profile_fullname.text = person.name + person.surname
         profile_avatar_view.value = NamePicture(person.name, person.avatarUri)
         profile_login.text = "@ ${person.login}"
-        profile_birthday.text = "Дата рождения: ${person.birthday}"
+        profile_birthday.text = "Дата рождения: ${person.birthday.toLocalizedString()}"
         val email = person.email
         if (email != null) {
             profile_email.text = "E-mail: $email"

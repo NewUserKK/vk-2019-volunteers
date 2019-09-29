@@ -12,8 +12,8 @@
 
         <ru.wa285.volunteers.presentation.common.view.AvatarView
             android:id="@+id/profile_avatar_view"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
             android:layout_marginEnd="10dp"
             app:layout_constraintBottom_toTopOf="@id/profile_rating"
             app:layout_constraintEnd_toStartOf="@id/profile_fullname"
@@ -30,6 +30,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/profile_avatar_view"
             app:layout_constraintTop_toTopOf="@+id/profile_avatar_view"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="4dp"
             android:textSize="24sp"
             tools:text="Oleg Ivanov" />
 
@@ -40,6 +42,8 @@
             app:layout_constraintTop_toBottomOf="@id/profile_fullname"
             app:layout_constraintStart_toStartOf="@id/profile_fullname"
             app:layout_constraintBottom_toBottomOf="@id/profile_avatar_view"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="4dp"
             tools:text="\@Socolio" />
 
         <TextView
@@ -50,6 +54,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/profile_email"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="4dp"
             android:layout_marginTop="8dp"
             tools:text="19.09.1990" />
 
@@ -61,6 +67,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/profile_phone"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="4dp"
             tools:text="wafggeegdf@eeegefwef.wfjkw" />
 
         <TextView
@@ -71,6 +79,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/profile_rating"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="4dp"
             tools:text="+657899876" />
 
         <TextView
@@ -79,6 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/montserrat_regular"
+            android:padding="4dp"
             android:textSize="25sp"
             app:layout_constraintBottom_toTopOf="@id/profile_achievements_list"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,6 +115,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:padding="4dp"
             android:text="@string/profile_favourite_museums"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
