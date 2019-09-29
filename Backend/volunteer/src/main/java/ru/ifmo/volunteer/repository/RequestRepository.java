@@ -37,5 +37,5 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
   @Query(
       value = "SELECT * FROM request WHERE event_id = :eventId AND user_id = :userId",
       nativeQuery = true)
-  Boolean requestExists(@Param("usedId") Long userId, @Param("eventId") Long eventId);
+  Boolean requestExists(@Param("userId") Long userId, @Param("eventId") Long eventId);
 }
