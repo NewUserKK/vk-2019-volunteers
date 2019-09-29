@@ -51,4 +51,8 @@ public class RequestService {
   public void update(final Request request) {
     requestRepository.save(request);
   }
+
+  public Boolean requestExists(Long userId, Long eventId) {
+    return requestRepository.requestExists(userId, eventId) != null;
+  }
 }

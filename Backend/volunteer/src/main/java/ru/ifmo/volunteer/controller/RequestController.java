@@ -1,5 +1,6 @@
 package ru.ifmo.volunteer.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +43,16 @@ public class RequestController {
   @GetMapping("{id}")
   public List<Request> byUser(@PathVariable final Long id) {
     return requestService.findAllByUserId(id);
+  }
+
+  @ApiOperation(
+      value = "Есть ли заявка",
+      produces = "application/json",
+      response = Boolean.class
+  )
+  @GetMapping("{userId}/my_request")
+  public Boolean requestExists(@PathVariable Long userId, @RequestParam Long eventId) {
+    return requestService.requestExists(userId, eventId);
   }
 
   @ApiOperation(

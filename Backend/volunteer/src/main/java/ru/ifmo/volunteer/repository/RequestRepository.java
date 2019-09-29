@@ -28,6 +28,14 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
       nativeQuery = true)
   void apply(@Param("eventId") Long eventId, @Param("requestId") Long requestId);
 
-  @Query(value = "select request.* from request join event on request.event_id = event.id where user_id=? and not finished and status = 0", nativeQuery = true)
+  @Query(
+      value =
+          "select request.* from request join event on request.event_id = event.id where user_id=? and not finished and status = 0",
+      nativeQuery = true)
   List<Request> findAllByUserId(Long id);
+
+  @Query(
+      value = "SELECT * FROM request WHERE event_id = :eventId AND user_id = :userId",
+      nativeQuery = true)
+  Boolean requestExists(@Param("usedId") Long userId, @Param("eventId") Long eventId);
 }
