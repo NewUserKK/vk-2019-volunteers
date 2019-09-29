@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Event {
@@ -13,6 +15,7 @@ public class Event {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
+  @Cascade(CascadeType.ALL)
   @ManyToOne
   @JoinColumn(name = "museum_id")
   private Museum museum;
