@@ -1,6 +1,8 @@
 <template>
     <div>
         <h1>Событие №{{$route.params.id}}</h1>
+        <h4>Участники:</h4>
+        <div class="chosen">{{participants.length > 0 ? participants.map(u => u.name + ' ' + u.surname).join(", ") : "-"}}</div>
         <h4>Выбраны роли:</h4>
         <div class="chosen">{{chosenRoles.length > 0 ? chosenRoles.map(r => r.name).join(", ") : "-"}}</div>
         <div class="roles">

@@ -29,14 +29,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
   @Query(
       value =
           "SELECT * FROM users WHERE id IN "
-              + "(SELECT user_id FROM participants WHERE event_id = :eventId)",
+              + "(SELECT user_id FROM event_to_participant WHERE event_id = :eventId)",
       nativeQuery = true)
   List<User> getParticipantsById(@Param("eventId") Long eventId);
 
   @Query(
       value =
           "SELECT * FROM users WHERE id IN "
-              + "(SELECT user_id FROM participants WHERE event_id = :eventId) AND "
+              + "(SELECT user_id FROM event_to_participant WHERE event_id = :eventId) AND "
               + "id IN (SELECT friend_id FROM user_to_friend WHERE user_id = :userId)",
       nativeQuery = true)
   List<User> getParticipantsFriendsById(
