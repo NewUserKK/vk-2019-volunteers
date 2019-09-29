@@ -1,5 +1,10 @@
 package ru.wa285.volunteers.data.repository.person
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 import retrofit2.Retrofit
 import ru.wa285.volunteers.data.common.exception.BadResponseException
 import ru.wa285.volunteers.data.common.exception.IncorrectCredentialsException
@@ -11,6 +16,7 @@ import ru.wa285.volunteers.domain.event.model.Event
 import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
+
 
 class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
 
@@ -41,14 +47,28 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
 
     override suspend fun register(person: PersonWithPassword): OperationResult<Person> {
         return tryConnect<Person> {
+//            personApiService.addPassword(PersonAuthCredentials(person.login, person.password))
+//                .execute()
             println(person)
             val response = personApiService.register(person).execute()
             val body = response.body()
             if (response.isSuccessful && body != null) {
-                val passResponse = personApiService.addPassword(PersonAuthCredentials(person.login, person.password)).execute()
-                if (!passResponse.isSuccessful) {
-                    return@tryConnect OperationResult.Failure(BadResponseException(passResponse))
-                }
+                val mapper = ObjectMapper()
+                val json = mapper.writeValueAsString(
+                    PersonAuthCredentials(person.login, person.password)
+                )
+                println(json)
+                val client = OkHttpClient()
+                val reqBody = RequestBody.create(
+                    MediaType.parse("application/json; charset=utf-8"),
+                    json
+                )
+                val request = Request.Builder()
+                    .url("http://demo135.foxtrot.vkhackathon.com:8080/api/v1/user/register")
+                    .put(reqBody)
+                    .build()
+                client.newCall(request).execute()
+
                 loggedUser = body
                 OperationResult.Success(body)
             } else {

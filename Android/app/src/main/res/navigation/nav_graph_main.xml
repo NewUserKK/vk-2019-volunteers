@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_eventDetailFragment_to_eventParticipantFragment"
             app:destination="@id/eventParticipantFragment" />
+        <action
+            android:id="@+id/action_eventDetailFragment_to_eventRegistrationFragment"
+            app:destination="@id/eventRegistrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -133,4 +136,13 @@
         android:name="ru.wa285.volunteers.ActiveEventTasksFragment"
         android:label="fragment_active_event_tasks"
         tools:layout="@layout/fragment_active_event_tasks" />
+    <fragment
+        android:id="@+id/eventRegistrationFragment"
+        android:name="ru.wa285.volunteers.EventRegistrationFragment"
+        android:label="fragment_event_registration"
+        tools:layout="@layout/fragment_event_registration" >
+        <argument
+            android:name="event"
+            app:argType="ru.wa285.volunteers.domain.event.model.Event" />
+    </fragment>
 </navigation>

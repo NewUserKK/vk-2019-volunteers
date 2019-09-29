@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import org.kodein.di.generic.instance
-import ru.wa285.volunteers.ActiveEventChatFragment
 import ru.wa285.volunteers.ActiveEventParticipantFragment
-import ru.wa285.volunteers.ActiveEventTasksFragment
 import ru.wa285.volunteers.R
 import ru.wa285.volunteers.presentation.VolunteersApp
 

@@ -12,7 +12,7 @@
     <string name="edit_name">Имя</string>
     <string name="edit_surname">Фамилия</string>
     <string name="edit_patronymic">Отчество</string>
-    <string name="edit_birth_date">Дата рождения</string>
+    <string name="edit_birth_date">Дата рождения (dd.mm.yyyy)</string>
     <string name="request_email">E-mail:</string>
     <string name="edit_email">E-mail</string>
     <string name="request_phone">Номер телефона:</string>
