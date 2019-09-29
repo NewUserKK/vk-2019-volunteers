@@ -1,5 +1,5 @@
 <template>
-    <div v-if="this.loaded">
+    <div>
         <h1>Событие №{{$route.params.id}}</h1>
         <h4>Выбраны роли:</h4>
         <div class="chosen">{{chosenRoles.length > 0 ? chosenRoles.map(r => r.name).join(", ") : "-"}}</div>
@@ -18,6 +18,7 @@
                 </label>
             </div>
             <a class="myButton" @click="add">Добавить</a>
+            <h4 v-if="this.loaded && !this.event.finished">Вы можете <a href="javascript:void(0)" @click="finish">завершить</a> событие</h4>
         </div>
     </div>
 </template>
@@ -36,6 +37,7 @@
                 availableRoles: [],
                 selectedRoles: [],
                 loaded: false,
+                event: null,
             }
         },
         beforeMount() {
@@ -44,14 +46,17 @@
         methods: {
             getData() {
                 this.loaded = false;
-                axios.get(`role/byEvent/${this.$route.params.id}`).then(response => {
-                    this.chosenRoles = response.data;
-                    for (let role of this.roles) {
-                        if (!this.chosenRoles.find(r => r.id === role.id)) {
-                            this.availableRoles.push(role);
+                axios.get(`event/${this.$route.params.id}`).then(response => {
+                    this.event = response.data;
+                    axios.get(`role/byEvent/${this.$route.params.id}`).then(response => {
+                        this.chosenRoles = response.data;
+                        for (let role of this.roles) {
+                            if (!this.chosenRoles.find(r => r.id === role.id)) {
+                                this.availableRoles.push(role);
+                            }
                         }
-                    }
-                    this.loaded = true;
+                        this.loaded = true;
+                    });
                 });
             },
             add() {
@@ -62,6 +67,11 @@
                 }
                 axios.all(requests).then(() => {
                     this.$router.push('/events');
+                });
+            },
+            finish() {
+                axios.put(`event/${this.$route.params.id}/finish`).then(() => {
+                    this.$root.$emit('onFinishEvent', this.$route.params.id);
                 });
             }
         }
@@ -83,6 +93,7 @@
         font-family: Montserrat, serif;
         text-align: center;
         margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
     }
 
     .roles {

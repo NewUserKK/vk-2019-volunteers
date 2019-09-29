@@ -15,6 +15,7 @@ import ManageEvent from "../components/manage/Event";
 import User from "../components/create/Responsible";
 import Role from "../components/create/Role";
 import Manage from "../components/manage/Manage";
+import Requests from "../components/requests/Requests";
 
 export default [
     {path: '/', component: Index},
@@ -30,6 +31,7 @@ export default [
     {path: '/users/create', component: User},
     {path: '/logout', component: Logout},
     {path: '/enter', component: Enter},
+    {path: '/requests', component: Requests},
     {path: '/directories', component: Directories},
     {path: '/create', component: Create},
     {path: '/manage', component: Manage},

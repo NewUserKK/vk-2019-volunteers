@@ -1,6 +1,7 @@
 package ru.ifmo.volunteer.controller;
 
 import io.swagger.annotations.ApiOperation;
+import java.util.List;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,26 @@ public class RequestController {
 
   public RequestController(RequestService requestService) {
     this.requestService = requestService;
+  }
+
+  @ApiOperation(
+      value = "Возвращает все заявки",
+      produces = "application/json",
+      response = Request.class,
+      responseContainer = "List"
+  )
+  public List<Request> read() {
+    return requestService.findAll();
+  }
+
+  @ApiOperation(
+      value = "Возвращает все заявки",
+      produces = "application/json",
+      response = Request.class,
+      responseContainer = "List"
+  )
+  public List<Request> byEvent() {
+    return requestService.findAll();
   }
 
   @ApiOperation(

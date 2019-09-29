@@ -15,6 +15,9 @@
                         <router-link to="/directories">Справочники</router-link>
                     </li>
                     <li v-if="this.$user">
+                        <router-link to="/requests">Заявки</router-link>
+                    </li>
+                    <li v-if="this.$user">
                         <router-link to="/logout">Выйти</router-link>
                     </li>
                     <li v-if="!this.$user">
@@ -55,16 +58,16 @@
         methods: {
             getData() {
                 axios.get('museum').then(response => {
-                    this.museums = response.data
+                    this.museums = response.data;
                 });
                 axios.get('event').then(response => {
-                    this.events = response.data
+                    this.events = response.data;
                 });
                 axios.get('user').then(response => {
-                    this.users = response.data
+                    this.users = response.data;
                 });
                 axios.get('volunteer').then(response => {
-                    this.volunteers = response.data
+                    this.volunteers = response.data;
                 });
                 axios.get('role').then(response => {
                     this.roles = response.data;
@@ -106,6 +109,14 @@
                 });
                 this.$router.push('/events');
             });
+            this.$root.$on('onFinishEvent', id => {
+                this.events.forEach(v => {
+                    if (v.id === id) {
+                        v.finished = true;
+                    }
+                });
+                this.$router.push('/events');
+            })
         },
         mounted() {
             this.$user = localStorage.getItem('user');

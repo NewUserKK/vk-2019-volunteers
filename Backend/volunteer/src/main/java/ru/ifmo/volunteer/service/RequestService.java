@@ -1,5 +1,6 @@
 package ru.ifmo.volunteer.service;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.exception.AlreadyExistsException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
@@ -37,5 +38,9 @@ public class RequestService {
 
   public void apply(Long eventId, Long requestId) {
     requestRepository.apply(eventId, requestId);
+  }
+
+  public List<Request> findAll() {
+    return requestRepository.findAll();
   }
 }
