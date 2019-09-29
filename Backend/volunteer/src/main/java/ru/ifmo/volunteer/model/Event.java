@@ -15,7 +15,7 @@ public class Event {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @Cascade(CascadeType.ALL)
+  @Cascade(CascadeType.MERGE)
   @ManyToOne
   @JoinColumn(name = "museum_id")
   private Museum museum;
