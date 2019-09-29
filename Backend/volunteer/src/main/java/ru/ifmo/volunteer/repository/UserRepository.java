@@ -79,6 +79,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
       nativeQuery = true)
   List<User> getTop(@Param("limit") int limit);
 
+  @Transactional
+  @Modifying
   @Query(
       value = "UPDATE users SET rating = :rating WHERE id = :id", nativeQuery = true
   )
