@@ -49,7 +49,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   @Transactional
   @Modifying
-  @Query(value = "UPDATE users SET password = :password WHERE login = :login", nativeQuery = true)
+  @Query(value = "UPDATE users SET password=crypt(:password, password) WHERE login = :login", nativeQuery = true)
   void register(@Param("login") String login, @Param("password") String password);
 
   @Query(
