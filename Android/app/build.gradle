@@ -58,5 +58,5 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
-    compile 'com.google.zxing:core:3.2.1'
+    implementation 'com.google.zxing:core:3.2.1'
 }

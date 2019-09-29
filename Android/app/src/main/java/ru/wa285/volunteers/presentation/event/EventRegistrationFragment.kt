@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_event_registration.view.*
 import kotlinx.android.synthetic.main.fragment_person_authorization.view.*
@@ -13,7 +14,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.kodein.di.generic.instance
-import ru.wa285.volunteers.EventRegistrationFragmentArgs
 import ru.wa285.volunteers.R
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.event.EventRepository
@@ -39,7 +39,7 @@ class EventRegistrationFragment : AbstractFragment() {
     private var startDate: Calendar? = null
     private var endDate: Calendar? = null
 
-    private val roleAdapter: ArrayAdapter<Role>? = null
+    private var roleAdapter: ArrayAdapter<Role>? = null
     private val roleList = mutableListOf<Role>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +49,7 @@ class EventRegistrationFragment : AbstractFragment() {
 
     override fun View.setupFragment() {
         event_registration_start_date_picker.setOnClickListener {
+            println("fgdfgdfgfdcgdcfg")
             val datePickerListener =
                 DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
                     setStartDate(year, month, dayOfMonth)
@@ -61,20 +62,22 @@ class EventRegistrationFragment : AbstractFragment() {
             val datePickerListener =
                 DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
                     setEndDate(year, month, dayOfMonth)
-                    event_registration_start_date_value.text =
+                    event_registration_end_date_value.text =
                         dateToLocalizedString(endDate!!, VolunteersApp.locale)
                 }
             showDatePickerDialog(endDate, datePickerListener)
         }
-        person_authorization_enter.setOnClickListener {
+        event_registration_submit.setOnClickListener {
             submitEvent()
         }
-        event_registration_role_spinner.adapter = ArrayAdapter(
+        roleAdapter = ArrayAdapter(
             context,
             android.R.layout.simple_spinner_dropdown_item,
             roleList
         )
-        launch {
+        event_registration_role_spinner.adapter = roleAdapter
+
+            launch {
             val result = withContext(Dispatchers.IO) {
                 eventRepository.getAllRoles(event)
             }
@@ -139,18 +142,26 @@ class EventRegistrationFragment : AbstractFragment() {
                 Toast.makeText(context, "Не указана дата начала", Toast.LENGTH_SHORT).show()
                 return@launch
             }
-            personRepository.applyForVolunteering(
-                event,
-                EventRegisterForm(
-                    comment = event_registration_comment.text.toString(),
-                    endDate = endDate,
-                    startDate = startDate,
-                    eventId= event.id,
-                    status = 0,
-                    roleId = (event_registration_role_spinner.selectedItem as Role).id,
-                    personId = personRepository.getLoggedUser()!!.id
+            val result = withContext(Dispatchers.IO) {
+                personRepository.applyForVolunteering(
+                    event,
+                    EventRegisterForm(
+                        comment = event_registration_comment.text.toString(),
+                        endDate = endDate,
+                        startDate = startDate,
+                        event = event,
+                        status = 0,
+                        role = (event_registration_role_spinner.selectedItem as? Role),
+                        person = personRepository.getLoggedUser()!!
+                    )
                 )
-            )
+            }
+            when (result) {
+                is OperationResult.Success -> {
+                    findNavController().popBackStack()
+                }
+                is OperationResult.Failure -> Toast.makeText(context, result.error.message, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

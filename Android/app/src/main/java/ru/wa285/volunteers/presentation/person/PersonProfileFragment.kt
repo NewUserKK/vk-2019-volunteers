@@ -71,6 +71,9 @@ class ProfileFragment : AbstractFragment(), BottomNavFragment {
                     .actionBottomNavigationHostFragmentToProfileFavoriteMuseumListFragment(person)
             )
         }
+        profile_upload_satellite.setOnClickListener {
+            makeQr(profile_edit_satellite.text.toString())
+        }
     }
 
     private fun View.setupAuthFragment() {
@@ -80,9 +83,6 @@ class ProfileFragment : AbstractFragment(), BottomNavFragment {
         }
         person_authorization_register_button.setOnClickListener {
             navigateToRegistration()
-        }
-        profile_upload_satellite.setOnClickListener {
-            makeQr(profile_edit_satellite.text.toString())
         }
     }
 

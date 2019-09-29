@@ -140,6 +140,8 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
 
     override suspend fun applyForVolunteering(event: Event, info: EventRegisterForm): OperationResult<Unit> {
         return tryConnect<Unit> {
+            println(event)
+            println(info)
             val response = personApiService.applyForVolunteering(info).execute()
             if (response.isSuccessful) {
                 val form = response.body() ?: error("fdfdf")
@@ -149,5 +151,12 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
                 OperationResult.Failure(BadResponseException(response))
             }
         }
+    }
+
+    override suspend fun getAppliedEvents(person: Person): OperationResult<List<Event>> {
+//        return tryConnect<List<Event>> {
+//            val response = personApiService.getAppliedEvents
+//        }
+        TODO()
     }
 }

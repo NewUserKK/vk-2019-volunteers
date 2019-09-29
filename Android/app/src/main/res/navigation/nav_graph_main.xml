@@ -87,7 +87,7 @@
     <fragment
         android:id="@+id/currentEventsFragment"
         android:name="ru.wa285.volunteers.presentation.event.CurrentEventsFragment"
-        android:label="fragment_current_events"
+        android:label="Текущие события"
         tools:layout="@layout/fragment_current_events" />
     <fragment
         android:id="@+id/eventParticipantFragment"
@@ -129,20 +129,11 @@
         android:name="ru.wa285.volunteers.ActiveEventParticipantFragment"
         android:label="fragment_active_event_participant"
         tools:layout="@layout/fragment_active_event_participant" />
-    <fragment
-        android:id="@+id/activeEventChatFragment"
-        android:name="ru.wa285.volunteers.ActiveEventChatFragment"
-        android:label="fragment_active_event_chat"
-        tools:layout="@layout/fragment_active_event_chat" />
-    <fragment
-        android:id="@+id/activeEventTasksFragment"
-        android:name="ru.wa285.volunteers.ActiveEventTasksFragment"
-        android:label="fragment_active_event_tasks"
-        tools:layout="@layout/fragment_active_event_tasks" />
+
     <fragment
         android:id="@+id/eventRegistrationFragment"
-        android:name="ru.wa285.volunteers.EventRegistrationFragment"
-        android:label="fragment_event_registration"
+        android:name="ru.wa285.volunteers.presentation.event.EventRegistrationFragment"
+        android:label="Регистрация на событие"
         tools:layout="@layout/fragment_event_registration" >
         <argument
             android:name="event"

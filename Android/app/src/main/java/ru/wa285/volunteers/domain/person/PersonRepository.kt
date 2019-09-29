@@ -22,4 +22,5 @@ interface PersonRepository {
     suspend fun getRating(person: Person): OperationResult<Long>
 
     suspend fun applyForVolunteering(event: Event, info: EventRegisterForm): OperationResult<Unit>
+    suspend fun getAppliedEvents(person: Person): OperationResult<List<Event>>
 }

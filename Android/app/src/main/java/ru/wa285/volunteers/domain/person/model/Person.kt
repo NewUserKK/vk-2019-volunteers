@@ -15,7 +15,9 @@ data class Person @JsonCreator constructor(
     @JsonProperty("birthday") val birthday: Date,
     @JsonProperty("photoLink") val avatarUri: String?,
     @JsonProperty("rating") val rating: Long,
-    @JsonProperty("id") val id: Long = 0
+    @JsonProperty("id") val id: Long = 0,
+    @JsonProperty("verified") val verified: Boolean = false,
+    @JsonProperty("vkToken") val vkToken: String? = null
 ): Serializable
 
 fun Person.fullName(): String = "$name $surname $patronymic"
