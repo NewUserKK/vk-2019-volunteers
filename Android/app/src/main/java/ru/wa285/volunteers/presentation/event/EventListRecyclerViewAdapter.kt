@@ -44,13 +44,13 @@ class EventListRecyclerViewAdapter(private val values: List<EventAdapterItem>) :
         val item = values[position]
         val event = item.event
         holder.apply {
-            nameView.text = event.name
+            nameView.text = event.title
             placeView.text = event.museum.address
-            val startDate = event.dateStart.toLocalizedString(VolunteersApp.locale)
-            val endDate = event.dateEnd.toLocalizedString(VolunteersApp.locale)
+            val startDate = event.startDate.toLocalizedString(VolunteersApp.locale)
+            val endDate = event.endDate.toLocalizedString(VolunteersApp.locale)
             dateView.text = "$startDate — $endDate"
             Picasso.get()
-                .load(event.avatarUri)
+                .load(event.photoLink)
                 .placeholder(R.drawable.placeholder_no_image)
                 .into(imageView)
 

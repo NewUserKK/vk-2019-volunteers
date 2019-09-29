@@ -10,14 +10,16 @@
         android:id="@+id/museum_detail_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/museum_detail_avatar_view"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@id/museum_detail_description"
+        app:layout_constraintEnd_toStartOf="@id/museum_detail_avatar_view"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
-        android:textSize="35sp"
-        android:fontFamily="@font/montserrat_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="Polytech" />
 
     <ru.wa285.volunteers.presentation.common.view.AvatarView
@@ -28,21 +30,21 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/museum_detail_name"
-        app:layout_constraintStart_toEndOf="@id/museum_detail_name"/>
+        app:layout_constraintStart_toEndOf="@id/museum_detail_name"
+        app:layout_constraintTop_toTopOf="@id/museum_detail_name" />
 
     <TextView
         android:id="@+id/museum_detail_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_regular"
         android:paddingHorizontal="3dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/museum_detail_closest_events_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/museum_detail_name"
-        app:layout_constraintBottom_toTopOf="@id/museum_detail_closest_events_title"
-        android:fontFamily="@font/montserrat_regular"
-        android:textSize="20sp"
         tools:text="Test description" />
 
     <TextView
@@ -50,23 +52,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:paddingHorizontal="3dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="@string/nearest_events_text"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@id/museum_detail_closest_events_list_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/museum_detail_description"
-        app:layout_constraintBottom_toTopOf="@id/museum_detail_closest_events_list"
-        android:fontFamily="@font/montserrat_regular"
-        android:textSize="25sp"
-        android:text="@string/nearest_events_text" />
+        app:layout_constraintTop_toBottomOf="@id/museum_detail_description" />
 
-    <include
-        layout="@layout/list_event"
-        android:id="@+id/museum_detail_closest_events_list"
+    <ViewSwitcher
+        android:id="@+id/museum_detail_closest_events_list_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/museum_detail_closest_events_title" />
+        app:layout_constraintTop_toBottomOf="@id/museum_detail_closest_events_title">
 
+        <TextView
+            android:id="@+id/museum_detail_closest_events_list_placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Нет" />
+
+        <include
+            android:id="@+id/museum_detail_closest_events_list"
+            layout="@layout/list_event"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </ViewSwitcher>
 </androidx.constraintlayout.widget.ConstraintLayout>

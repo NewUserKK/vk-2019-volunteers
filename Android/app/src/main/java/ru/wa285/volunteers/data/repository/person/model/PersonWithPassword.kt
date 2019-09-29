@@ -8,7 +8,7 @@ import ru.wa285.volunteers.domain.person.model.Person
 import java.util.*
 
 data class PersonWithPassword @JsonCreator constructor(
-    @JsonProperty("name") val name: String,
+    @JsonProperty("title") val name: String,
     @JsonProperty("surname") val surname: String,
     @JsonProperty("patronymic") val patronymic: String,
     @JsonProperty("phone") val phone: String?,

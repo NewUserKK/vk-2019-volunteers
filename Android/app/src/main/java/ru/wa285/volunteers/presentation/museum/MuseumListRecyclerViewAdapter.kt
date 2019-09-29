@@ -35,7 +35,7 @@ class MuseumListRecyclerViewAdapter(private val values: List<Museum>) :
             nameView.text = item.name
             placeView.text = item.address
             Picasso.get()
-                .load(item.logoUri)
+                .load(item.photo)
                 .placeholder(R.drawable.placeholder_no_image)
                 .into(imageView)
             itemView.setOnClickListener {

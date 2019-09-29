@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_museum_detail.*
 import kotlinx.android.synthetic.main.fragment_museum_detail.view.*
+import kotlinx.android.synthetic.main.fragment_museum_detail.view.museum_detail_closest_events_list_container
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -15,11 +17,10 @@ import ru.wa285.volunteers.R
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.event.model.Event
-import ru.wa285.volunteers.domain.museum.MuseumRepository
 import ru.wa285.volunteers.domain.museum.model.Museum
 import ru.wa285.volunteers.domain.person.PersonRepository
-import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
+import ru.wa285.volunteers.presentation.common.switchTo
 import ru.wa285.volunteers.presentation.common.view.NamePicture
 import ru.wa285.volunteers.presentation.event.EventAdapterItem
 import ru.wa285.volunteers.presentation.event.EventListRecyclerViewAdapter
@@ -44,7 +45,7 @@ class MuseumDetailFragment : AbstractFragment() {
 
     override fun View.setupFragment() {
         museum_detail_name.text = museum.name
-        museum_detail_avatar_view.value = NamePicture(museum.name, museum.logoUri)
+        museum_detail_avatar_view.value = NamePicture(museum.name, museum.photo)
         museum_detail_description.text = museum.description
 
         eventAdapter = EventListRecyclerViewAdapter(eventList).apply {
@@ -78,11 +79,16 @@ class MuseumDetailFragment : AbstractFragment() {
                         val favourites = (withContext(Dispatchers.IO) {
                             personRepository.getEventSubscriptions(logged)
                         } as OperationResult.Success).value.toSet()
-                        result.value.sortedByDescending { it.dateStart }
+                        result.value.sortedByDescending { it.startDate }
                             .map { EventAdapterItem(it, it in favourites) }
                     } else {
-                        result.value.sortedByDescending { it.dateStart }
+                        result.value.sortedByDescending { it.startDate }
                             .map { EventAdapterItem(it, false) }
+                    }
+                    if (eventList.isEmpty()) {
+                        museum_detail_closest_events_list_container.switchTo(museum_detail_closest_events_list_placeholder)
+                    } else {
+                        museum_detail_closest_events_list_container.switchTo(museum_detail_closest_events_list)
                     }
                     eventAdapter.notifyDataSetChanged()
                 }

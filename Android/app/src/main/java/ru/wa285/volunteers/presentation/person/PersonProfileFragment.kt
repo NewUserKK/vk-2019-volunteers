@@ -176,7 +176,7 @@ class ProfileFragment : AbstractFragment(), BottomNavFragment {
 
 //        launch {
 //            val rating = withContext(Dispatchers.IO) {
-//                personRepository.getRating(person)
+//                personRepository.getRating(user)
 //            }
 //            when (rating) {
 //                is OperationResult.Success -> {

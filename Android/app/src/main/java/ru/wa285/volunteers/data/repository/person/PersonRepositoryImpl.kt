@@ -1,10 +1,6 @@
 package ru.wa285.volunteers.data.repository.person
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import okhttp3.MediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
 import retrofit2.Retrofit
 import ru.wa285.volunteers.data.common.exception.BadResponseException
 import ru.wa285.volunteers.data.common.exception.IncorrectCredentialsException
@@ -54,7 +50,7 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
             if (response.isSuccessful && body != null) {
 //                val mapper = ObjectMapper()
 //                val json = mapper.writeValueAsString(
-//                    PersonAuthCredentials(person.login, person.password)
+//                    PersonAuthCredentials(user.login, user.password)
 //                )
 //                println(json)
 //                val client = OkHttpClient()
@@ -138,10 +134,18 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
         }
     }
 
-    override suspend fun applyForVolunteering(event: Event, info: EventRegisterForm): OperationResult<Unit> {
+    override suspend fun applyForVolunteering(
+        event: Event,
+        info: EventRegisterForm
+    ): OperationResult<Unit> {
         return tryConnect<Unit> {
             println(event)
             println(info)
+            val mapper = ObjectMapper()
+            val json = mapper.writeValueAsString(
+                info
+            )
+            println(json)
             val response = personApiService.applyForVolunteering(info).execute()
             if (response.isSuccessful) {
                 val form = response.body() ?: error("fdfdf")

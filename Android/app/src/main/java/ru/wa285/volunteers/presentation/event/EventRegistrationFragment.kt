@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_event_registration.view.*
-import kotlinx.android.synthetic.main.fragment_person_authorization.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -152,7 +151,7 @@ class EventRegistrationFragment : AbstractFragment() {
                         event = event,
                         status = 0,
                         role = (event_registration_role_spinner.selectedItem as? Role),
-                        person = personRepository.getLoggedUser()!!
+                        user = personRepository.getLoggedUser()!!
                     )
                 )
             }

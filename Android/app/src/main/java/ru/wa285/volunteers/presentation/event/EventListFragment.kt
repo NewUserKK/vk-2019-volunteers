@@ -72,10 +72,10 @@ class EventListFragment : AbstractFragment(), BottomNavFragment {
                         val favourites = (withContext(Dispatchers.IO) {
                             personRepository.getEventSubscriptions(logged)
                         } as OperationResult.Success).value.toSet()
-                        result.value.sortedByDescending { it.dateStart }
+                        result.value.sortedByDescending { it.startDate }
                             .map { EventAdapterItem(it, it in favourites) }
                     } else {
-                        result.value.sortedByDescending { it.dateStart }
+                        result.value.sortedByDescending { it.startDate }
                             .map { EventAdapterItem(it, false) }
                     }
                     if (eventList.isEmpty()) {

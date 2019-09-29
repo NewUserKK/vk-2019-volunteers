@@ -35,7 +35,7 @@ interface PersonApiService {
 
     @POST("request/{eventId}/apply")
     fun applyForVolunteeringSecondary(
-        @Path("eventId") @Query("eventId") eventId: Long,
+        @Query("eventId") eventId: Long,
         @Query("requestId") requestId: Long
     ): Call<Unit>
 }

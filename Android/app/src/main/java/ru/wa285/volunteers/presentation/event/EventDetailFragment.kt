@@ -10,7 +10,6 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.content_event_detail.view.*
 import kotlinx.android.synthetic.main.fragment_event_detail.view.*
-import kotlinx.android.synthetic.main.fragment_person_authorization.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -41,10 +40,10 @@ class EventDetailFragment : AbstractFragment() {
     }
 
     override fun View.setupFragment() {
-        event_detail_name.text = event.name
+        event_detail_name.text = event.title
         event_detail_description_value.text = event.description
         Picasso.get()
-            .load(event.avatarUri)
+            .load(event.photoLink)
             .into(event_detail_image, object : Callback {
                 override fun onSuccess() {
                     event_detail_image.show()
@@ -66,7 +65,7 @@ class EventDetailFragment : AbstractFragment() {
             event_detail_sign_up.setBackgroundColor(resources.getColor(R.color.gray))
             event_detail_sign_up.text = "Нужна авторизация"
         } else {
-            if (loggedUser.rating < event.minimalRating) {
+            if (loggedUser.rating < event.requiredRating) {
                 event_detail_sign_up.setBackgroundColor(resources.getColor(R.color.gray))
                 event_detail_sign_up.text = "Не хватает рейтинга"
             }
@@ -79,7 +78,7 @@ class EventDetailFragment : AbstractFragment() {
             navigateToEventParticipants()
         }
 
-        event_detail_rating_value.text = event.minimalRating.toString()
+        event_detail_rating_value.text = event.requiredRating.toString()
     }
 
     private fun navigateToEventRegistration(event: Event) {

@@ -5,10 +5,6 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_current_events.*
 import kotlinx.android.synthetic.main.fragment_current_events.view.*
-import kotlinx.android.synthetic.main.fragment_current_events.view.current_events_container
-import kotlinx.android.synthetic.main.fragment_event_list.*
-import kotlinx.android.synthetic.main.fragment_event_list.view.*
-import kotlinx.android.synthetic.main.fragment_event_list.view.event_list_container
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -73,7 +69,7 @@ class CurrentEventsFragment : AbstractFragment(), BottomNavFragment {
                     eventList.clear()
                     eventList +=
                         result.value
-                            .sortedByDescending { it.dateStart }
+                            .sortedByDescending { it.startDate }
                             .map { EventAdapterItem(it, true) }
                     eventAdapter.notifyDataSetChanged()
                     if (eventList.isEmpty()) {
