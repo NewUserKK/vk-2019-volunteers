@@ -43,10 +43,11 @@
         methods: {
             accept(request) {
                 axios.post('request/accept', request).catch(e => alert(e.response.data.message));
-                this.requests = this.requests.filter()
+                this.requests = this.requests.filter(r => r.id !== request.id);
             },
             decline(request) {
                 axios.post('request/decline', request).catch(e => alert(e.response.data.message));
+                this.requests = this.requests.filter(r => r.id !== request.id);
             }
         }
     }
