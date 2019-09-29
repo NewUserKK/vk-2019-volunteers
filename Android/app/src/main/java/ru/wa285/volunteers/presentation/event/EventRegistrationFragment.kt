@@ -12,7 +12,7 @@ import ru.wa285.volunteers.presentation.common.AbstractFragment
 
 class EventRegistrationFragment : AbstractFragment() {
 
-    override val layoutResId: Int = R.layout.fragment_person_authorization
+    override val layoutResId: Int = R.layout.fragment_event_registration
 
     private val personRepository: PersonRepository by kodein.instance()
 

@@ -68,7 +68,7 @@ class EventRepositoryImpl(private val retrofit: Retrofit) : EventRepository {
     }
 
     override suspend fun submit(credentials: EventRegisterCredentials): OperationResult<Unit> {
-        return tryConnect {
+        return tryConnect<Unit> {
             val response = retrofitService.submitEvent(credentials).execute()
             if (response.isSuccessful) {
                 val person = response.body() ?: error("Person should not be null")

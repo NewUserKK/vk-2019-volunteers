@@ -83,7 +83,8 @@ class EventDetailFragment : AbstractFragment() {
     }
 
     private fun navigateToEventRegistration(event: Event) {
-
+        val action = EventDetailFragmentDirections.actionEventDetailFragmentToEventRegistrationFragment(event)
+        findNavController().navigate(action)
     }
 
     private suspend fun View.loadFriends(loggedUser: Person) {
