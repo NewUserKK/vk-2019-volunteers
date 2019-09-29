@@ -29,9 +29,10 @@ public class EventController {
     eventService.addResponsible(id, userId);
   }
 
-  @ApiOperation(value = "Получить минимальный рейтинг для участников события",
-  produces = "application/json",
-  response = Long.class)
+  @ApiOperation(
+      value = "Получить минимальный рейтинг для участников события",
+      produces = "application/json",
+      response = Long.class)
   @GetMapping("{id}/rating_required")
   public Long ratingRequired(@PathVariable Long id) {
     return eventService.ratingRequired(id);
@@ -41,8 +42,7 @@ public class EventController {
       value = "Получение списка событий по музею",
       produces = "application/json",
       response = Event.class,
-      responseContainer = "List"
-  )
+      responseContainer = "List")
   @GetMapping("{id}/events")
   public List<Event> getEventsByMuseum(@PathVariable Long id) {
     return eventService.getEventsByMuseum(id);
@@ -54,9 +54,11 @@ public class EventController {
     eventService.subscribe(userId, eventId);
   }
 
-  @ApiOperation(value = "Находится ли событие в избранном", produces = "application/json",
-  response = Boolean.class)
-  @GetMapping("{eventId}/inFavourite")
+  @ApiOperation(
+      value = "Находится ли событие в избранном",
+      produces = "application/json",
+      response = Boolean.class)
+  @GetMapping("{eventId}/isFavourite")
   public Boolean isFavourite(@PathVariable Long eventId, @RequestParam Long userId) {
     return eventService.isFavourite(eventId, userId);
   }
@@ -95,9 +97,7 @@ public class EventController {
     return eventService.getActualForUser(id);
   }
 
-  @ApiOperation(
-      value = "Возвращает историю событий, в которых участвовал пользователь"
-  )
+  @ApiOperation(value = "Возвращает историю событий, в которых участвовал пользователь")
   @GetMapping("{id}/history")
   public List<Event> getHistoryForUser(@PathVariable Long id) {
     return eventService.getHistoryForUser(id);

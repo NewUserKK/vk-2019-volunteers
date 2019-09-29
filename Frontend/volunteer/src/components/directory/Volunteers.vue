@@ -19,7 +19,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="volunteer in volunteers" :key="volunteer.id">
+                <tr :key="volunteer.id" v-for="volunteer in volunteers">
                     <td>{{volunteer.surname}}</td>
                     <td>{{volunteer.name}}</td>
                     <td>{{volunteer.patronymic}}</td>

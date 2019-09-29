@@ -32,6 +32,11 @@ public class RoleController {
     return roleService.add(role);
   }
 
+  @PostMapping("{eventId}/add/{roleId}")
+  public void addToEvent(@PathVariable final Long eventId, @PathVariable final Long roleId) {
+    roleService.addToEvent(eventId, roleId);
+  }
+
   @ApiOperation(
       value = "Возвращает список всех ролей",
       produces = "application/json",
@@ -40,6 +45,16 @@ public class RoleController {
   @GetMapping
   public List<Role> read() {
     return roleService.findAll();
+  }
+
+  @ApiOperation(
+      value = "Возвращает список всех ролей по id события",
+      produces = "application/json",
+      response = Role.class,
+      responseContainer = "List")
+  @GetMapping("byEvent/{id}")
+  public List<Role> findByEventId(@PathVariable final Long id) {
+    return roleService.findByEventId(id);
   }
 
   @ApiOperation(

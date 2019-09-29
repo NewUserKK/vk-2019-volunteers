@@ -12,6 +12,7 @@ import Museum from "../components/create/Museum";
 import Event from "../components/create/Event";
 import User from "../components/create/Responsible";
 import Role from "../components/create/Role";
+import Manage from "../components/manage/Manage";
 
 export default [
     {path: '/', component: Index},
@@ -27,5 +28,6 @@ export default [
     {path: '/enter', component: Enter},
     {path: '/directories', component: Directories},
     {path: '/create', component: Create},
+    {path: '/manage', component: Manage},
     {path: '*', component: NotFound}
 ]

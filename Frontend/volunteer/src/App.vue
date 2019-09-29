@@ -9,6 +9,9 @@
                         <router-link to="/create">Создать</router-link>
                     </li>
                     <li v-if="this.$user">
+                        <router-link to="/manage">Управление</router-link>
+                    </li>
+                    <li v-if="this.$user">
                         <router-link to="/directories">Справочники</router-link>
                     </li>
                     <li v-if="this.$user">
@@ -81,7 +84,8 @@
                 this.museums.push(museum);
                 this.$router.push('/museums');
             });
-            this.$root.$on('onAddEvent', event => {
+            this.$root.$on('onAddEvent', (event, roles) => {
+                
                 this.events.push(event);
                 this.$router.push('/events');
             });

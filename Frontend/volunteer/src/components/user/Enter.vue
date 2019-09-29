@@ -1,26 +1,26 @@
 <template>
     <div style="width: 40%; margin: auto">
         <div style="text-align: center; font-family: 'Montserrat', sans-serif">
-            <img src="../../../public/img/person.png" alt="Волонтёр"
+            <img alt="Волонтёр" src="../../../public/img/person.png"
                  style="margin-bottom: 1.5rem; background-color: #731EC8; border-radius: 40px; padding: 20px">
             <h3 style="margin-bottom: 2rem">Вход</h3>
         </div>
         <form style="text-align: center">
             <div class="form-group">
                 <label>
-                    <input required class="form-control" id="login" name="login" placeholder="Логин"
+                    <input class="form-control" id="login" name="login" placeholder="Логин" required
                            v-model="login"/>
                 </label>
             </div>
             <div class="form-group">
                 <label>
-                    <input required class="form-control" id="password" name="password" placeholder="Пароль"
+                    <input class="form-control" id="password" name="password" placeholder="Пароль" required
                            type="password"
                            v-model="password"/>
                 </label>
             </div>
             <div class="error">{{error}}</div>
-            <a class="myButton" @click="onEnter">Войти</a>
+            <a @click="onEnter" class="myButton">Войти</a>
         </form>
     </div>
 </template>

@@ -17,7 +17,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="event in events" :key="event.id">
+                <tr :key="event.id" v-for="event in events">
                     <td>{{event.title}}</td>
                     <td>{{event.description}}</td>
                     <td>{{event.museum && event.museum.name}}</td>
@@ -42,7 +42,7 @@
 </script>
 
 <style scoped>
-    h1{
+    h1 {
         font-family: Montserrat, serif;
         text-align: center;
         margin-bottom: 3rem;

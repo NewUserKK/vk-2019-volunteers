@@ -5,41 +5,42 @@
             <form @submit.prevent="onAdd" style="text-align: center">
                 <div>
                     <label>
-                        <input required class="form-control" id="name" name="name" placeholder="Название"
+                        <input class="form-control" id="name" name="name" placeholder="Название" required
                                v-model="name"/>
                     </label>
                 </div>
                 <div>
                     <label>
-                        <input required class="form-control" id="description" name="description" placeholder="Описание"
+                        <input class="form-control" id="description" name="description" placeholder="Описание" required
                                v-model="description"/>
                     </label>
                 </div>
                 <div>
                     <label>
-                        <input required class="form-control" id="city" name="city" placeholder="Город"
+                        <input class="form-control" id="city" name="city" placeholder="Город" required
                                v-model="city"/>
                     </label>
                 </div>
                 <div>
                     <label>
-                        <input required class="form-control" id="address" name="address" placeholder="Адрес"
+                        <input class="form-control" id="address" name="address" placeholder="Адрес" required
                                v-model="address"/>
                     </label>
                 </div>
                 <div>
                     <label>
-                        <input required class="form-control" id="hours" name="hours" placeholder="Часы работы"
+                        <input class="form-control" id="hours" name="hours" placeholder="Часы работы" required
                                v-model="hours"/>
                     </label>
                 </div>
                 <div>
                     <label>
-                        <input required class="form-control" id="photo" name="photo" placeholder="Фото" v-model="photo"/>
+                        <input class="form-control" id="photo" name="photo" placeholder="Фото" required
+                               v-model="photo"/>
                     </label>
                 </div>
                 <div class="error">{{error}}</div>
-                <button type="submit" class="myButton">Добавить</button>
+                <button class="myButton" type="submit">Добавить</button>
             </form>
         </div>
     </div>

@@ -2,26 +2,26 @@
     <div>
         <h1>Создать</h1>
         <div class="cards">
-            <div class="card" @click="redirect('museums/create')">
-                <img src="../../../public/img/museum.svg" alt="Avatar">
+            <div @click="redirect('museums/create')" class="card">
+                <img alt="Avatar" src="../../../public/img/museum.svg">
                 <div class="container">
                     <h4><b>Новый музей</b></h4>
                 </div>
             </div>
-            <div class="card" @click="redirect('events/create')">
-                <img src="../../../public/img/event.svg" alt="Avatar">
+            <div @click="redirect('events/create')" class="card">
+                <img alt="Avatar" src="../../../public/img/event.svg">
                 <div class="container">
                     <h4><b>Новое событие</b></h4>
                 </div>
             </div>
-            <div class="card" @click="redirect('users/create')">
-                <img src="../../../public/img/volunteer.svg" alt="Avatar">
+            <div @click="redirect('users/create')" class="card">
+                <img alt="Avatar" src="../../../public/img/volunteer.svg">
                 <div class="container">
                     <h4><b>Новый представитель</b></h4>
                 </div>
             </div>
-            <div class="card" @click="redirect('roles/create')">
-                <img src="../../../public/img/role.svg" alt="Avatar">
+            <div @click="redirect('roles/create')" class="card">
+                <img alt="Avatar" src="../../../public/img/role.svg">
                 <div class="container">
                     <h4><b>Новая роль</b></h4>
                 </div>
@@ -35,7 +35,7 @@
         name: "Create",
         methods: {
             redirect(path) {
-                this.$router.push({path : path});
+                this.$router.push({path: path});
             }
         }
     }
@@ -47,13 +47,15 @@
         justify-content: space-around;
         flex-wrap: wrap;
     }
+
     h1, h4 {
         font-family: Montserrat, serif;
         text-align: center;
         margin-bottom: 2rem;
     }
+
     .card {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
         transition: 0.3s;
         border-radius: 5px;
         margin: 1rem;
@@ -62,12 +64,15 @@
         min-width: 250px;
         align-items: center;
     }
+
     .card:hover {
-        box-shadow: 0 12px 20px 0 rgba(0,0,0,0.4);
+        box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.4);
     }
+
     .container {
         padding: 2px 16px;
     }
+
     img {
         height: 300px;
         width: 220px;

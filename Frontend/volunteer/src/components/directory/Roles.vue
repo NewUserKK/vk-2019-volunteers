@@ -11,7 +11,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="role in roles" :key="role.id">
+                <tr :key="role.id" v-for="role in roles">
                     <td>{{role.name}}</td>
                     <td>{{role.description}}</td>
                     <td>{{role.users && role.users.join(", ")}}</td>

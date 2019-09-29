@@ -26,7 +26,7 @@
                     </label>
                 </div>
                 <div class="error">{{error}}</div>
-                <button type="submit" class="myButton">Добавить</button>
+                <button class="myButton" type="submit">Добавить</button>
             </form>
         </div>
     </div>

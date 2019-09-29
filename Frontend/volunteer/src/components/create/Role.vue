@@ -5,7 +5,7 @@
             <form @submit.prevent="onAdd" style="text-align: center">
                 <div>
                     <label>
-                        <input required class="form-control" id="name" name="name" placeholder="Название"
+                        <input class="form-control" id="name" name="name" placeholder="Название" required
                                v-model="name"/>
                     </label>
                 </div>

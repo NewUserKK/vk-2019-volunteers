@@ -43,4 +43,12 @@ public class RoleService {
     findById(role.getId());
     return roleRepository.save(role);
   }
+
+  public List<Role> findByEventId(final Long id) {
+    return roleRepository.findByEventId(id);
+  }
+
+  public void addToEvent(final Long eventId, final Long roleId) {
+    roleRepository.addToEvent(eventId, roleId);
+  }
 }

@@ -14,7 +14,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="museum in museums" :key="museum.id">
+                <tr :key="museum.id" v-for="museum in museums">
                     <td>{{museum.name}}</td>
                     <td>{{museum.description}}</td>
                     <td>{{museum.city}}</td>
@@ -36,7 +36,7 @@
 </script>
 
 <style scoped>
-    h1{
+    h1 {
         font-family: Montserrat, serif;
         text-align: center;
         margin-bottom: 3rem;

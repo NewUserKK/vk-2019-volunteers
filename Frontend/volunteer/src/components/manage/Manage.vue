@@ -1,29 +1,11 @@
 <template>
     <div>
-        <h1>Справочники</h1>
+        <h1>Управление</h1>
         <div class="cards">
-            <div @click="redirect('museums')" class="card">
-                <img alt="Avatar" src="../../../public/img/museum.svg">
-                <div class="container">
-                    <h4><b>Музеи</b></h4>
-                </div>
-            </div>
             <div @click="redirect('events')" class="card">
                 <img alt="Avatar" src="../../../public/img/event.svg">
                 <div class="container">
                     <h4><b>События</b></h4>
-                </div>
-            </div>
-            <div @click="redirect('volunteers')" class="card">
-                <img alt="Avatar" src="../../../public/img/volunteer.svg">
-                <div class="container">
-                    <h4><b>Волонтёры</b></h4>
-                </div>
-            </div>
-            <div @click="redirect('roles')" class="card">
-                <img alt="Avatar" src="../../../public/img/role.svg">
-                <div class="container">
-                    <h4><b>Роли</b></h4>
                 </div>
             </div>
         </div>
@@ -32,7 +14,7 @@
 
 <script>
     export default {
-        name: "Directories",
+        name: "Manage",
         methods: {
             redirect(path) {
                 this.$router.push({path: path});
