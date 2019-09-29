@@ -1,5 +1,6 @@
 package ru.ifmo.volunteer.repository;
 
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,4 +27,7 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
       value = "INSERT INTO event_to_request(event_id, request_id) VALUES(:eventId, :requestId)",
       nativeQuery = true)
   void apply(@Param("eventId") Long eventId, @Param("requestId") Long requestId);
+
+  @Query(value = "select request.* from request join event on request.event_id = event.id where event_id=?", nativeQuery = true)
+  List<Request> findAllByEventId(Long id);
 }

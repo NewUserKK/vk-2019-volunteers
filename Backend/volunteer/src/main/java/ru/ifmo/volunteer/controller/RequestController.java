@@ -28,18 +28,20 @@ public class RequestController {
       response = Request.class,
       responseContainer = "List"
   )
+  @GetMapping
   public List<Request> read() {
     return requestService.findAll();
   }
 
   @ApiOperation(
-      value = "Возвращает все заявки",
+      value = "Возвращает все заявки по событию",
       produces = "application/json",
       response = Request.class,
       responseContainer = "List"
   )
-  public List<Request> byEvent() {
-    return requestService.findAll();
+  @GetMapping("{id}")
+  public List<Request> byEvent(@PathVariable final Long id) {
+    return requestService.findAllByEventId(id);
   }
 
   @ApiOperation(
