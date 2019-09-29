@@ -22,4 +22,6 @@ interface EventApiService {
 
     @GET("user/participatedFriend")
     fun getFriendsByEvent(@Query("eventId") eventId: Long, @Query("userId") userId: Long): Call<List<Person>>
+
+
 }
