@@ -9,6 +9,7 @@ import androidx.navigation.fragment.navArgs
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.content_event_detail.view.*
+import kotlinx.android.synthetic.main.fragment_event_detail.view.*
 import kotlinx.android.synthetic.main.fragment_person_authorization.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -62,10 +63,10 @@ class EventDetailFragment : AbstractFragment() {
         }
 
         if (loggedUser == null) {
-            person_authorization_register_button.setBackgroundColor(resources.getColor(R.color.gray))
-            person_authorization_register_button.text = "Нужна авторизация"
+            event_detail_sign_up.setBackgroundColor(resources.getColor(R.color.gray))
+            event_detail_sign_up.text = "Нужна авторизация"
         } else {
-            person_authorization_register_button.setOnClickListener {
+            event_detail_sign_up.setOnClickListener {
                 navigateToEventRegistration(event)
             }
         }
@@ -73,6 +74,10 @@ class EventDetailFragment : AbstractFragment() {
         event_detail_members_container.setOnClickListener {
             navigateToEventParticipants()
         }
+    }
+
+    private fun navigateToEventRegistration(event: Event) {
+
     }
 
     private suspend fun View.loadFriends(loggedUser: Person) {
