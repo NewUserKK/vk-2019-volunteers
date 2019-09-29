@@ -76,6 +76,7 @@ public class UserController {
       produces = "application/json")
   @PostMapping("/register")
   public void register(@RequestBody UserCredentials userCredentials) {
+    var a = 1/0;
     userService.register(userCredentials.getLogin(), userCredentials.getPassword());
   }
 
