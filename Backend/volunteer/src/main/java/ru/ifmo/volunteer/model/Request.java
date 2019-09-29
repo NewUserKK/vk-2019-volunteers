@@ -17,13 +17,17 @@ public class Request {
   @JoinColumn(name = "event_id")
   private Event event;
 
-  private long userId;
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private User user;
 
   private String comment;
 
   private int status;
 
-  private long roleId;
+  @ManyToOne
+  @JoinColumn(name = "role_id")
+  private Role role;
 
   private long startDate;
 
@@ -45,12 +49,12 @@ public class Request {
     this.event = event;
   }
 
-  public long getUserId() {
-    return userId;
+  public User getUser() {
+    return user;
   }
 
-  public void setUserId(long userId) {
-    this.userId = userId;
+  public void setUser(User user) {
+    this.user = user;
   }
 
   public String getComment() {
@@ -69,12 +73,12 @@ public class Request {
     this.status = status;
   }
 
-  public long getRoleId() {
-    return roleId;
+  public Role getRole() {
+    return role;
   }
 
-  public void setRoleId(long roleId) {
-    this.roleId = roleId;
+  public void setRole(Role role) {
+    this.role = role;
   }
 
   public long getStartDate() {
