@@ -4,6 +4,7 @@ import retrofit2.Call
 import retrofit2.http.*
 import ru.wa285.volunteers.data.repository.person.model.PersonWithPassword
 import ru.wa285.volunteers.domain.event.model.Event
+import ru.wa285.volunteers.domain.event.model.EventRegisterForm
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
 
@@ -27,5 +28,14 @@ interface PersonApiService {
     fun unsubscribeFromEvent(@Query("eventId") eventId: Long, @Query("userId") personId: Long): Call<Unit>
 
     @GET("user/{id}/rating")
-    fun getRating(@Path("id") personId: Long) : Call<Long>
+    fun getRating(@Path("id") personId: Long): Call<Long>
+
+    @POST("request")
+    fun applyForVolunteering(@Body form: EventRegisterForm): Call<EventRegisterForm>
+
+    @POST("request/{eventId}/apply")
+    fun applyForVolunteeringSecondary(
+        @Path("eventId") @Query("eventId") eventId: Long,
+        @Query("requestId") requestId: Long
+    ): Call<Unit>
 }

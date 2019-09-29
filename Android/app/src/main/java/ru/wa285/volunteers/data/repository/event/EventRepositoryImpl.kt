@@ -9,9 +9,10 @@ import ru.wa285.volunteers.data.net.tryConnect
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.event.model.Event
-import ru.wa285.volunteers.domain.event.model.EventRegisterCredentials
+import ru.wa285.volunteers.domain.event.model.EventRegisterForm
 import ru.wa285.volunteers.domain.museum.model.Museum
 import ru.wa285.volunteers.domain.person.model.Person
+import ru.wa285.volunteers.domain.role.model.Role
 
 class EventRepositoryImpl(private val retrofit: Retrofit) : EventRepository {
 
@@ -67,19 +68,14 @@ class EventRepositoryImpl(private val retrofit: Retrofit) : EventRepository {
         }
     }
 
-    override suspend fun submit(credentials: EventRegisterCredentials): OperationResult<Unit> {
-        return tryConnect<Unit> {
-            val response = retrofitService.submitEvent(credentials).execute()
-            if (response.isSuccessful) {
-                val person = response.body() ?: error("Person should not be null")
-                OperationResult.Success(person)
+    override suspend fun getAllRoles(event: Event): OperationResult<List<Role>> {
+        return tryConnect<List<Role>> {
+            val response = retrofitService.getRoleByEvent(event.id).execute()
+            val body = response.body()
+            if (response.isSuccessful && body != null) {
+                OperationResult.Success(body)
             } else {
-                val t: OperationResult<Person> = if (response.code() == 403) {
-                    OperationResult.Failure(IncorrectCredentialsException())
-                } else {
-                    OperationResult.Failure(BadResponseException(response))
-                }
-                t
+                OperationResult.Failure(BadResponseException(response))
             }
         }
     }

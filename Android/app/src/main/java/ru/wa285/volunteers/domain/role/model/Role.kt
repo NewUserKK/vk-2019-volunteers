@@ -7,4 +7,8 @@ data class Role @JsonCreator constructor(
     @JsonProperty("description") val description: String,
     @JsonProperty("id") val id: Long = 0,
     @JsonProperty("name") val name: String
-)
+) {
+    override fun toString(): String {
+        return name
+    }
+}

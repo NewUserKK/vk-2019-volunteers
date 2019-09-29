@@ -95,9 +95,7 @@ class MuseumDetailFragment : AbstractFragment() {
 
     private fun navigateToEventDetail(event: Event) {
         val action =
-            BottomNavigationHostFragmentDirections.actionBottomNavigationHostFragmentToEventDetailFragment(
-                event
-            )
-        requireParentFragment().findNavController().navigate(action)
+            MuseumDetailFragmentDirections.actionMuseumDetailFragmentToEventDetailFragment(event)
+        findNavController().navigate(action)
     }
 }

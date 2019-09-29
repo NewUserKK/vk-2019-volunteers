@@ -3,8 +3,9 @@ package ru.wa285.volunteers.data.net
 import retrofit2.Call
 import retrofit2.http.*
 import ru.wa285.volunteers.domain.event.model.Event
-import ru.wa285.volunteers.domain.event.model.EventRegisterCredentials
+import ru.wa285.volunteers.domain.event.model.EventRegisterForm
 import ru.wa285.volunteers.domain.person.model.Person
+import ru.wa285.volunteers.domain.role.model.Role
 
 interface EventApiService {
     @GET("event")
@@ -22,6 +23,6 @@ interface EventApiService {
     @GET("user/participatedFriend")
     fun getFriendsByEvent(@Query("eventId") eventId: Long, @Query("userId") userId: Long): Call<List<Person>>
 
-    @POST("request")
-    fun submitEvent(@Body credentials: EventRegisterCredentials): Call<Unit>
+    @GET("role/byEvent/{id}")
+    fun getRoleByEvent(@Path("id") eventId: Long): Call<List<Role>>
 }

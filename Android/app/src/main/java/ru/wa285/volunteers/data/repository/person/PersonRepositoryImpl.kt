@@ -13,6 +13,7 @@ import ru.wa285.volunteers.data.net.tryConnect
 import ru.wa285.volunteers.data.repository.person.model.PersonWithPassword
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.event.model.Event
+import ru.wa285.volunteers.domain.event.model.EventRegisterForm
 import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
@@ -131,6 +132,19 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
             val body = response.body()
             if (response.isSuccessful && body != null) {
                 OperationResult.Success(body)
+            } else {
+                OperationResult.Failure(BadResponseException(response))
+            }
+        }
+    }
+
+    override suspend fun applyForVolunteering(event: Event, info: EventRegisterForm): OperationResult<Unit> {
+        return tryConnect<Unit> {
+            val response = personApiService.applyForVolunteering(info).execute()
+            if (response.isSuccessful) {
+                val form = response.body() ?: error("fdfdf")
+                personApiService.applyForVolunteeringSecondary(event.id, form.id)
+                OperationResult.Success(Unit)
             } else {
                 OperationResult.Failure(BadResponseException(response))
             }

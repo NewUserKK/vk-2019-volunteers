@@ -59,6 +59,9 @@
         <argument
             android:name="museum"
             app:argType="ru.wa285.volunteers.domain.museum.model.Museum" />
+        <action
+            android:id="@+id/action_museumDetailFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/bottomNavigationHostFragment"
