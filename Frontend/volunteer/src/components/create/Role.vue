@@ -40,7 +40,7 @@
                     name: this.name,
                     description: this.description
                 };
-                axios.post('role', role).then(() => this.$root.$emit("onAddRole", role))
+                axios.post('role', role).then(response => this.$root.$emit("onAddRole", response.data))
                     .catch(e => this.error = e.response.data.message);
             }
         }

@@ -71,14 +71,16 @@
                 });
             },
             add() {
-                const requests = [];
-                const eventId = this.$route.params.id;
-                for (let role of this.selectedRoles) {
-                    requests.push(axios.post('role/' + eventId + '/add/' + role.id));
+                if (this.selectedRoles.length > 0) {
+                    const requests = [];
+                    const eventId = this.$route.params.id;
+                    for (let role of this.selectedRoles) {
+                        requests.push(axios.post('role/' + eventId + '/add/' + role.id));
+                    }
+                    axios.all(requests).then(() => {
+                        this.$router.push('/events');
+                    });
                 }
-                axios.all(requests).then(() => {
-                    this.$router.push('/events');
-                });
             },
             finish() {
                 axios.put(`event/${this.$route.params.id}/finish`).then(() => {
