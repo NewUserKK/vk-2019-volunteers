@@ -17,12 +17,14 @@ public class EventService {
   private final VolunteerRepository volunteerRepository;
   private final UserRepository userRepository;
 
-  public EventService(EventRepository eventRepository, VolunteerRepository volunteerRepository,
+  public EventService(
+      EventRepository eventRepository,
+      VolunteerRepository volunteerRepository,
       UserRepository userRepository) {
     this.eventRepository = eventRepository;
     this.volunteerRepository = volunteerRepository;
     this.userRepository = userRepository;
-  }
+}
 
   public List<Event> read() {
     return eventRepository.findAll();
@@ -64,9 +66,10 @@ public class EventService {
   public void subscribe(Long userId, Long eventId) {
     eventRepository
         .findEventWithUserId(userId, eventId)
-        .ifPresent(u -> {
-          throw new AlreadyExistsException("Вы уже были подписаны на это событие");
-        });
+        .ifPresent(
+            u -> {
+              throw new AlreadyExistsException("Вы уже были подписаны на это событие");
+            });
     eventRepository.subscribe(userId, eventId);
   }
 
@@ -95,6 +98,7 @@ public class EventService {
 
   public void addResponsible(Long eventId, Long userId) {
     eventRepository.addResponsible(eventId, userId);
+    eventRepository.addRole(userId, 22L, eventId);
   }
 
   public Long ratingRequired(Long id) {
@@ -105,5 +109,9 @@ public class EventService {
     List<User> users = userRepository.getParticipantsById(id);
     users.forEach(user -> userRepository.updateRating(user.getId(), user.getRating() + 15));
     eventRepository.finish(id);
+  }
+
+  public void addRole(final Long userId, final Long roleId, final Long eventId) {
+    eventRepository.addRole(userId, roleId, eventId);
   }
 }

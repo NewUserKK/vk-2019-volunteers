@@ -27,7 +27,7 @@
             </div>
         </header>
         <router-view :museums="museums" :events="events" :volunteers="volunteers"
-                     :users="users" :roles="roles" class="middle"></router-view>
+                     :users="users" :roles="roles" :requests="requests" class="middle"></router-view>
         <Footer/>
     </div>
 </template>
@@ -73,15 +73,12 @@
                 axios.get('role').then(response => {
                     this.roles = response.data;
                 });
-                if (this.$user) {
-                    axios.get(`request/${this.$user.id}`)
-                }
             }
         },
         beforeCreate() {
             this.$root.$on('onEnter', user => {
                 this.$user = user;
-                localStorage.setItem('user', user);
+                localStorage.setItem('user', JSON.stringify(user));
             });
             this.$root.$on('onLogout', () => {
                 this.$user = null;
@@ -123,7 +120,10 @@
             })
         },
         mounted() {
-            this.$user = localStorage.getItem('user');
+            this.$user = JSON.parse(localStorage.getItem('user'));
+            axios.get(`request/${this.$user.id}`).then(response => {
+                this.requests = response.data;
+            });
         }
     }
 </script>

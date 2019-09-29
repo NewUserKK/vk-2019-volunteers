@@ -47,4 +47,8 @@ public class RequestService {
   public List<Request> findAllByUserId(final Long id) {
     return requestRepository.findAllByUserId(id);
   }
+
+  public void update(final Request request) {
+    requestRepository.save(request);
+  }
 }
