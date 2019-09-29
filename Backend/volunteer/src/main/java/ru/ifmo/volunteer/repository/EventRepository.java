@@ -65,6 +65,8 @@ public interface EventRepository extends JpaRepository<Event, Long> {
   @Query(value = "SELECT required_rating FROM event WHERE id = :id", nativeQuery = true)
   Long ratingRequired(@Param("id") Long id);
 
+  @Transactional
+  @Modifying
   @Query(value = "UPDATE event SET finished = true WHERE id = :id", nativeQuery = true)
   void finish(@Param("id") Long id);
 }
