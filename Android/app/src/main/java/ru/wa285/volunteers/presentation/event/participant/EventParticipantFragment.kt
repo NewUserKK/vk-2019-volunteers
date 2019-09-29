@@ -13,7 +13,7 @@ class EventParticipantFragment : AbstractFragment() {
 
     override val layoutResId: Int = R.layout.fragment_event_participant
 
-    val args: EventParticipantFragmentArgs by navArgs()
+    private val args: EventParticipantFragmentArgs by navArgs()
 
     lateinit var event: Event
 

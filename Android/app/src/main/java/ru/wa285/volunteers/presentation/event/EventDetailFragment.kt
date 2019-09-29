@@ -6,7 +6,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.content_event_detail.view.*
+import kotlinx.android.synthetic.main.fragment_event_detail.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -15,15 +18,20 @@ import ru.wa285.volunteers.R
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.event.model.Event
+import ru.wa285.volunteers.domain.person.PersonRepository
+import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.presentation.common.AbstractFragment
+import ru.wa285.volunteers.presentation.common.hide
+import ru.wa285.volunteers.presentation.common.show
 
 
 class EventDetailFragment : AbstractFragment() {
 
     override val layoutResId = R.layout.fragment_event_detail
 
-    val args: EventDetailFragmentArgs by navArgs()
+    private val args: EventDetailFragmentArgs by navArgs()
     private val eventRepository: EventRepository by kodein.instance()
+    private val personRepository: PersonRepository by kodein.instance()
     lateinit var event: Event
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,21 +40,55 @@ class EventDetailFragment : AbstractFragment() {
     }
 
     override fun View.setupFragment() {
-        event_detail_name.text = event.name
+        event_detail_name.text = event.title
         event_detail_description_value.text = event.description
+        Picasso.get()
+            .load(event.photoLink)
+            .into(event_detail_image, object : Callback {
+                override fun onSuccess() {
+                    event_detail_image.show()
+                }
+
+                override fun onError(e: Exception?) {
+                    event_detail_image.hide()
+                }
+            })
+        val loggedUser = personRepository.getLoggedUser()
         launch {
             loadMembers()
-            loadFriends()
+            if (loggedUser != null) {
+                loadFriends(loggedUser)
+            }
+        }
+
+        if (loggedUser == null) {
+            event_detail_sign_up.setBackgroundColor(resources.getColor(R.color.gray))
+            event_detail_sign_up.text = "Нужна авторизация"
+        } else {
+            if (loggedUser.rating < event.requiredRating) {
+                event_detail_sign_up.setBackgroundColor(resources.getColor(R.color.gray))
+                event_detail_sign_up.text = "Не хватает рейтинга"
+            }
+            event_detail_sign_up.setOnClickListener {
+                navigateToEventRegistration(event)
+            }
         }
 
         event_detail_members_container.setOnClickListener {
             navigateToEventParticipants()
         }
+
+        event_detail_rating_value.text = event.requiredRating.toString()
     }
 
-    private suspend fun View.loadFriends() {
+    private fun navigateToEventRegistration(event: Event) {
+        val action = EventDetailFragmentDirections.actionEventDetailFragmentToEventRegistrationFragment(event)
+        findNavController().navigate(action)
+    }
+
+    private suspend fun View.loadFriends(loggedUser: Person) {
         val countFriendsResult = withContext(Dispatchers.IO) {
-            eventRepository.getFriendsByEvent(event)
+            eventRepository.getFriendsByEvent(event, loggedUser)
         }
         when (countFriendsResult) {
             is OperationResult.Success -> {

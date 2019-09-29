@@ -13,6 +13,8 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.wa285.volunteers.R
 import ru.wa285.volunteers.presentation.common.NavigationResultListener
+import ru.wa285.volunteers.presentation.common.hide
+import ru.wa285.volunteers.presentation.common.show
 import kotlin.properties.Delegates
 
 
@@ -27,10 +29,7 @@ class MainActivity : AppCompatActivity(), NavHost {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navigationController = Navigation.findNavController(this, navHostFragmentId)
-        main_app_bar_layout.setExpanded(false)
-        main_collapsing_toolbar_layout.isTitleEnabled = false
         setupToolbar(main_collapsing_toolbar)
-
     }
 
     private fun setupToolbar(toolbar: Toolbar) {
@@ -42,17 +41,6 @@ class MainActivity : AppCompatActivity(), NavHost {
 
     override fun getNavController(): NavController {
         return navigationController
-    }
-
-    fun switchToCollapsingToolbar(imageUri: String) {
-        main_app_bar_layout.setExpanded(true)
-        Picasso.get()
-            .load(imageUri)
-            .into(main_collapsing_toolbar_image)
-    }
-
-    fun switchToRegularToolbar() {
-        main_app_bar_layout.setExpanded(false)
     }
 
     /**

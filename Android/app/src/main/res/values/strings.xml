@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Volunteers</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Волонтёры</string>
     <string name="menu_events">События</string>
     <string name="menu_museums">Музеи</string>
     <string name="menu_profile">Профиль</string>
@@ -10,20 +9,20 @@
     <string name="surname_request">Фамилия:</string>
     <string name="patronymic">Отчество:</string>
     <string name="request_birth_date">Дата рождения</string>
-    <string name="edit_name">Введите имя</string>
-    <string name="edit_surname">Введите фамилию</string>
-    <string name="edit_patronymic">Введите отчество</string>
-    <string name="edit_birth_date">Введите дату рождения</string>
+    <string name="edit_name">Имя</string>
+    <string name="edit_surname">Фамилия</string>
+    <string name="edit_patronymic">Отчество</string>
+    <string name="edit_birth_date">Дата рождения (dd.mm.yyyy)</string>
     <string name="request_email">E-mail:</string>
-    <string name="edit_email">Введите e-mail</string>
+    <string name="edit_email">E-mail</string>
     <string name="request_phone">Номер телефона:</string>
-    <string name="edit_phone">Введите номер телефона</string>
+    <string name="edit_phone">Телефон</string>
     <string name="request_vk">Ссылка на аккаунт ВКонтакте:</string>
-    <string name="edit_vk">Укажите ссылку</string>
+    <string name="edit_vk">Ссылка на аккаунт ВКонтакте</string>
     <string name="request_working_place">Место учебы/работы:</string>
     <string name="edit_working_place">Укажите место работы/учебы</string>
     <string name="request_diploma">Специальность по диплому:</string>
-    <string name="edit_diploma">Укажите специальность</string>
+    <string name="edit_diploma">Укажите специальность по диплому</string>
     <string name="request_languages">Владение иностранными языками:</string>
     <string name="request_experience">Есть ли у вас опыт волонтерства?</string>
     <string name="answer_experience">Да</string>
@@ -42,7 +41,14 @@
     <string name="edit_login">Введите логин</string>
     <string name="edit_password">Введите пароль</string>
     <string name="authorization_social_networks_suggest">Авторизоваться через\n социальные сети:</string>
-    <string name="authorization_enter">Войти</string>
+    <string name="person_authorization_enter">Войти</string>
+    <string name="profile_favourite_museums">Избранные музеи</string>
+    <string name="edit_languages">Укажите степени владения иностранными языками</string>
+    <string name="person_auth_register">Регистрация</string>
+    <string name="ok">OK</string>
+    <string name="create_password">Пароль</string>
+    <string name="create_login">Логин</string>
+    <string name="add_to_favorites">Add to favorites</string>
 
     <plurals name="numberOfMembers">
         <item quantity="one">%d участник</item>
@@ -55,4 +61,13 @@
         <item quantity="few">%d друга</item>
         <item quantity="other">%d друзей</item>
     </plurals>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="event_registration_request_start_date">Дата начала</string>
+    <string name="event_registration_end_date">Дата конца</string>
+    <string name="event_registration_request_role">Желаемая роль</string>
+    <string name="edit_comment">Введите комментарий</string>
+    <string name="event_registration_submit">Подтвердить</string>
+    <string name="profile_request_satellite">Введите код\n карты \'Спутник\'</string>
 </resources>
