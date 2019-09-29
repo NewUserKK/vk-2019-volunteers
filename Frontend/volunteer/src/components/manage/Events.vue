@@ -9,6 +9,8 @@
                     <th class="table-head">Название</th>
                     <th class="table-head">Музей</th>
                     <th class="table-head">Ответственный</th>
+                    <th class="table-head">Требуется волонтёров</th>
+                    <th class="table-head">Участвует</th>
                     <th class="table-head">Завершено</th>
                     <th class="table-head">Действия</th>
                 </tr>
@@ -19,6 +21,8 @@
                     <td>{{event.title}}</td>
                     <td>{{event.museum && event.museum.name}}</td>
                     <td>{{event.responsible ? event.responsible.name + ' ' + event.responsible.surname : ''}}</td>
+                    <td>{{event.volunteersRequired}}</td>
+                    <td>{{event.volunteersPresent}}</td>
                     <td>{{event.finished ? 'Да' : 'Нет'}}</td>
                     <td><router-link :to="`/events/${event.id}/manage`">Управление</router-link></td>
                 </tr>

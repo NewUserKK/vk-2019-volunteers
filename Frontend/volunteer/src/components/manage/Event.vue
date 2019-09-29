@@ -19,6 +19,7 @@
             </div>
             <a class="myButton" @click="add">Добавить</a>
             <h4 v-if="this.loaded && !this.event.finished">Вы можете <a href="javascript:void(0)" @click="finish">завершить</a> событие</h4>
+            <h4 v-if="this.loaded && this.event.volunteersPresent < this.event.volunteersRequired">Вы так же можете <a href="javascript:void(0)" @click="distribute">дораспределить</a> волонтёров на событие</h4>
         </div>
     </div>
 </template>
@@ -36,6 +37,7 @@
                 chosenRoles: [],
                 availableRoles: [],
                 selectedRoles: [],
+                participants: [],
                 loaded: false,
                 event: null,
             }
@@ -48,6 +50,9 @@
                 this.loaded = false;
                 axios.get(`event/${this.$route.params.id}`).then(response => {
                     this.event = response.data;
+                    axios.get(`user/${this.$route.params.id}/participants`).then(response => {
+                        this.participants = response.data;
+                    });
                     axios.get(`role/byEvent/${this.$route.params.id}`).then(response => {
                         this.chosenRoles = response.data;
                         for (let role of this.roles) {
@@ -72,6 +77,13 @@
             finish() {
                 axios.put(`event/${this.$route.params.id}/finish`).then(() => {
                     this.$root.$emit('onFinishEvent', this.$route.params.id);
+                });
+            },
+            distribute() {
+                axios.get(`user/${this.$route.params.id}/distribution`).then(response => {
+                    for (let user of response.data) {
+                        this.participants.push(user);
+                    }
                 });
             }
         }

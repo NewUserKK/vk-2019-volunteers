@@ -67,8 +67,8 @@
                     <label>
                         <select required class="form-control" id="type" v-model="type">
                             <option disabled hidden selected value="">Тип события</option>
-                            <option :key="type.id" :value="type"
-                                    v-for="type in types">
+                            <option :key="i" :value="type"
+                                    v-for="(type, i) in types">
                                 {{ type }}
                             </option>
                         </select>
