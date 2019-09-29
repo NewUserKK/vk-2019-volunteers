@@ -1,9 +1,17 @@
 package ru.wa285.volunteers.presentation.person
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
+import android.graphics.Color.BLACK
+import android.graphics.Color.WHITE
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.WriterException
+import com.google.zxing.common.BitMatrix
+import kotlinx.android.synthetic.main.content_profile.*
 import kotlinx.android.synthetic.main.content_profile.view.*
 import kotlinx.android.synthetic.main.fragment_person_authorization.view.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
@@ -11,7 +19,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.kodein.di.generic.instance
-import ru.wa285.volunteers.R
 import ru.wa285.volunteers.data.common.exception.BadResponseException
 import ru.wa285.volunteers.data.common.exception.IncorrectCredentialsException
 import ru.wa285.volunteers.domain.achievement.AchievementRepository
@@ -26,10 +33,9 @@ import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.*
 import ru.wa285.volunteers.presentation.common.view.NamePicture
 
-
 class ProfileFragment : AbstractFragment(), BottomNavFragment {
 
-    override val layoutResId: Int = R.layout.fragment_profile
+    override val layoutResId: Int = ru.wa285.volunteers.R.layout.fragment_profile
 
     private val personRepository: PersonRepository by instance()
     private val achievementsRepository: AchievementRepository by instance()
@@ -48,12 +54,14 @@ class ProfileFragment : AbstractFragment(), BottomNavFragment {
 
     private fun View.setupProfile(person: Person) {
         profile_container.switchTo(profile_content)
-        achievementRecyclerViewAdapter = ProfileAchievementListRecyclerViewAdapter(achievementsList).apply {
-            onClickListener = {
-                //TODO: показывать какую-то плашку с инфой об ачивке
-                Toast.makeText(context, it.name + "\n" + it.description, Toast.LENGTH_SHORT).show()
+        achievementRecyclerViewAdapter =
+            ProfileAchievementListRecyclerViewAdapter(achievementsList).apply {
+                onClickListener = {
+                    //TODO: показывать какую-то плашку с инфой об ачивке
+                    Toast.makeText(context, it.name + "\n" + it.description, Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
-        }
         profile_achievements_list.adapter = achievementRecyclerViewAdapter
         fillFields(person)
         fillAchievements(person)
@@ -73,10 +81,51 @@ class ProfileFragment : AbstractFragment(), BottomNavFragment {
         person_authorization_register_button.setOnClickListener {
             navigateToRegistration()
         }
+        profile_upload_satellite.setOnClickListener {
+            makeQr(profile_edit_satellite.text.toString())
+        }
+    }
+
+    private fun makeQr(key: String) {
+        try {
+            val bitmap = encodeAsBitmap(key)
+            profile_qr_code.setImageBitmap(bitmap)
+        } catch (e: WriterException) {
+            e.printStackTrace()
+        }
+
+    }
+
+    private fun encodeAsBitmap(key: String): Bitmap? {
+        val result: BitMatrix
+        val width = 120
+        try {
+            result = MultiFormatWriter().encode(
+                key,
+                BarcodeFormat.QR_CODE, width, width, null
+            )
+        } catch (iae: IllegalArgumentException) {
+            // Unsupported format
+            return null
+        }
+
+        val w = result.width
+        val h = result.height
+        val pixels = IntArray(w * h)
+        for (y in 0 until h) {
+            val offset = y * w
+            for (x in 0 until w) {
+                pixels[offset + x] = if (result.get(x, y)) BLACK else WHITE
+            }
+        }
+        val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+        bitmap.setPixels(pixels, 0, width, 0, 0, w, h)
+        return bitmap
     }
 
     private fun navigateToRegistration() {
-        val action = BottomNavigationHostFragmentDirections.actionBottomNavigationHostFragmentToPersonRegistrationFragment()
+        val action =
+            BottomNavigationHostFragmentDirections.actionBottomNavigationHostFragmentToPersonRegistrationFragment()
         requireParentFragment().findNavController().navigate(action)
     }
 
@@ -99,9 +148,11 @@ class ProfileFragment : AbstractFragment(), BottomNavFragment {
                         person_authorization_error.show()
                     }
                     is BadResponseException -> {
-                        person_authorization_error.text = "Что-то пошло не так. Код ошибки: ${authorized.error.code}"
+                        person_authorization_error.text =
+                            "Что-то пошло не так. Код ошибки: ${authorized.error.code}"
                     }
-                    else -> {}
+                    else -> {
+                    }
                 }.also { authorized.error.printStackTrace() }
             }
         }

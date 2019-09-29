@@ -71,10 +71,10 @@ class EventRepositoryImpl(private val retrofit: Retrofit) : EventRepository {
         return tryConnect {
             val response = retrofitService.submitEvent(credentials).execute()
             if (response.isSuccessful) {
-                val person = response.body() ?: error("Person should not be null")
-                OperationResult.Success(person)
+                val body = response.body() ?: error("Person should not be null")
+                OperationResult.Success(body)
             } else {
-                val t: OperationResult<Person> = if (response.code() == 403) {
+                val t: OperationResult<Unit> = if (response.code() == 403) {
                     OperationResult.Failure(IncorrectCredentialsException())
                 } else {
                     OperationResult.Failure(BadResponseException(response))
