@@ -22,6 +22,8 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
 
   @Transactional
   @Modifying
-  @Query(value = "INSERT INTO event_to_request ", nativeQuery = true)
+  @Query(
+      value = "INSERT INTO event_to_request(event_id, request_id) VALUES(:eventId, :requestId)",
+      nativeQuery = true)
   void apply(@Param("eventId") Long eventId, @Param("requestId") Long requestId);
 }
