@@ -132,7 +132,10 @@ public class UserService {
       top.add(left.get(number));
       left.remove(number);
     }
-    top.forEach(user -> eventRepository.addParticipant(eventId, user.getId()));
+    top.forEach(user -> {
+      eventRepository.addParticipant(eventId, user.getId());
+      eventRepository.increment(eventId);
+    });
     return top;
   }
 

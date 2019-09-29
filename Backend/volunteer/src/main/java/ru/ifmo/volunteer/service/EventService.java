@@ -117,5 +117,6 @@ public class EventService {
 
   public void addParticipant(final Long eventId, final Long userId) {
     eventRepository.addParticipant(eventId, userId);
+    eventRepository.increment(eventId);
   }
 }
