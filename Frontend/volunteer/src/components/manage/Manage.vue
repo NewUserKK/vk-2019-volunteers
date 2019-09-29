@@ -2,7 +2,7 @@
     <div>
         <h1>Управление</h1>
         <div class="cards">
-            <div @click="redirect('events')" class="card">
+            <div @click="redirect('events/manage')" class="card">
                 <img alt="Avatar" src="../../../public/img/event.svg">
                 <div class="container">
                     <h4><b>События</b></h4>

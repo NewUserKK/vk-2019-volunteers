@@ -9,7 +9,9 @@ import Logout from "../components/user/Logout";
 import Directories from "../components/directory/Directories";
 import Create from "../components/create/Create";
 import Museum from "../components/create/Museum";
-import Event from "../components/create/Event";
+import CreateEvent from "../components/create/Event";
+import ManageEvents from "../components/manage/Events";
+import ManageEvent from "../components/manage/Event";
 import User from "../components/create/Responsible";
 import Role from "../components/create/Role";
 import Manage from "../components/manage/Manage";
@@ -17,7 +19,9 @@ import Manage from "../components/manage/Manage";
 export default [
     {path: '/', component: Index},
     {path: '/events', component: Events},
-    {path: '/events/create', component: Event},
+    {path: '/events/create', component: CreateEvent},
+    {path: '/events/manage', component: ManageEvents},
+    {path: '/events/:id/manage', component: ManageEvent},
     {path: '/museums', component: Museums},
     {path: '/museums/create', component: Museum},
     {path: '/roles', component: Roles},

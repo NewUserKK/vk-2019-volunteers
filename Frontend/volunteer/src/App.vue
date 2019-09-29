@@ -85,9 +85,14 @@
                 this.$router.push('/museums');
             });
             this.$root.$on('onAddEvent', (event, roles) => {
-                
-                this.events.push(event);
-                this.$router.push('/events');
+                const requests = [];
+                for (let role of roles) {
+                    requests.push(axios.post('role/' + event.id + '/add/' + role.id));
+                }
+                axios.all(requests).then(() => {
+                    this.events.push(event);
+                    this.$router.push('/events');
+                });
             });
             this.$root.$on('onAddRole', role => {
                 this.roles.push(role);

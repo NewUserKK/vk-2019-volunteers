@@ -32,6 +32,7 @@ public class RoleController {
     return roleService.add(role);
   }
 
+  @ApiOperation(value = "Добавляет к событию роль")
   @PostMapping("{eventId}/add/{roleId}")
   public void addToEvent(@PathVariable final Long eventId, @PathVariable final Long roleId) {
     roleService.addToEvent(eventId, roleId);

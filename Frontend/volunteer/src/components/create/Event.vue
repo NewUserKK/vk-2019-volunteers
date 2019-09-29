@@ -90,9 +90,9 @@
                 <label>Выберите роли:
                     <multiselect class="multiselect" v-model="selectedRoles" :options="roles" :multiple="true"
                                  :close-on-select="false"
-                                 :clear-on-select="false" :preserve-search="true" placeholder="Pick some"
+                                 :clear-on-select="false" :preserve-search="true" placeholder="Выберите"
                                  label="name"
-                                 track-by="name" :preselect-first="true">
+                                 track-by="name">
                         <template slot="selection" slot-scope="{ values, search, isOpen }"><span
                                 class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">Ролей выбрано: {{ values.length }}</span>
                         </template>
@@ -146,7 +146,7 @@
                     linkToEvent: this.linkToEvent,
                     photoLink: this.photoLink
                 };
-                axios.post('event', event).then(() => this.$root.$emit("onAddEvent", event, this.selectedRoles))
+                axios.post('event', event).then(response => this.$root.$emit("onAddEvent", response.data, this.selectedRoles))
                     .catch(e => this.error = e.response.data.message);
             }
         }
