@@ -11,11 +11,16 @@ import ru.ifmo.volunteer.model.Role;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
-  @Query(value = "select r.id, r.name, r.description from event_to_roles etr join event e on e.id = etr.event_id join role r on r.id = etr.role_id where e.id = ?1", nativeQuery = true)
+  @Query(
+      value =
+          "select r.id, r.name, r.description from event_to_roles etr join event e on e.id = etr.event_id join role r on r.id = etr.role_id where e.id = ?1",
+      nativeQuery = true)
   List<Role> findByEventId(Long id);
 
   @Transactional
   @Modifying
-  @Query(value = "insert into event_to_roles(event_id, role_id) values (?1, ?2)", nativeQuery = true)
+  @Query(
+      value = "insert into event_to_roles(event_id, role_id) values (?1, ?2)",
+      nativeQuery = true)
   void addToEvent(Long eventId, Long roleId);
 }

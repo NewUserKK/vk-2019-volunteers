@@ -9,11 +9,11 @@ import ru.ifmo.volunteer.repository.TaskRepository;
 public class TaskService {
   private final TaskRepository taskRepository;
 
-  public TaskService(TaskRepository taskRepository) {
+  public TaskService(final TaskRepository taskRepository) {
     this.taskRepository = taskRepository;
   }
 
-  public List<Task> getAllTasksByEventId(Long id) {
+  public List<Task> getAllTasksByEventId(final long id) {
     return taskRepository.findAllTasksByEventId(id);
   }
 }

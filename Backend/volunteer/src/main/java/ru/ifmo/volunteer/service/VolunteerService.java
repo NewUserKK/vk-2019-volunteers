@@ -3,7 +3,6 @@ package ru.ifmo.volunteer.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.exception.AlreadyExistsException;
-import ru.ifmo.volunteer.exception.AuthorizationException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Volunteer;
 import ru.ifmo.volunteer.repository.VolunteerRepository;
@@ -17,20 +16,18 @@ public class VolunteerService {
     this.volunteerRepository = volunteerRepository;
   }
 
-
-
   public List<Volunteer> findAll() {
     return volunteerRepository.findAll();
   }
 
-  public Volunteer findById(final Long id) {
+  public Volunteer findById(final long id) {
     return volunteerRepository
         .findById(id)
         .orElseThrow(
             () -> new ResourceNotFoundException(String.format("Волонтёр с id %d не найден", id)));
   }
 
-  public Volunteer add(Volunteer volunteer) {
+  public Volunteer add(final Volunteer volunteer) {
     if (volunteerRepository.findById(volunteer.getId()).isPresent()) {
       throw new AlreadyExistsException(
           String.format("Volunteer with %d id already exists", volunteer.getId()));
@@ -38,7 +35,7 @@ public class VolunteerService {
     return volunteerRepository.save(volunteer);
   }
 
-  public void deleteById(final Long id) {
+  public void deleteById(final long id) {
     volunteerRepository.deleteById(id);
   }
 
@@ -46,6 +43,4 @@ public class VolunteerService {
     findById(volunteer.getId());
     return volunteerRepository.save(volunteer);
   }
-
-
 }

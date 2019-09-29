@@ -12,7 +12,7 @@ public class MuseumService {
 
   private final MuseumRepository museumRepository;
 
-  public MuseumService(MuseumRepository museumRepository) {
+  public MuseumService(final MuseumRepository museumRepository) {
     this.museumRepository = museumRepository;
   }
 
@@ -20,18 +20,18 @@ public class MuseumService {
     return museumRepository.findAll();
   }
 
-  public void deleteById(Long id) {
+  public void deleteById(final long id) {
     museumRepository.deleteById(id);
   }
 
-  public Museum findById(Long id) {
+  public Museum findById(final long id) {
     return museumRepository
         .findById(id)
         .orElseThrow(
             () -> new ResourceNotFoundException(String.format("Событие с id %d не найдено", id)));
   }
 
-  public Museum add(Museum museum) {
+  public Museum add(final Museum museum) {
     museumRepository
         .findById(museum.getId())
         .ifPresent(
@@ -42,12 +42,12 @@ public class MuseumService {
     return museumRepository.save(museum);
   }
 
-  public Museum update(Museum museum) {
+  public Museum update(final Museum museum) {
     findById(museum.getId());
     return museumRepository.save(museum);
   }
 
-  public List<Museum> getFavourites(Long id) {
+  public List<Museum> getFavourites(final long id) {
     return museumRepository.getFavourites(id);
   }
 }

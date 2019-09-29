@@ -81,8 +81,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   @Transactional
   @Modifying
-  @Query(
-      value = "UPDATE users SET rating = :rating WHERE id = :id", nativeQuery = true
-  )
+  @Query(value = "UPDATE users SET rating = :rating WHERE id = :id", nativeQuery = true)
   void updateRating(Long id, Long rating);
 }

@@ -27,7 +27,7 @@ public class UserController {
 
   @ApiOperation(value = "Добавить в друзья", produces = "application/json")
   @PostMapping("/addFriend")
-  public void addToFriends(@RequestParam Long userId, @RequestParam Long friendId) {
+  public void addToFriends(@RequestParam final long userId, @RequestParam final long friendId) {
     userService.addToFriends(userId, friendId);
   }
 
@@ -37,26 +37,23 @@ public class UserController {
       response = User.class,
       responseContainer = "List")
   @GetMapping("/participatedFriend")
-  public List<User> getParticipatedFriend(@RequestParam Long eventId, @RequestParam Long userId) {
+  public List<User> getParticipatedFriend(
+      @RequestParam final long eventId, @RequestParam final long userId) {
     return userService.getParticipantsFriendsById(eventId, userId);
   }
 
   @ApiOperation(
       value = "Возвращает рейтинг юзера",
       produces = "application/json",
-      response = Long.class
-  )
+      response = Long.class)
   @GetMapping("{id}/rating")
-  public Long getRating(@PathVariable Long id) {
+  public final long getRating(@PathVariable final long id) {
     return userService.getRating(id);
   }
 
-  @ApiOperation(
-      value = "Обновляет рейтинг юзера",
-      produces = "application/json"
-  )
+  @ApiOperation(value = "Обновляет рейтинг юзера", produces = "application/json")
   @PutMapping("{id}/rating")
-  public void updateRating(@PathVariable Long id, @RequestParam Long rating) {
+  public void updateRating(@PathVariable final long id, @RequestParam final long rating) {
     userService.updateRating(rating, id);
   }
 
@@ -64,10 +61,9 @@ public class UserController {
       value = "Создаёт распределение участников на событие",
       produces = "application/json",
       response = User.class,
-      responseContainer = "List"
-  )
+      responseContainer = "List")
   @GetMapping("{eventId}/distribution")
-  public List<User> getDistribution(@PathVariable Long eventId) {
+  public List<User> getDistribution(@PathVariable final long eventId) {
     return userService.getDistribution(eventId);
   }
 
@@ -80,9 +76,7 @@ public class UserController {
     return userService.add(user);
   }
 
-  @ApiOperation(
-      value = "Добавляет пароль к юзеру",
-      produces = "application/json")
+  @ApiOperation(value = "Добавляет пароль к юзеру", produces = "application/json")
   @PutMapping("/register")
   public void register(@RequestBody UserCredentials userCredentials) {
     userService.register(userCredentials.getLogin(), userCredentials.getPassword());
@@ -121,7 +115,7 @@ public class UserController {
       produces = "application/json",
       response = User.class)
   @GetMapping("{id}")
-  public User findById(@PathVariable final Long id) {
+  public User findById(@PathVariable final long id) {
     return userService.findById(id);
   }
 
@@ -136,7 +130,7 @@ public class UserController {
 
   @ApiOperation(value = "Удаляет юзера по id")
   @DeleteMapping
-  public void delete(final Long id) {
+  public void delete(final long id) {
     userService.deleteById(id);
   }
 
@@ -145,25 +139,17 @@ public class UserController {
       produces = "application/json",
       response = Boolean.class)
   @GetMapping("{id}/blocked")
-  public Boolean isBlocked(@PathVariable Long userId, @RequestParam Long museumId) {
+  public Boolean isBlocked(@PathVariable final long userId, @RequestParam final long museumId) {
     return userService.isBlocked(userId, museumId);
   }
-
-//  @ApiOperation(
-//      value = "Забанить юзера",
-//      produces = "application/json",
-//  )
-//  @GetMapping("{id}/block")
-//  public void block(@PathVariable Long )
 
   @ApiOperation(
       value = "Возвращает список участников с некоторой ролью",
       produces = "application/json",
       response = User.class,
-      responseContainer = "List"
-  )
+      responseContainer = "List")
   @GetMapping("byRole/{roleId}")
-  public List<User> getUsersByRoleId(@PathVariable Long roleId) {
+  public List<User> getUsersByRoleId(@PathVariable final long roleId) {
     return userService.getUsersByRoleId(roleId);
   }
 
@@ -173,7 +159,7 @@ public class UserController {
       response = User.class,
       responseContainer = "List")
   @GetMapping("{id}/participants")
-  public List<User> getParticipantsById(@PathVariable Long id) {
+  public List<User> getParticipantsById(@PathVariable final long id) {
     return userService.getParticipantsById(id);
   }
 }

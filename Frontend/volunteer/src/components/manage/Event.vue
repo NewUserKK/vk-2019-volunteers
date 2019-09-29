@@ -86,6 +86,7 @@
                     for (let user of response.data) {
                         this.participants.push(user);
                     }
+                    this.event.volunteersPresent = this.event.volunteersRequired;
                 });
             }
         }

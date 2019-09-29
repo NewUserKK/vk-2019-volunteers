@@ -13,18 +13,18 @@ import ru.ifmo.volunteer.model.Achievement;
 public interface AchievementRepository extends JpaRepository<Achievement, Long> {
 
   @Query(
-      value = "SELECT * FROM achievement WHERE id IN "
-          + "(SELECT volunteer_to_achievements.achievement "
-          + "FROM volunteer_to_achievements WHERE user_id = :userId)",
-      nativeQuery = true
-  )
+      value =
+          "SELECT * FROM achievement WHERE id IN "
+              + "(SELECT volunteer_to_achievements.achievement "
+              + "FROM volunteer_to_achievements WHERE user_id = :userId)",
+      nativeQuery = true)
   List<Achievement> getAllByUserId(Long userId);
 
   @Transactional
   @Modifying
   @Query(
       value = "INSERT INTO volunteer_to_achievements VALUES(:userId, :achId, :date)",
-      nativeQuery = true
-  )
-  void awardUser(@Param("userId") Long userId, @Param("achId") Long achievementId, @Param("date") Long date);
+      nativeQuery = true)
+  void awardUser(
+      @Param("userId") Long userId, @Param("achId") Long achievementId, @Param("date") Long date);
 }

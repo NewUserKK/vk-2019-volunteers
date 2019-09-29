@@ -32,31 +32,7 @@ public class User {
 
   private String vkToken;
 
-  public Long getRating() {
-    return rating;
-  }
-
-  public void setRating(Long rating) {
-    this.rating = rating;
-  }
-
   private Long rating;
-
-  public String getVkToken() {
-    return vkToken;
-  }
-
-  public void setVkToken(String vkToken) {
-    this.vkToken = vkToken;
-  }
-
-  public Boolean getVerified() {
-    return verified;
-  }
-
-  public void setVerified(Boolean verified) {
-    this.verified = verified;
-  }
 
   private Boolean verified;
 
@@ -130,5 +106,29 @@ public class User {
 
   public void setLogin(String login) {
     this.login = login;
+  }
+
+  public String getVkToken() {
+    return vkToken;
+  }
+
+  public void setVkToken(String vkToken) {
+    this.vkToken = vkToken;
+  }
+
+  public Long getRating() {
+    return rating;
+  }
+
+  public void setRating(Long rating) {
+    this.rating = rating;
+  }
+
+  public Boolean getVerified() {
+    return verified;
+  }
+
+  public void setVerified(Boolean verified) {
+    this.verified = verified;
   }
 }

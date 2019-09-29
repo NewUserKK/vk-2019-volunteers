@@ -39,35 +39,11 @@ public class Event {
 
   private Long requiredRating;
 
-  public Long getImportance() {
-    return importance;
-  }
-
-  public void setImportance(Long importance) {
-    this.importance = importance;
-  }
-
   private Long importance;
 
   @ManyToOne
   @JoinColumn(name = "responsible")
   private User responsible;
-
-  public User getResponsible() {
-    return responsible;
-  }
-
-  public void setResponsible(User responsible) {
-    this.responsible = responsible;
-  }
-
-  public Boolean getFinished() {
-    return finished;
-  }
-
-  public void setFinished(Boolean finished) {
-    this.finished = finished;
-  }
 
   public long getId() {
     return id;
@@ -157,11 +133,35 @@ public class Event {
     this.linkToEvent = linkToEvent;
   }
 
+  public Boolean getFinished() {
+    return finished;
+  }
+
+  public void setFinished(Boolean finished) {
+    this.finished = finished;
+  }
+
   public Long getRequiredRating() {
     return requiredRating;
   }
 
   public void setRequiredRating(Long requiredRating) {
     this.requiredRating = requiredRating;
+  }
+
+  public Long getImportance() {
+    return importance;
+  }
+
+  public void setImportance(Long importance) {
+    this.importance = importance;
+  }
+
+  public User getResponsible() {
+    return responsible;
+  }
+
+  public void setResponsible(User responsible) {
+    this.responsible = responsible;
   }
 }
