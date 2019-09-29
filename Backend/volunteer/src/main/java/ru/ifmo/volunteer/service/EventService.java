@@ -114,4 +114,8 @@ public class EventService {
   public void addRole(final Long userId, final Long roleId, final Long eventId) {
     eventRepository.addRole(userId, roleId, eventId);
   }
+
+  public void addParticipant(final Long eventId, final Long userId) {
+    eventRepository.addParticipant(eventId, userId);
+  }
 }

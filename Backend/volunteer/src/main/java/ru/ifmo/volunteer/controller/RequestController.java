@@ -64,6 +64,7 @@ public class RequestController {
   public void accept(@RequestBody final Request request) {
     request.setStatus(1);
     requestService.update(request);
+    eventService.addParticipant(request.getEvent().getId(), request.getUser().getId());
     eventService.addRole(
         request.getUser().getId(), request.getRole().getId(), request.getEvent().getId());
   }
