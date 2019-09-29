@@ -1,21 +1,30 @@
 package ru.ifmo.volunteer.service;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.exception.AlreadyExistsException;
 import ru.ifmo.volunteer.exception.AuthorizationException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
+import ru.ifmo.volunteer.model.Event;
 import ru.ifmo.volunteer.model.User;
+import ru.ifmo.volunteer.repository.EventRepository;
 import ru.ifmo.volunteer.repository.UserRepository;
 
 @Service
 public class UserService {
 
   private final UserRepository userRepository;
+  private final EventRepository eventRepository;
 
-  public UserService(final UserRepository userRepository) {
+  public UserService(final UserRepository userRepository, EventRepository eventRepository) {
     this.userRepository = userRepository;
+    this.eventRepository = eventRepository;
   }
 
   public User findById(final Long id) {
@@ -50,7 +59,7 @@ public class UserService {
     findById(user.getId());
     return userRepository.save(user);
   }
-  
+
   public User authorize(String login, String password) {
     return userRepository
         .findByLoginAndPassword(login, password)
@@ -91,5 +100,33 @@ public class UserService {
 
   public Long getRating(Long id) {
     return userRepository.getRating(id);
+  }
+
+  public List<User> getDistribution(Long eventId) {
+    Long alreadyExists = userRepository.getCountByEventId(eventId);
+    Event event =
+        eventRepository
+            .findById(eventId)
+            .orElseThrow(() -> new ResourceNotFoundException("Нет такого события"));
+    long need = event.getVolunteersRequired() - alreadyExists;
+    if (need <= 0)
+      return Collections.EMPTY_LIST;
+    Long importance = event.getImportance();
+    var percents = (importance + 1) * 20;
+    List<User> all = userRepository.findAll();
+    if (all.size() <= need)
+      return all;
+    var limit = Math.round(need / 100 * percents);
+    need -= limit;
+    var stream = all.stream().sorted(Comparator.comparing(User::getRating));
+    List<User> top = stream.limit(limit).collect(Collectors.toList());
+    List<User> left = stream.skip(limit).collect(Collectors.toList());
+
+    for (int i = 0; i < need; ++i) {
+      int number = new Random().nextInt(left.size());
+      top.add(left.get(number));
+      left.remove(number);
+    }
+    return top;
   }
 }

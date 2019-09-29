@@ -39,6 +39,16 @@ public class Event {
 
   private Long requiredRating;
 
+  public Long getImportance() {
+    return importance;
+  }
+
+  public void setImportance(Long importance) {
+    this.importance = importance;
+  }
+
+  private Long importance;
+
   @ManyToOne
   @JoinColumn(name = "responsible")
   private User responsible;

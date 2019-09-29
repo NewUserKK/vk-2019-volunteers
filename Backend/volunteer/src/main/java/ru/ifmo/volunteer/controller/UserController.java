@@ -52,6 +52,17 @@ public class UserController {
   }
 
   @ApiOperation(
+      value = "Создаёт распределение участников на событие",
+      produces = "application/json",
+      response = User.class,
+      responseContainer = "List"
+  )
+  @GetMapping("{eventId}/distribution")
+  public List<User> getDistribution(@PathVariable Long eventId) {
+    return userService.getDistribution(eventId);
+  }
+
+  @ApiOperation(
       value = "Создает юзера и возвращает его",
       produces = "application/json",
       response = User.class)

@@ -61,4 +61,19 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   @Query(value = "SELECT rating from users WHERE id = :id", nativeQuery = true)
   Long getRating(@Param("id") Long id);
+
+  @Query(
+      value = "SELECT COUNT(*) FROM event_to_participant WHERE event_id = :eventId",
+      nativeQuery = true)
+  Long getCountByEventId(@Param("eventId") Long eventId);
+
+  @Query(
+      value =
+          "SELECT COUNT(*) "
+              + "FROM event_to_request "
+              + "INNER JOIN request ON request_id == request.id "
+              + "INNER JOIN users ON request.user_id = users.id "
+              + "ORDER BY users.rating LIMIT :limit",
+      nativeQuery = true)
+  List<User> getTop(@Param("limit") int limit);
 }
