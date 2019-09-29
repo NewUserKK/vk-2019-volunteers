@@ -66,7 +66,6 @@ public class EventController {
   @ApiOperation(
       value = "Завершить событие",
       produces = "application/json")
-  )
   @PutMapping("{id}/finish")
   public void finish(@PathVariable Long id) {
     eventService.finish(id);
