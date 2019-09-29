@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_event_list.*
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
-import kotlinx.android.synthetic.main.fragment_event_list.view.event_list_container
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -48,7 +47,10 @@ class EventListFragment : AbstractFragment(), BottomNavFragment {
                     if (fav) {
                         personRepository.subscribeToEvent(event, personRepository.getLoggedUser()!!)
                     } else {
-                        personRepository.unsubscribeFromEvent(event, personRepository.getLoggedUser()!!)
+                        personRepository.unsubscribeFromEvent(
+                            event,
+                            personRepository.getLoggedUser()!!
+                        )
                     }
                 }
             }
@@ -100,7 +102,28 @@ class EventListFragment : AbstractFragment(), BottomNavFragment {
 
     override fun updateAdapters() {
         if (::eventAdapter.isInitialized) {
-            eventAdapter.notifyDataSetChanged()
+            launch {
+                val logged = personRepository.getLoggedUser()
+                if (logged != null) {
+                    val favs = withContext(Dispatchers.IO) {
+                        personRepository.getEventSubscriptions(logged)
+                    }
+                    when (favs) {
+                        is OperationResult.Success -> {
+                            eventList.forEach {
+                                it.favorite = it.event in favs.value
+                            }
+                        }
+                        else -> Toast.makeText(
+                            context,
+                            "Failed to fetch favorites!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                eventAdapter.notifyDataSetChanged()
+            }
         }
     }
 }
+

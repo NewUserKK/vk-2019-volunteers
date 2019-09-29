@@ -17,4 +17,19 @@ data class Event @JsonCreator constructor(
     @JsonProperty("type") val type: String,
     @JsonProperty("requiredRating") val minimalRating: Int,
     @JsonProperty("id") val id: Long = 0
-) : Serializable
+) : Serializable {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Event
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
+}

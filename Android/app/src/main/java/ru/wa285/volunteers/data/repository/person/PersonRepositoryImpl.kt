@@ -98,12 +98,12 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
     }
 
     override suspend fun subscribeToEvent(event: Event, person: Person): OperationResult<Unit> {
+        eventSubscriptions += event
         return tryConnect<Unit> {
             val response =
                 personApiService.subscribeToEvent(eventId = event.id, personId = person.id)
                     .execute()
             if (response.isSuccessful) {
-                eventSubscriptions += event
                 OperationResult.Success(Unit)
             } else {
                 OperationResult.Failure(BadResponseException(response))
@@ -112,12 +112,12 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
     }
 
     override suspend fun unsubscribeFromEvent(event: Event, person: Person): OperationResult<Unit> {
+        eventSubscriptions -= event
         return tryConnect<Unit> {
             val response =
                 personApiService.unsubscribeFromEvent(eventId = event.id, personId = person.id)
                     .execute()
             if (response.isSuccessful) {
-                eventSubscriptions -= event
                 OperationResult.Success(Unit)
             } else {
                 OperationResult.Failure(BadResponseException(response))
