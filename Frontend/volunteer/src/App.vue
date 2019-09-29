@@ -46,7 +46,8 @@
                 events: {},
                 users: {},
                 volunteers: {},
-                roles: {}
+                roles: {},
+                requests: {}
             }
         },
         components: {
@@ -72,6 +73,9 @@
                 axios.get('role').then(response => {
                     this.roles = response.data;
                 });
+                if (this.$user) {
+                    axios.get(`request/${this.$user.id}`)
+                }
             }
         },
         beforeCreate() {

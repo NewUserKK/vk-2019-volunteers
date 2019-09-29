@@ -44,7 +44,7 @@ public class RequestService {
     return requestRepository.findAll();
   }
 
-  public List<Request> findAllByEventId(final Long id) {
-    return requestRepository.findAllByEventId(id);
+  public List<Request> findAllByUserId(final Long id) {
+    return requestRepository.findAllByUserId(id);
   }
 }
