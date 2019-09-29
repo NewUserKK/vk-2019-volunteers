@@ -28,7 +28,7 @@ class EventDetailFragment : AbstractFragment() {
 
     override val layoutResId = R.layout.fragment_event_detail
 
-    val args: EventDetailFragmentArgs by navArgs()
+    private val args: EventDetailFragmentArgs by navArgs()
     private val eventRepository: EventRepository by kodein.instance()
     private val personRepository: PersonRepository by kodein.instance()
     lateinit var event: Event

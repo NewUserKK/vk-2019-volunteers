@@ -48,6 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_list_museum_name"
+            android:fontFamily="@font/montserrat_regular"
             tools:text="Saint Petersburg" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

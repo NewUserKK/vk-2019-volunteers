@@ -75,4 +75,15 @@
         <item name="android:layout_marginBottom">4dp</item>
     </style>
 
+    <style name="AppTheme.AvatarView">
+        <item name="mli_letter_color">@color/white</item>
+        <item name="mli_shape_color">@color/colorAccent</item>
+        <item name="mli_border">true</item>
+        <item name="mli_border_color">@color/white</item>
+        <item name="mli_border_size">1</item>
+        <item name="civ_border_color">@color/white</item>
+        <item name="civ_border_width">1dp</item>
+        <item name="mli_letter_size">16</item>
+    </style>
+
 </resources>

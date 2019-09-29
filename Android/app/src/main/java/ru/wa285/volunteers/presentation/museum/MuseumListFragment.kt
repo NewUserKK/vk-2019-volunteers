@@ -12,15 +12,16 @@ import ru.wa285.volunteers.R
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.museum.MuseumRepository
 import ru.wa285.volunteers.domain.museum.model.Museum
+import ru.wa285.volunteers.presentation.BottomNavFragment
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragment
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
 
-class MuseumListFragment : AbstractFragment() {
+class MuseumListFragment : AbstractFragment(), BottomNavFragment {
 
     override val layoutResId: Int = R.layout.fragment_museum_list
 
-    val museumRepository: MuseumRepository by kodein.instance()
+    private val museumRepository: MuseumRepository by kodein.instance()
 
     private val museumList = mutableListOf<Museum>()
     lateinit var museumRecyclerViewAdapter: MuseumListRecyclerViewAdapter
@@ -57,5 +58,11 @@ class MuseumListFragment : AbstractFragment() {
         val action = BottomNavigationHostFragmentDirections
             .actionBottomNavigationHostFragmentToMuseumDetailFragment(museum)
         requireParentFragment().findNavController().navigate(action)
+    }
+
+    override fun updateAdapters() {
+        if (::museumRecyclerViewAdapter.isInitialized) {
+            museumRecyclerViewAdapter.notifyDataSetChanged()
+        }
     }
 }

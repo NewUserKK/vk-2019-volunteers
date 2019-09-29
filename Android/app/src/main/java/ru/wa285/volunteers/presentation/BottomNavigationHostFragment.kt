@@ -1,6 +1,7 @@
 package ru.wa285.volunteers.presentation
 
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_bottom_navigation_host.view.*
 import ru.wa285.volunteers.R
@@ -15,6 +16,10 @@ import ru.wa285.volunteers.presentation.person.ProfileFragment
 object State {
     var lastActiveFragmentTag: String? = null
     var lastActiveFragmentId: Int = R.id.eventListFragment
+}
+
+interface BottomNavFragment {
+    fun updateAdapters()
 }
 
 class BottomNavigationHostFragment : AbstractFragment() {
@@ -34,9 +39,9 @@ class BottomNavigationHostFragment : AbstractFragment() {
 
     private fun loadFragment(itemId: Int) {
         val tag = itemId.toString()
-        val fragment = childFragmentManager.findFragmentByTag(tag) ?: when (itemId) {
+        val fragment: Fragment = childFragmentManager.findFragmentByTag(tag) ?: when (itemId) {
             R.id.eventListFragment -> {
-                EventListFragment()
+                EventListFragment() as Fragment
             }
             R.id.museumListFragment -> {
                 MuseumListFragment()
@@ -64,6 +69,8 @@ class BottomNavigationHostFragment : AbstractFragment() {
         } else {
             transaction.show(fragment)
         }
+
+        (fragment as BottomNavFragment).updateAdapters()
 
         transaction.commit()
         lastActiveFragmentTag = tag

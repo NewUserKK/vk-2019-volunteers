@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.content_profile.*
 import kotlinx.android.synthetic.main.content_profile.view.*
 import kotlinx.android.synthetic.main.fragment_person_authorization.view.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
@@ -22,12 +21,13 @@ import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.domain.person.model.PersonAuthCredentials
 import ru.wa285.volunteers.domain.person.model.fullName
+import ru.wa285.volunteers.presentation.BottomNavFragment
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.*
 import ru.wa285.volunteers.presentation.common.view.NamePicture
 
 
-class ProfileFragment : AbstractFragment() {
+class ProfileFragment : AbstractFragment(), BottomNavFragment {
 
     override val layoutResId: Int = R.layout.fragment_profile
 
@@ -108,8 +108,8 @@ class ProfileFragment : AbstractFragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun fillFields(person: Person) {
-        profile_fullname.text = person.name + person.surname
+    private fun View.fillFields(person: Person) {
+        profile_fullname.text = person.fullName()
         profile_avatar_view.value = NamePicture(person.name, person.avatarUri)
         profile_login.text = "@ ${person.login}"
         profile_birthday.text = "Дата рождения: ${person.birthday.toLocalizedString()}"
@@ -138,6 +138,12 @@ class ProfileFragment : AbstractFragment() {
                     Toast.makeText(context, result.error.message, Toast.LENGTH_LONG).show()
                 }
             }
+        }
+    }
+
+    override fun updateAdapters() {
+        if (::achievementRecyclerViewAdapter.isInitialized) {
+            achievementRecyclerViewAdapter.notifyDataSetChanged()
         }
     }
 }
