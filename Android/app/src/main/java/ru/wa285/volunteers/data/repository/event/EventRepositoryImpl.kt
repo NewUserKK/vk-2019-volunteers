@@ -2,12 +2,14 @@ package ru.wa285.volunteers.data.repository.event
 
 import retrofit2.Retrofit
 import ru.wa285.volunteers.data.common.exception.BadResponseException
+import ru.wa285.volunteers.data.common.exception.IncorrectCredentialsException
 import ru.wa285.volunteers.data.net.EventApiService
 import ru.wa285.volunteers.data.net.toOperationResult
 import ru.wa285.volunteers.data.net.tryConnect
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.event.model.Event
+import ru.wa285.volunteers.domain.event.model.EventRegisterCredentials
 import ru.wa285.volunteers.domain.museum.model.Museum
 import ru.wa285.volunteers.domain.person.model.Person
 
@@ -61,6 +63,23 @@ class EventRepositoryImpl(private val retrofit: Retrofit) : EventRepository {
             val response = retrofitService.getFriendsByEvent(event.id, person.id).execute()
             response.toOperationResult {
                 BadResponseException(it)
+            }
+        }
+    }
+
+    override suspend fun submit(credentials: EventRegisterCredentials): OperationResult<Unit> {
+        return tryConnect {
+            val response = retrofitService.submitEvent(credentials).execute()
+            if (response.isSuccessful) {
+                val person = response.body() ?: error("Person should not be null")
+                OperationResult.Success(person)
+            } else {
+                val t: OperationResult<Person> = if (response.code() == 403) {
+                    OperationResult.Failure(IncorrectCredentialsException())
+                } else {
+                    OperationResult.Failure(BadResponseException(response))
+                }
+                t
             }
         }
     }

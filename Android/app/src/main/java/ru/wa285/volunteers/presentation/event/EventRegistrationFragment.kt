@@ -14,22 +14,22 @@ class EventRegistrationFragment : AbstractFragment() {
 
     override val layoutResId: Int = R.layout.fragment_person_authorization
 
-//    private val personRepository: PersonRepository by kodein.instance()
-//
-//    override fun View.setupFragment() {
-//        person_authorization_enter.setOnClickListener {
-//            submitEvent()
-//        }
-//    }
-//
-//    private fun View.submitEvent() {
-//        launch {
-//            personRepository.authorize(
-//                PersonAuthCredentials(
-//                    login = person_authorization_request_login.text.toString(),
-//                    password = person_authorization_request_password.text.toString()
-//                )
-//            )
-//        }
-//    }
+    private val personRepository: PersonRepository by kodein.instance()
+
+    override fun View.setupFragment() {
+        person_authorization_enter.setOnClickListener {
+            submitEvent()
+        }
+    }
+
+    private fun View.submitEvent() {
+        launch {
+            personRepository.authorize(
+                PersonAuthCredentials(
+                    login = person_authorization_request_login.text.toString(),
+                    password = person_authorization_request_password.text.toString()
+                )
+            )
+        }
+    }
 }
