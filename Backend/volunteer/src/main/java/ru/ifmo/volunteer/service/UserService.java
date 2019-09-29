@@ -132,4 +132,8 @@ public class UserService {
     }
     return top;
   }
+
+  public void updateRating(Long rating, Long id) {
+    userRepository.updateRating(rating, id);
+  }
 }

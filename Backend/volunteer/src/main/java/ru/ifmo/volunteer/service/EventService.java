@@ -6,18 +6,22 @@ import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.exception.AlreadyExistsException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Event;
-import ru.ifmo.volunteer.model.Volunteer;
+import ru.ifmo.volunteer.model.User;
 import ru.ifmo.volunteer.repository.EventRepository;
+import ru.ifmo.volunteer.repository.UserRepository;
 import ru.ifmo.volunteer.repository.VolunteerRepository;
 
 @Service
 public class EventService {
   private final EventRepository eventRepository;
   private final VolunteerRepository volunteerRepository;
+  private final UserRepository userRepository;
 
-  public EventService(EventRepository eventRepository, VolunteerRepository volunteerRepository) {
+  public EventService(EventRepository eventRepository, VolunteerRepository volunteerRepository,
+      UserRepository userRepository) {
     this.eventRepository = eventRepository;
     this.volunteerRepository = volunteerRepository;
+    this.userRepository = userRepository;
   }
 
   public List<Event> read() {
@@ -98,6 +102,8 @@ public class EventService {
   }
 
   public void finish(Long id) {
+    List<User> users = userRepository.getParticipantsById(id);
+    users.forEach(user -> userRepository.updateRating(user.getId(), user.getRating() + 15));
     eventRepository.finish(id);
   }
 }

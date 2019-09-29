@@ -52,6 +52,15 @@ public class UserController {
   }
 
   @ApiOperation(
+      value = "Обновляет рейтинг юзера",
+      produces = "application/json"
+  )
+  @PutMapping("{id}/rating")
+  public void updateRating(@PathVariable Long id, @RequestParam Long rating) {
+    userService.updateRating(rating, id);
+  }
+
+  @ApiOperation(
       value = "Создаёт распределение участников на событие",
       produces = "application/json",
       response = User.class,

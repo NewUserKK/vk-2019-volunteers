@@ -49,7 +49,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   @Transactional
   @Modifying
-  @Query(value = "UPDATE users SET password=crypt(:password, gen_salt('bf',8)) WHERE login = :login", nativeQuery = true)
+  @Query(
+      value = "UPDATE users SET password=crypt(:password, gen_salt('bf',8)) WHERE login = :login",
+      nativeQuery = true)
   void register(@Param("login") String login, @Param("password") String password);
 
   @Query(
@@ -76,4 +78,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
               + "ORDER BY users.rating LIMIT :limit",
       nativeQuery = true)
   List<User> getTop(@Param("limit") int limit);
+
+  @Query(
+      value = "UPDATE users SET rating = :rating WHERE id = :id", nativeQuery = true
+  )
+  void updateRating(Long id, Long rating);
 }
