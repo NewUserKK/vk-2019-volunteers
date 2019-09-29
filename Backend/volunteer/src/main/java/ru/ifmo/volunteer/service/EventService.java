@@ -6,18 +6,14 @@ import org.springframework.stereotype.Service;
 import ru.ifmo.volunteer.exception.AlreadyExistsException;
 import ru.ifmo.volunteer.exception.ResourceNotFoundException;
 import ru.ifmo.volunteer.model.Event;
-import ru.ifmo.volunteer.model.Volunteer;
 import ru.ifmo.volunteer.repository.EventRepository;
-import ru.ifmo.volunteer.repository.VolunteerRepository;
 
 @Service
 public class EventService {
   private final EventRepository eventRepository;
-  private final VolunteerRepository volunteerRepository;
 
-  public EventService(EventRepository eventRepository, VolunteerRepository volunteerRepository) {
+  public EventService(EventRepository eventRepository) {
     this.eventRepository = eventRepository;
-    this.volunteerRepository = volunteerRepository;
   }
 
   public List<Event> read() {
@@ -60,9 +56,10 @@ public class EventService {
   public void subscribe(Long userId, Long eventId) {
     eventRepository
         .findEventWithUserId(userId, eventId)
-        .ifPresent(u -> {
-          throw new AlreadyExistsException("Вы уже были подписаны на это событие");
-        });
+        .ifPresent(
+            u -> {
+              throw new AlreadyExistsException("Вы уже были подписаны на это событие");
+            });
     eventRepository.subscribe(userId, eventId);
   }
 
@@ -91,6 +88,7 @@ public class EventService {
 
   public void addResponsible(Long eventId, Long userId) {
     eventRepository.addResponsible(eventId, userId);
+    eventRepository.addRole(userId, 22L, eventId);
   }
 
   public Long ratingRequired(Long id) {
@@ -99,5 +97,9 @@ public class EventService {
 
   public void finish(Long id) {
     eventRepository.finish(id);
+  }
+
+  public void addRole(final Long userId, final Long roleId, final Long eventId) {
+    eventRepository.addRole(userId, roleId, eventId);
   }
 }

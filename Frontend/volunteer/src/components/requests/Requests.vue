@@ -16,11 +16,12 @@
                 </thead>
                 <tbody>
                 <tr :key="request.id" v-for="request in requests">
-                    <td>{{request.id}}</td>
-                    <td>{{request.title}}</td>
-                    <td>{{request.museum && request.museum.name}}</td>
-                    <td>{{request.responsible ? request.responsible.name + ' ' + request.responsible.surname : ''}}</td>
-                    <td>{{request.finished ? 'Да' : 'Нет'}}</td>
+                    <td>{{request.user && request.user.name + ' ' + request.user.surname}}</td>
+                    <td>{{request.event && request.event.title}}</td>
+                    <td>{{request.role && request.role.name}}</td>
+                    <td>{{new Date(request.startDate).toLocaleString()}}</td>
+                    <td>{{new Date(request.endDate).toLocaleString()}}</td>
+                    <td>{{request.comment}}</td>
                     <td>
                         <router-link :to="`/events/${request.id}/manage`">Управление</router-link>
                     </td>
@@ -34,12 +35,14 @@
 <script>
     export default {
         name: "Requests",
-        props: {
-            requests: Array
-        }
+        props: ['requests']
     }
 </script>
 
 <style scoped>
-
+    h1 {
+        font-family: Montserrat, serif;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
 </style>

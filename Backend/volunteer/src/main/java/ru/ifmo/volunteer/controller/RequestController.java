@@ -10,23 +10,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ifmo.volunteer.model.Request;
+import ru.ifmo.volunteer.service.EventService;
 import ru.ifmo.volunteer.service.RequestService;
 
 @RestController
 @RequestMapping("api/v1/request")
 public class RequestController {
   private final RequestService requestService;
+  private final EventService eventService;
 
-  public RequestController(RequestService requestService) {
+  public RequestController(RequestService requestService, EventService eventService) {
     this.requestService = requestService;
+    this.eventService = eventService;
   }
 
   @ApiOperation(
       value = "Возвращает все заявки",
       produces = "application/json",
       response = Request.class,
-      responseContainer = "List"
-  )
+      responseContainer = "List")
   @GetMapping
   public List<Request> read() {
     return requestService.findAll();
@@ -36,8 +38,7 @@ public class RequestController {
       value = "Возвращает все заявки по событию (по его представителю)",
       produces = "application/json",
       response = Request.class,
-      responseContainer = "List"
-  )
+      responseContainer = "List")
   @GetMapping("{id}")
   public List<Request> byUser(@PathVariable final Long id) {
     return requestService.findAllByUserId(id);
@@ -46,30 +47,40 @@ public class RequestController {
   @ApiOperation(
       value = "Информация о том, заполнял ли пользователь форму для данного музея",
       produces = "application/json",
-      response = Boolean.class
-  )
+      response = Boolean.class)
   @GetMapping("{userId}/info")
   public Boolean hasAdditionalInfo(@PathVariable Long userId, @RequestParam Long museum_id) {
     return requestService.hasAdditionalInfo(userId, museum_id);
   }
 
-  @ApiOperation(
-      value = "Подать заявку на волонтёрство",
-      produces = "application/json"
-  )
+  @ApiOperation(value = "Подать заявку на волонтёрство", produces = "application/json")
   @PostMapping("{eventId}/apply")
   public void apply(@PathVariable Long eventId, @RequestParam Long requestId) {
     requestService.apply(eventId, requestId);
   }
 
+  @ApiOperation(value = "Подтвердить участие волонтёра")
+  @PostMapping("accept")
+  public void accept(@RequestBody final Request request) {
+    request.setStatus(1);
+    requestService.update(request);
+    eventService.addRole(
+        request.getUser().getId(), request.getRole().getId(), request.getEvent().getId());
+  }
+
+  @ApiOperation(value = "Отказать волонтёру в участии")
+  @PostMapping("decline")
+  public void decline(@RequestBody final Request request) {
+    request.setStatus(2);
+    requestService.update(request);
+  }
+
   @ApiOperation(
       value = "Создать заяку на волонтёрство",
       produces = "application/json",
-      response = Request.class
-  )
+      response = Request.class)
   @PostMapping
   public Request add(@RequestBody Request request) {
     return requestService.add(request);
   }
-
 }
