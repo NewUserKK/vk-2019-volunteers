@@ -21,7 +21,7 @@
             </div>
             <a class="myButton" @click="add">Добавить</a>
             <h4 v-if="this.loaded && !this.event.finished">Вы можете <a href="javascript:void(0)" @click="finish">завершить</a> событие</h4>
-            <h4 v-if="this.loaded && this.event.volunteersPresent < this.event.volunteersRequired">Вы так же можете <a href="javascript:void(0)" @click="distribute">дораспределить</a> волонтёров на событие</h4>
+            <h4 v-if="this.loaded && this.event.volunteersPresent < this.event.volunteersRequired && this.event.volunteersPresent < this.userCount">Вы так же можете <a href="javascript:void(0)" @click="distribute">дораспределить</a> волонтёров на событие</h4>
         </div>
     </div>
 </template>
@@ -42,6 +42,7 @@
                 participants: [],
                 loaded: false,
                 event: null,
+                userCount: null
             }
         },
         beforeMount() {
@@ -54,6 +55,9 @@
                     this.event = response.data;
                     axios.get(`user/${this.$route.params.id}/participants`).then(response => {
                         this.participants = response.data;
+                    });
+                    axios.get('user').then(response => {
+                        this.userCount = response.data.length;
                     });
                     axios.get(`role/byEvent/${this.$route.params.id}`).then(response => {
                         this.chosenRoles = response.data;
