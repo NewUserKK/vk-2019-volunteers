@@ -72,6 +72,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
   @Transactional
   @Modifying
-  @Query(value = "insert into event_to_participant(event_id, user_id) values (?1, ?2)", nativeQuery = true)
+  @Query(value = "insert into event_to_participant(event_id, user_id) values (?1, ?2); update event set volunteers_present = volunteers_present + 1;", nativeQuery = true)
   void addParticipant(Long eventId, Long userId);
 }

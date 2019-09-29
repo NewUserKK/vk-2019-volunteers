@@ -1,7 +1,6 @@
 package ru.ifmo.volunteer.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -42,8 +41,7 @@ public class UserService {
       throw new AlreadyExistsException(
           String.format("User with %d id already exists", user.getId()));
     }
-    if (user.getRating() == null)
-      user.setRating(0L);
+    if (user.getRating() == null) user.setRating(0L);
     return userRepository.save(user);
   }
 
@@ -112,18 +110,22 @@ public class UserService {
             .findById(eventId)
             .orElseThrow(() -> new ResourceNotFoundException("Нет такого события"));
     long need = event.getVolunteersRequired() - alreadyExists;
-    if (need <= 0)
-      return Collections.EMPTY_LIST;
+    if (need <= 0) return Collections.EMPTY_LIST;
     Long importance = event.getImportance();
     var percents = (importance + 1) * 20;
     List<User> all = userRepository.findAll();
-    if (all.size() <= need)
-      return all;
+    if (all.size() <= need) return all;
     var limit = Math.round(need / 100 * percents);
     need -= limit;
-    List<User> list = all.stream().sorted(Comparator.comparing(User::getRating)).collect(Collectors.toList());
+    List<User> list =
+        all.stream().sorted(Comparator.comparing(User::getRating)).collect(Collectors.toList());
     List<User> top = list.subList(0, limit);
-    List<User> left = new ArrayList<>(){{addAll(list.subList(limit, list.size()));}};
+    List<User> left =
+        new ArrayList<>() {
+          {
+            addAll(list.subList(limit, list.size()));
+          }
+        };
 
     for (int i = 0; i < need; ++i) {
       int number = new Random().nextInt(left.size());
