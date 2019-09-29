@@ -18,5 +18,5 @@ interface PersonRepository {
     suspend fun subscribeToEvent(event: Event, person: Person): OperationResult<Unit>
     suspend fun unsubscribeFromEvent(event: Event, person: Person): OperationResult<Unit>
 
-    fun getRating(person: Person): Long?
+    suspend fun getRating(person: Person): OperationResult<Long>
 }
