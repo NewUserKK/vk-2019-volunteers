@@ -56,28 +56,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/person_authorization_request_login" />
 
-        <ImageView
-            android:id="@+id/person_authorization_vk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/ic_vk"
-            app:layout_constraintEnd_toStartOf="@id/person_authorization_register_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/person_authorization_request_password" />
-
         <Button
             android:id="@+id/person_authorization_register_button"
             style="@style/AppTheme.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/gray"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             android:text="@string/person_auth_register"
             app:layout_constraintBottom_toBottomOf="@+id/person_authorization_enter"
             app:layout_constraintEnd_toStartOf="@+id/person_authorization_enter"
-            app:layout_constraintStart_toEndOf="@+id/person_authorization_vk"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/person_authorization_enter" />
 
         <Button

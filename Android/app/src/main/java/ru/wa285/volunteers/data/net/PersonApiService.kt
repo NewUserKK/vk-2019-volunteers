@@ -14,8 +14,8 @@ interface PersonApiService {
     @POST("user")
     fun register(@Body person: PersonWithPassword): Call<Person>
 
-    @POST("user/register")
-    fun addPassword(@Body credentials: PersonAuthCredentials): Call<Person>
+    @PUT("user/register")
+    fun addPassword(@Body credentials: PersonAuthCredentials): Call<Unit>
 
     @GET("event/{id}/actual")
     fun getEventSubscriptions(@Path("id") personId: Long): Call<List<Event>>

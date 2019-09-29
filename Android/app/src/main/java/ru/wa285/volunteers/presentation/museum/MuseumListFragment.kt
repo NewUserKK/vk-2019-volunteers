@@ -13,9 +13,9 @@ import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.museum.MuseumRepository
 import ru.wa285.volunteers.domain.museum.model.Museum
 import ru.wa285.volunteers.presentation.BottomNavFragment
-import ru.wa285.volunteers.presentation.BottomNavigationHostFragment
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
+import ru.wa285.volunteers.presentation.common.switchTo
 
 class MuseumListFragment : AbstractFragment(), BottomNavFragment {
 
@@ -45,6 +45,11 @@ class MuseumListFragment : AbstractFragment(), BottomNavFragment {
                 is OperationResult.Success -> {
                     museumList.clear()
                     museumList += result.value
+                    if (museumList.isEmpty()) {
+                        museum_list_container.switchTo(museum_list_placeholder)
+                    } else {
+                        museum_list_container.switchTo(museum_list)
+                    }
                     museumRecyclerViewAdapter.notifyDataSetChanged()
                 }
                 is OperationResult.Failure -> {

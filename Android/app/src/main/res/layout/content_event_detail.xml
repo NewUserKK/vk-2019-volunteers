@@ -15,8 +15,8 @@
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:visibility="gone"
-            tools:visibility="visible"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            tools:src="@tools:sample/backgrounds/scenic"
+            tools:visibility="visible" />
 
         <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingVertical="4dp"
-                app:layout_constraintBottom_toTopOf="@id/event_detail_description_value"
+                app:layout_constraintBottom_toTopOf="@id/event_detail_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/event_detail_name">
@@ -107,9 +107,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:paddingHorizontal="4dp"
                 android:text="@string/description"
-                android:textSize="25sp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/event_detail_description_value"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/event_detail_members_container" />
@@ -118,20 +118,21 @@
                 android:id="@+id/event_detail_description_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:layout_constraintBottom_toTopOf="@id/event_detail_place"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/event_detail_description"
-                android:paddingHorizontal="4dp"
                 tools:text="Description of the event\nmay be\nvery\nlong" />
 
             <TextView
                 android:id="@+id/event_detail_place"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingHorizontal="4dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/location"
-                android:textSize="25sp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/event_detail_place_value"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/event_detail_description_value" />
@@ -140,7 +141,8 @@
                 android:id="@+id/event_detail_place_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="4dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintBottom_toTopOf="@id/event_detail_date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/event_detail_place"
@@ -150,10 +152,10 @@
                 android:id="@+id/event_detail_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingHorizontal="4dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/date"
-                android:textSize="25sp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/event_detail_date_value"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/event_detail_place_value" />
@@ -162,11 +164,36 @@
                 android:id="@+id/event_detail_date_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="4dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintBottom_toTopOf="@id/event_detail_rating_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/event_detail_date"
                 tools:text="28.09.2019" />
+
+            <TextView
+                android:id="@+id/event_detail_rating_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Минимальный рейтинг для участия:"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/event_detail_rating_value"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/event_detail_date_value" />
+
+            <TextView
+                android:id="@+id/event_detail_rating_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/event_detail_rating_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/event_detail_rating_title"
+                app:layout_constraintTop_toTopOf="@id/event_detail_rating_title"
+                tools:text="0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

@@ -47,28 +47,27 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
 
     override suspend fun register(person: PersonWithPassword): OperationResult<Person> {
         return tryConnect<Person> {
-//            personApiService.addPassword(PersonAuthCredentials(person.login, person.password))
-//                .execute()
             println(person)
             val response = personApiService.register(person).execute()
             val body = response.body()
             if (response.isSuccessful && body != null) {
-                val mapper = ObjectMapper()
-                val json = mapper.writeValueAsString(
-                    PersonAuthCredentials(person.login, person.password)
-                )
-                println(json)
-                val client = OkHttpClient()
-                val reqBody = RequestBody.create(
-                    MediaType.parse("application/json; charset=utf-8"),
-                    json
-                )
-                val request = Request.Builder()
-                    .url("http://demo135.foxtrot.vkhackathon.com:8080/api/v1/user/register")
-                    .put(reqBody)
-                    .build()
-                client.newCall(request).execute()
-
+//                val mapper = ObjectMapper()
+//                val json = mapper.writeValueAsString(
+//                    PersonAuthCredentials(person.login, person.password)
+//                )
+//                println(json)
+//                val client = OkHttpClient()
+//                val reqBody = RequestBody.create(
+//                    MediaType.parse("application/json; charset=utf-8"),
+//                    json
+//                )
+//                val request = Request.Builder()
+//                    .url("http://demo135.foxtrot.vkhackathon.com:8080/api/v1/user/register")
+//                    .put(reqBody)
+//                    .build()
+//                client.newCall(request).execute()
+                personApiService.addPassword(PersonAuthCredentials(person.login, person.password))
+                    .execute()
                 loggedUser = body
                 OperationResult.Success(body)
             } else {
@@ -128,8 +127,7 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
 
     override suspend fun getRating(person: Person): OperationResult<Long> {
         return tryConnect<Long> {
-            val response =
-                personApiService.getRating(person.id).execute()
+            val response = personApiService.getRating(person.id).execute()
             val body = response.body()
             if (response.isSuccessful && body != null) {
                 OperationResult.Success(body)

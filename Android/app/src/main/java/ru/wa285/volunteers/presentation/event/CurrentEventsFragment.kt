@@ -3,8 +3,12 @@ package ru.wa285.volunteers.presentation.event
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_current_events.*
 import kotlinx.android.synthetic.main.fragment_current_events.view.*
+import kotlinx.android.synthetic.main.fragment_current_events.view.current_events_container
+import kotlinx.android.synthetic.main.fragment_event_list.*
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
+import kotlinx.android.synthetic.main.fragment_event_list.view.event_list_container
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -18,6 +22,7 @@ import ru.wa285.volunteers.domain.person.model.Person
 import ru.wa285.volunteers.presentation.BottomNavFragment
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
+import ru.wa285.volunteers.presentation.common.switchTo
 
 class CurrentEventsFragment : AbstractFragment(), BottomNavFragment {
 
@@ -61,23 +66,21 @@ class CurrentEventsFragment : AbstractFragment(), BottomNavFragment {
     private fun loadEvents(loggedUser: Person) {
         launch {
             val result = withContext(Dispatchers.IO) {
-                eventRepository.getAllByPerson(loggedUser)
+                personRepository.getEventSubscriptions(loggedUser)
             }
             when (result) {
                 is OperationResult.Success -> {
                     eventList.clear()
-                    val logged = personRepository.getLoggedUser()
-                    eventList += if (logged != null) {
-                        val favourites = (withContext(Dispatchers.IO) {
-                            personRepository.getEventSubscriptions(logged)
-                        } as OperationResult.Success).value.toSet()
-                        result.value.sortedByDescending { it.dateStart }
-                            .map { EventAdapterItem(it, it in favourites) }
-                    } else {
-                        result.value.sortedByDescending { it.dateStart }
-                            .map { EventAdapterItem(it, false) }
-                    }
+                    eventList +=
+                        result.value
+                            .sortedByDescending { it.dateStart }
+                            .map { EventAdapterItem(it, true) }
                     eventAdapter.notifyDataSetChanged()
+                    if (eventList.isEmpty()) {
+                        current_events_container.switchTo(current_events_placeholder)
+                    } else {
+                        current_events_container.switchTo(current_events_list)
+                    }
                 }
                 is OperationResult.Failure -> {
                     Toast.makeText(context, result.error.message, Toast.LENGTH_LONG).show()

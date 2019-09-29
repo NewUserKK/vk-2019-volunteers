@@ -4,7 +4,9 @@ package ru.wa285.volunteers.presentation.event
 import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_event_list.*
 import kotlinx.android.synthetic.main.fragment_event_list.view.*
+import kotlinx.android.synthetic.main.fragment_event_list.view.event_list_container
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -17,6 +19,7 @@ import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.presentation.BottomNavFragment
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
+import ru.wa285.volunteers.presentation.common.switchTo
 
 class EventListFragment : AbstractFragment(), BottomNavFragment {
 
@@ -72,6 +75,11 @@ class EventListFragment : AbstractFragment(), BottomNavFragment {
                     } else {
                         result.value.sortedByDescending { it.dateStart }
                             .map { EventAdapterItem(it, false) }
+                    }
+                    if (eventList.isEmpty()) {
+                        event_list_container.switchTo(event_list_placeholder)
+                    } else {
+                        event_list_container.switchTo(event_list)
                     }
                     eventAdapter.notifyDataSetChanged()
                 }
