@@ -77,8 +77,8 @@ public class UserController {
       response =  User.class
   )
   @PutMapping("/register")
-  public User register(@RequestBody UserCredentials userCredentials) {
-    return userService.register(userCredentials.getLogin(), userCredentials.getPassword());
+  public void register(@RequestBody UserCredentials userCredentials) {
+    userService.register(userCredentials.getLogin(), userCredentials.getPassword());
   }
 
   @ApiOperation(

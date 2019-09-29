@@ -1,6 +1,9 @@
 package ru.ifmo.volunteer.service;
 
 import org.springframework.stereotype.Service;
+import ru.ifmo.volunteer.exception.AlreadyExistsException;
+import ru.ifmo.volunteer.exception.ResourceNotFoundException;
+import ru.ifmo.volunteer.model.Request;
 import ru.ifmo.volunteer.repository.RequestRepository;
 
 @Service
@@ -13,5 +16,26 @@ public class RequestService {
 
   public Boolean hasAdditionalInfo(Long userId, Long museum_id) {
     return requestRepository.hasAdditionalInfo(userId, museum_id).isPresent();
+  }
+
+  public Request findById(Long id) {
+    return requestRepository
+        .findById(id)
+        .orElseThrow(
+            () -> new ResourceNotFoundException(String.format("Заявка с id %d не найдено", id)));
+  }
+
+  public Request add(Request request) {
+        requestRepository.findById(request.getId())
+        .ifPresent(
+            e -> {
+              throw new AlreadyExistsException(
+                  String.format("Event with %d id already exists", request.getId()));
+            });
+    return requestRepository.save(request);
+  }
+
+  public void apply(Long eventId, Long requestId) {
+    requestRepository.apply(eventId, requestId);
   }
 }

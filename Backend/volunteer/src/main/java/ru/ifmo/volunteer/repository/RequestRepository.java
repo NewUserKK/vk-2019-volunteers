@@ -1,7 +1,9 @@
 package ru.ifmo.volunteer.repository;
 
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -17,4 +19,9 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
       nativeQuery = true)
   Optional<Object> hasAdditionalInfo(
       @Param("userId") Long userId, @Param("museumId") Long museumId);
+
+  @Transactional
+  @Modifying
+  @Query(value = "INSERT INTO event_to_request ", nativeQuery = true)
+  void apply(@Param("eventId") Long eventId, @Param("requestId") Long requestId);
 }

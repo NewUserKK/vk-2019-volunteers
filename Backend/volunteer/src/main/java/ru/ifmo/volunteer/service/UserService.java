@@ -90,8 +90,8 @@ public class UserService {
     return userRepository.isBlocked(userId, museumId) != null;
   }
 
-  public User register(String login, String password) {
-    return userRepository.register(login, password);
+  public void register(String login, String password) {
+    userRepository.register(login, password);
   }
 
   public List<User> getUsersByRoleId(Long roleId) {

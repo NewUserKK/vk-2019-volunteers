@@ -5,9 +5,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ru.ifmo.volunteer.model.Request;
 import ru.ifmo.volunteer.service.RequestService;
 
 @RestController
@@ -27,6 +29,25 @@ public class RequestController {
   @GetMapping("{userId}/info")
   public Boolean hasAdditionalInfo(@PathVariable Long userId, @RequestParam Long museum_id) {
     return requestService.hasAdditionalInfo(userId, museum_id);
+  }
+
+  @ApiOperation(
+      value = "Подать заявку на волонтёрство",
+      produces = "application/json"
+  )
+  @PostMapping("{eventId}/apply")
+  public void apply(@PathVariable Long eventId, @RequestParam Long requestId) {
+    requestService.apply(eventId, requestId);
+  }
+
+  @ApiOperation(
+      value = "Создать заяку на волонтёрство",
+      produces = "application/json",
+      response = Request.class
+  )
+  @PostMapping
+  public Request add(@RequestBody Request request) {
+    return requestService.add(request);
   }
 
 }
