@@ -14,10 +14,11 @@ import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.event.model.Event
 import ru.wa285.volunteers.domain.person.PersonRepository
+import ru.wa285.volunteers.presentation.BottomNavFragment
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
 
-class EventListFragment : AbstractFragment() {
+class EventListFragment : AbstractFragment(), BottomNavFragment {
 
     override val layoutResId = R.layout.fragment_event_list
 
@@ -87,5 +88,11 @@ class EventListFragment : AbstractFragment() {
                 event
             )
         requireParentFragment().findNavController().navigate(action)
+    }
+
+    override fun updateAdapters() {
+        if (::eventAdapter.isInitialized) {
+            eventAdapter.notifyDataSetChanged()
+        }
     }
 }

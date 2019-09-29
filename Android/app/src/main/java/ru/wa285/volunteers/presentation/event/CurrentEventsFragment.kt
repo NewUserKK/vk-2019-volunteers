@@ -15,10 +15,11 @@ import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.event.model.Event
 import ru.wa285.volunteers.domain.person.PersonRepository
 import ru.wa285.volunteers.domain.person.model.Person
+import ru.wa285.volunteers.presentation.BottomNavFragment
 import ru.wa285.volunteers.presentation.BottomNavigationHostFragmentDirections
 import ru.wa285.volunteers.presentation.common.AbstractFragment
 
-class CurrentEventsFragment : AbstractFragment() {
+class CurrentEventsFragment : AbstractFragment(), BottomNavFragment {
 
     override val layoutResId: Int = R.layout.fragment_current_events
 
@@ -26,7 +27,7 @@ class CurrentEventsFragment : AbstractFragment() {
     private val personRepository: PersonRepository by kodein.instance()
 
     private val eventList = mutableListOf<EventAdapterItem>()
-    lateinit var eventAdapter: EventListRecyclerViewAdapter
+    private lateinit var eventAdapter: EventListRecyclerViewAdapter
 
     override fun onResume() {
         super.onResume()
@@ -89,5 +90,11 @@ class CurrentEventsFragment : AbstractFragment() {
         val action = BottomNavigationHostFragmentDirections.
             actionBottomNavigationHostFragmentToEventDetailFragment(event)
         requireParentFragment().findNavController().navigate(action)
+    }
+
+    override fun updateAdapters() {
+        if (::eventAdapter.isInitialized) {
+            eventAdapter.notifyDataSetChanged()
+        }
     }
 }

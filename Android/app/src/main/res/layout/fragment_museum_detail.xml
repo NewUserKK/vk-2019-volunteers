@@ -19,6 +19,7 @@
         android:id="@+id/museum_detail_avatar_view"
         android:layout_width="@dimen/avatar_view_size"
         android:layout_height="@dimen/avatar_view_size"
+        style="@style/AppTheme.AvatarView"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
