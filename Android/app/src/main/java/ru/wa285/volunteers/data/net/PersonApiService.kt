@@ -26,6 +26,6 @@ interface PersonApiService {
     @DELETE("event/unsubscribe")
     fun unsubscribeFromEvent(@Query("eventId") eventId: Long, @Query("userId") personId: Long): Call<Unit>
 
-    @GET("user/{id}/rating")
+    @GET("user/{id}/minimalRating")
     fun getRating(@Path("id") personId: Long) : Call<Long>
 }

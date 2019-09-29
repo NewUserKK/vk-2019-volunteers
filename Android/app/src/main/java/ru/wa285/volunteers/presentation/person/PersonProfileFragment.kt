@@ -121,19 +121,21 @@ class ProfileFragment : AbstractFragment(), BottomNavFragment {
         if (phone != null) {
             profile_phone.text = "Номер телефона: $phone"
         }
-        launch {
-            val rating = withContext(Dispatchers.IO) {
-                personRepository.getRating(person)
-            }
-            when (rating) {
-                is OperationResult.Success -> {
-                    profile_rating.text = "Текущий рейтинг: ${rating.value}"
-                }
-                is OperationResult.Failure -> {
-                    Toast.makeText(context, rating.error.message, Toast.LENGTH_LONG).show()
-                }
-            }
-        }
+        profile_rating.text = "Текущий рейтинг: ${person.rating}"
+
+//        launch {
+//            val rating = withContext(Dispatchers.IO) {
+//                personRepository.getRating(person)
+//            }
+//            when (rating) {
+//                is OperationResult.Success -> {
+//                    profile_rating.text = "Текущий рейтинг: ${rating.value}"
+//                }
+//                is OperationResult.Failure -> {
+//                    Toast.makeText(context, rating.error.message, Toast.LENGTH_LONG).show()
+//                }
+//            }
+//        }
     }
 
     private fun fillAchievements(person: Person) {

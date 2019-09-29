@@ -66,6 +66,10 @@ class EventDetailFragment : AbstractFragment() {
             event_detail_sign_up.setBackgroundColor(resources.getColor(R.color.gray))
             event_detail_sign_up.text = "Нужна авторизация"
         } else {
+            if (loggedUser.rating < event.minimalRating) {
+                event_detail_sign_up.setBackgroundColor(resources.getColor(R.color.gray))
+                event_detail_sign_up.text = "Не хватает рейтинга"
+            }
             event_detail_sign_up.setOnClickListener {
                 navigateToEventRegistration(event)
             }
@@ -74,6 +78,8 @@ class EventDetailFragment : AbstractFragment() {
         event_detail_members_container.setOnClickListener {
             navigateToEventParticipants()
         }
+
+        event_detail_rating_value.text = event.minimalRating.toString()
     }
 
     private fun navigateToEventRegistration(event: Event) {

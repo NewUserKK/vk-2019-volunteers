@@ -127,8 +127,7 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
 
     override suspend fun getRating(person: Person): OperationResult<Long> {
         return tryConnect<Long> {
-            val response =
-                personApiService.getRating(person.id).execute()
+            val response = personApiService.getRating(person.id).execute()
             val body = response.body()
             if (response.isSuccessful && body != null) {
                 OperationResult.Success(body)
