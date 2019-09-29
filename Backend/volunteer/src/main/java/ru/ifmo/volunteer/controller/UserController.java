@@ -74,9 +74,8 @@ public class UserController {
   @ApiOperation(
       value = "Добавляет пароль к юзеру",
       produces = "application/json")
-  @PostMapping("/register")
+  @PutMapping("/register")
   public void register(@RequestBody UserCredentials userCredentials) {
-    var a = 1/0;
     userService.register(userCredentials.getLogin(), userCredentials.getPassword());
   }
 
