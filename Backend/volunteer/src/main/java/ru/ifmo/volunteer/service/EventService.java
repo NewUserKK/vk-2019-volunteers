@@ -96,4 +96,8 @@ public class EventService {
   public Long ratingRequired(Long id) {
     return eventRepository.ratingRequired(id);
   }
+
+  public void finish(Long id) {
+    eventRepository.finish(id);
+  }
 }

@@ -63,6 +63,15 @@ public class EventController {
     return eventService.isFavourite(eventId, userId);
   }
 
+  @ApiOperation(
+      value = "Завершить событие",
+      produces = "application/json")
+  )
+  @PutMapping("{id}/finish")
+  public void finish(@PathVariable Long id) {
+    eventService.finish(id);
+  }
+
   @ApiOperation(value = "Отписаться от события", produces = "application/json")
   @DeleteMapping("/unsubscribe")
   public void unsubscribe(@RequestParam Long userId, @RequestParam Long eventId) {
