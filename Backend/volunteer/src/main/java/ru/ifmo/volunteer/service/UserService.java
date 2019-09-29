@@ -112,7 +112,14 @@ public class UserService {
     final var importance = event.getImportance();
     final var percents = (importance + 1) * 20;
     final var all = userRepository.findAll();
-    if (all.size() <= need) return all;
+    if (all.size() <= need) {
+      all.forEach(
+          user -> {
+            eventRepository.addParticipant(eventId, user.getId());
+            eventRepository.increment(eventId);
+          });
+      return all;
+    }
     final var limit = Math.round(need / 100f * percents);
     need -= limit;
     final var list =
