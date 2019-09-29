@@ -27,7 +27,7 @@
             </div>
         </header>
         <router-view :museums="museums" :events="events" :volunteers="volunteers"
-                     :users="users" :roles="roles" class="middle"></router-view>
+                     :users="users" :roles="roles" :requests="requests" class="middle"></router-view>
         <Footer/>
     </div>
 </template>
@@ -74,7 +74,9 @@
                     this.roles = response.data;
                 });
                 if (this.$user) {
-                    axios.get(`request/${this.$user.id}`)
+                    axios.get(`request/${this.$user.id}`).then(response => {
+                        this.requests = response.data;
+                    })
                 }
             }
         },

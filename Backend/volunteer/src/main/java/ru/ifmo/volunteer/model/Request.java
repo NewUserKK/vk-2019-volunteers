@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Request {
@@ -11,19 +13,21 @@ public class Request {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  private long event_id;
+  @ManyToOne
+  @JoinColumn(name = "event_id")
+  private Event event;
 
-  private long user_id;
+  private long userId;
 
   private String comment;
 
   private int status;
 
-  private long role_id;
+  private long roleId;
 
-  private long start_date;
+  private long startDate;
 
-  private long end_date;
+  private long endDate;
 
   public long getId() {
     return id;
@@ -33,20 +37,20 @@ public class Request {
     this.id = id;
   }
 
-  public long getEvent_id() {
-    return event_id;
+  public Event getEvent() {
+    return event;
   }
 
-  public void setEvent_id(long event_id) {
-    this.event_id = event_id;
+  public void setEvent(Event event) {
+    this.event = event;
   }
 
-  public long getUser_id() {
-    return user_id;
+  public long getUserId() {
+    return userId;
   }
 
-  public void setUser_id(long user_id) {
-    this.user_id = user_id;
+  public void setUserId(long userId) {
+    this.userId = userId;
   }
 
   public String getComment() {
@@ -65,27 +69,27 @@ public class Request {
     this.status = status;
   }
 
-  public long getRole_id() {
-    return role_id;
+  public long getRoleId() {
+    return roleId;
   }
 
-  public void setRole_id(long role_id) {
-    this.role_id = role_id;
+  public void setRoleId(long roleId) {
+    this.roleId = roleId;
   }
 
-  public long getStart_date() {
-    return start_date;
+  public long getStartDate() {
+    return startDate;
   }
 
-  public void setStart_date(long start_date) {
-    this.start_date = start_date;
+  public void setStartDate(long startDate) {
+    this.startDate = startDate;
   }
 
-  public long getEnd_date() {
-    return end_date;
+  public long getEndDate() {
+    return endDate;
   }
 
-  public void setEnd_date(long end_date) {
-    this.end_date = end_date;
+  public void setEndDate(long endDate) {
+    this.endDate = endDate;
   }
 }
