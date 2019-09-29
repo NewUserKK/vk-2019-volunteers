@@ -2,21 +2,22 @@ package ru.wa285.volunteers.data.repository.event
 
 import retrofit2.Retrofit
 import ru.wa285.volunteers.data.common.exception.BadResponseException
-import ru.wa285.volunteers.data.net.VolunteersEventApiService
+import ru.wa285.volunteers.data.common.exception.IncorrectCredentialsException
+import ru.wa285.volunteers.data.net.EventApiService
 import ru.wa285.volunteers.data.net.toOperationResult
 import ru.wa285.volunteers.data.net.tryConnect
 import ru.wa285.volunteers.domain.common.OperationResult
 import ru.wa285.volunteers.domain.event.EventRepository
 import ru.wa285.volunteers.domain.event.model.Event
+import ru.wa285.volunteers.domain.event.model.EventRegisterForm
 import ru.wa285.volunteers.domain.museum.model.Museum
 import ru.wa285.volunteers.domain.person.model.Person
-import java.io.IOException
-import java.net.ConnectException
+import ru.wa285.volunteers.domain.role.model.Role
 
 class EventRepositoryImpl(private val retrofit: Retrofit) : EventRepository {
 
-    private val retrofitService: VolunteersEventApiService =
-        retrofit.create(VolunteersEventApiService::class.java)
+    private val retrofitService: EventApiService =
+        retrofit.create(EventApiService::class.java)
 
     override suspend fun getAll(): OperationResult<List<Event>> {
         return tryConnect {
@@ -28,7 +29,21 @@ class EventRepositoryImpl(private val retrofit: Retrofit) : EventRepository {
     }
 
     override suspend fun getAllByMuseum(museum: Museum): OperationResult<List<Event>> {
-        return listOf<Event>().toOperationResult()
+        return tryConnect {
+            val response = retrofitService.getEventsByMuseum(museum.id).execute()
+            response.toOperationResult {
+                BadResponseException(it)
+            }
+        }
+    }
+
+    override suspend fun getAllByPerson(person: Person): OperationResult<List<Event>> {
+        return tryConnect {
+            val response = retrofitService.getEventsByPerson(person.id).execute()
+            response.toOperationResult {
+                BadResponseException(it)
+            }
+        }
     }
 
     override suspend fun addEvent(event: Event): OperationResult<Event> {
@@ -36,10 +51,32 @@ class EventRepositoryImpl(private val retrofit: Retrofit) : EventRepository {
     }
 
     override suspend fun getParticipantsByEvent(event: Event): OperationResult<List<Person>> {
-        return listOf<Person>().toOperationResult()
+        return tryConnect {
+            val response = retrofitService.getParticipantsByEvent(event.id).execute()
+            response.toOperationResult {
+                BadResponseException(it)
+            }
+        }
     }
 
-    override suspend fun getFriendsByEvent(event: Event): OperationResult<List<Person>> {
-        return listOf<Person>().toOperationResult()
+    override suspend fun getFriendsByEvent(event: Event, person: Person): OperationResult<List<Person>> {
+        return tryConnect {
+            val response = retrofitService.getFriendsByEvent(event.id, person.id).execute()
+            response.toOperationResult {
+                BadResponseException(it)
+            }
+        }
+    }
+
+    override suspend fun getAllRoles(event: Event): OperationResult<List<Role>> {
+        return tryConnect<List<Role>> {
+            val response = retrofitService.getRoleByEvent(event.id).execute()
+            val body = response.body()
+            if (response.isSuccessful && body != null) {
+                OperationResult.Success(body)
+            } else {
+                OperationResult.Failure(BadResponseException(response))
+            }
+        }
     }
 }

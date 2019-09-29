@@ -9,6 +9,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/textColor</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -52,4 +53,37 @@
         <item name="android:background">@color/white</item>
         <item name="android:textColor">@color/colorAccent</item>
     </style>
+
+    <style name="AppTheme.Button">
+        <item name="android:background">@drawable/background_button</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingHorizontal">8dp</item>
+    </style>
+
+    <style name="AppTheme.OptionEditText">
+        <item name="met_baseColor">@color/colorAccent</item>
+        <item name="met_floatingLabel">highlight</item>
+        <item name="met_floatingLabelTextColor">@color/colorAccent</item>
+        <item name="met_floatingLabelTextSize">14dp</item>
+        <item name="met_helperTextColor">@color/colorAccent</item>
+        <item name="met_primaryColor">@color/colorAccent</item>
+        <item name="met_textColor">@color/textColor</item>
+        <item name="met_textColorHint">@color/textColor</item>
+        <item name="met_underlineColor">@color/colorAccent</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+
+    <style name="AppTheme.AvatarView">
+        <item name="mli_letter_color">@color/white</item>
+        <item name="mli_shape_color">@color/colorAccent</item>
+        <item name="mli_border">true</item>
+        <item name="mli_border_color">@color/white</item>
+        <item name="mli_border_size">1</item>
+        <item name="civ_border_color">@color/white</item>
+        <item name="civ_border_width">1dp</item>
+        <item name="mli_letter_size">16</item>
+    </style>
+
 </resources>

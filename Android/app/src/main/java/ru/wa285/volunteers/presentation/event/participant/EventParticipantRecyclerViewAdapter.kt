@@ -31,9 +31,9 @@ class EventParticipantRecyclerViewAdapter(private val values: List<Person>) : Re
         holder.apply {
             avatarView.value = NamePicture(item.name, item.avatarUri)
             nameView.text = item.name
-//            itemView.setOnClickListener {
-//                onClickListener?.invoke(item)
-//            }
+            itemView.setOnClickListener {
+                onClickListener?.invoke(item)
+            }
         }
     }
 
