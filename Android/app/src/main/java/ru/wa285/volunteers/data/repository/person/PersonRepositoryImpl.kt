@@ -105,4 +105,8 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
             }
         }
     }
+
+    override fun getRating(person: Person): Long? {
+        return personApiService.getRating(person.id).execute().body()
+    }
 }

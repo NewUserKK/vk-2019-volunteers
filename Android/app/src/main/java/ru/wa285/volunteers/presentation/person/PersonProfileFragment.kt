@@ -121,6 +121,8 @@ class ProfileFragment : AbstractFragment(), BottomNavFragment {
         if (phone != null) {
             profile_phone.text = "Номер телефона: $phone"
         }
+        val rating = personRepository.getRating(person)
+        profile_rating.text = "Текущий рейтинг: ${rating ?: 0}"
     }
 
     private fun fillAchievements(person: Person) {

@@ -12,8 +12,6 @@ import kotlinx.android.synthetic.main.fragment_event_participant.*
 import ru.wa285.volunteers.R
 import ru.wa285.volunteers.domain.event.model.Event
 import ru.wa285.volunteers.presentation.common.AbstractFragment
-import ru.wa285.volunteers.presentation.event.participant.EventParticipantFragmentArgs
-import ru.wa285.volunteers.presentation.event.participant.EventParticipantPagerAdapter
 
 class ActiveEventFragment : AbstractFragment() {
 
