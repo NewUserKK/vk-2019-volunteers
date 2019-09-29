@@ -45,7 +45,10 @@ class PersonRepositoryImpl(private val retrofit: Retrofit) : PersonRepository {
             val response = personApiService.register(person).execute()
             val body = response.body()
             if (response.isSuccessful && body != null) {
-                personApiService.addPassword(PersonAuthCredentials(person.login, person.password))
+                val passResponse = personApiService.addPassword(PersonAuthCredentials(person.login, person.password)).execute()
+                if (!passResponse.isSuccessful) {
+                    return@tryConnect OperationResult.Failure(BadResponseException(passResponse))
+                }
                 loggedUser = body
                 OperationResult.Success(body)
             } else {

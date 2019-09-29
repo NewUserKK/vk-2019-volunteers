@@ -74,6 +74,9 @@
         <action
             android:id="@+id/action_bottomNavigationHostFragment_to_profileFavoriteMuseumListFragment"
             app:destination="@id/profileFavoriteMuseumListFragment" />
+        <action
+            android:id="@+id/action_bottomNavigationHostFragment_to_activeEventFragment"
+            app:destination="@id/activeEventFragment" />
     </fragment>
     <fragment
         android:id="@+id/currentEventsFragment"
@@ -103,4 +106,31 @@
             android:id="@+id/action_profileFavoriteMuseumListFragment_to_museumDetailFragment"
             app:destination="@id/museumDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/activeEventFragment"
+        android:name="ru.wa285.volunteers.presentation.active.ActiveEventFragment"
+        android:label="fragment_active_event"
+        tools:layout="@layout/fragment_active_event" >
+        <action
+            android:id="@+id/action_activeEventFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <argument
+            android:name="event"
+            app:argType="ru.wa285.volunteers.domain.event.model.Event" />
+    </fragment>
+    <fragment
+        android:id="@+id/activeEventParticipantFragment"
+        android:name="ru.wa285.volunteers.ActiveEventParticipantFragment"
+        android:label="fragment_active_event_participant"
+        tools:layout="@layout/fragment_active_event_participant" />
+    <fragment
+        android:id="@+id/activeEventChatFragment"
+        android:name="ru.wa285.volunteers.ActiveEventChatFragment"
+        android:label="fragment_active_event_chat"
+        tools:layout="@layout/fragment_active_event_chat" />
+    <fragment
+        android:id="@+id/activeEventTasksFragment"
+        android:name="ru.wa285.volunteers.ActiveEventTasksFragment"
+        android:label="fragment_active_event_tasks"
+        tools:layout="@layout/fragment_active_event_tasks" />
 </navigation>
