@@ -1,5 +1,6 @@
 package ru.ifmo.volunteer.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -41,6 +42,8 @@ public class UserService {
       throw new AlreadyExistsException(
           String.format("User with %d id already exists", user.getId()));
     }
+    if (user.getRating() == null)
+      user.setRating(0L);
     return userRepository.save(user);
   }
 
@@ -118,9 +121,9 @@ public class UserService {
       return all;
     var limit = Math.round(need / 100 * percents);
     need -= limit;
-    var stream = all.stream().sorted(Comparator.comparing(User::getRating));
-    List<User> top = stream.limit(limit).collect(Collectors.toList());
-    List<User> left = stream.skip(limit).collect(Collectors.toList());
+    List<User> list = all.stream().sorted(Comparator.comparing(User::getRating)).collect(Collectors.toList());
+    List<User> top = list.subList(0, limit);
+    List<User> left = new ArrayList<>(){{addAll(list.subList(limit, list.size()));}};
 
     for (int i = 0; i < need; ++i) {
       int number = new Random().nextInt(left.size());
